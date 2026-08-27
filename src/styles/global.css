@@ -1159,20 +1159,25 @@ button, a { -webkit-tap-highlight-color: transparent; }
 
 /* Hero: editorial two-column masthead */
 .lab-hero {
+  --hero-w: var(--content);
   display: grid;
   grid-template-columns: minmax(0, 1.02fr) minmax(300px, 0.72fr);
   gap: clamp(32px, 4vw, 72px);
   align-items: stretch;
   min-height: clamp(620px, 78svh, 820px);
+  width: min(100%, var(--hero-w));
+}
+/* On wide monitors the hero grows into the empty gutters: the text column
+   starts further left and the art keeps its full bleed to the right edge,
+   so the masthead reads centered instead of pushed right. */
+@media (min-width: 1800px) {
+  .lab-hero { --hero-w: 1840px; }
 }
 .hero__copy { display: flex; flex-direction: column; align-items: flex-start; min-width: 0; }
 .hero__art {
   position: relative;
   overflow: hidden;
-  /* Bleed to the viewport edge on laptop widths, but cap the over-bleed on
-     ultrawide screens so the hero stays anchored to the centered column
-     instead of reading as right-aligned. */
-  margin: calc(-1 * clamp(56px, 9vh, 110px)) calc(-1 * var(--frame) - min(120px, max(0px, (100vw - var(--content)) / 2))) 0 0;
+  margin: calc(-1 * clamp(56px, 9vh, 110px)) calc(-1 * var(--frame) - max(0px, (100vw - var(--hero-w)) / 2)) 0 0;
   border-left: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
   background: var(--bg);
