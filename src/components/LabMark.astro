@@ -10,7 +10,28 @@ const { href = "#top" } = Astro.props;
 
 <a class="lab-mark" href={href} aria-label={`${SITE_NAME}, back to home`}>
   <span class="lab-mark__glyph" aria-hidden="true">
-    <span>H</span><span>P</span>
+    <!-- the lab mark: memory pages, the measured series, the oxide decode
+         head — see public/favicon.svg for the annotated geometry -->
+    <svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+      <g fill="var(--line)">
+        <rect x="0" y="0" width="9" height="9" rx="2"/>
+        <rect x="0" y="11" width="9" height="9" rx="2"/>
+        <rect x="0" y="22" width="9" height="9" rx="2"/>
+        <rect x="11" y="0" width="9" height="9" rx="2"/>
+        <rect x="22" y="0" width="9" height="9" rx="2"/>
+        <rect x="22" y="11" width="9" height="9" rx="2"/>
+      </g>
+      <rect x="0" y="33" width="9" height="9" rx="2" fill="var(--teal)"/>
+      <rect x="11" y="33" width="9" height="9" rx="2" fill="#137383"/>
+      <rect x="11" y="22" width="9" height="9" rx="2" fill="#167098"/>
+      <rect x="11" y="11" width="9" height="9" rx="2" fill="#1a6cac"/>
+      <rect x="22" y="33" width="9" height="9" rx="2" fill="#167098"/>
+      <rect x="22" y="22" width="9" height="9" rx="2" fill="#1a6cac"/>
+      <rect x="33" y="33" width="9" height="9" rx="2" fill="#1a6cac"/>
+      <rect x="33" y="22" width="9" height="9" rx="2" fill="#1e69c1"/>
+      <rect x="33" y="11" width="9" height="9" rx="2" fill="#2166d6"/>
+      <rect x="33" y="0" width="9" height="9" rx="2" fill="var(--accent)"/>
+    </svg>
   </span>
   <span class="lab-mark__name">High Performance<br />AI Lab</span>
 </a>
