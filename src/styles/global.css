@@ -1169,7 +1169,10 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .hero__art {
   position: relative;
   overflow: hidden;
-  margin: calc(-1 * clamp(56px, 9vh, 110px)) calc(-1 * var(--frame) - max(0px, (100vw - var(--content)) / 2)) 0 0;
+  /* Bleed to the viewport edge on laptop widths, but cap the over-bleed on
+     ultrawide screens so the hero stays anchored to the centered column
+     instead of reading as right-aligned. */
+  margin: calc(-1 * clamp(56px, 9vh, 110px)) calc(-1 * var(--frame) - min(120px, max(0px, (100vw - var(--content)) / 2))) 0 0;
   border-left: 1px solid var(--line-strong);
   border-bottom: 1px solid var(--line-strong);
   background: var(--bg);
