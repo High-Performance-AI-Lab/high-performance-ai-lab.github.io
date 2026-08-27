@@ -1,0 +1,32 @@
+{
+  "fitzroy-wide": {
+    "file": "File:Fitz Roy 2.jpg",
+    "author": "Prissantenb\u00e4r",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Fitz_Roy_2.jpg"
+  },
+  "fitzroy-tall": {
+    "file": "File:Fitz Roy from the road.jpg",
+    "author": "Raven Winters",
+    "license": "CC BY 4.0",
+    "source": "https://commons.wikimedia.org/wiki/File:Fitz_Roy_from_the_road.jpg"
+  },
+  "paine-wide": {
+    "file": "File:A view towards Torres Del Paine.jpg",
+    "author": "Winky from Oxford, UK",
+    "license": "CC BY 2.0",
+    "source": "https://commons.wikimedia.org/wiki/File:A_view_towards_Torres_Del_Paine.jpg"
+  },
+  "matterhorn": {
+    "file": "File:Matterhorn sunset 2016 (Unsplash).jpg",
+    "author": "Sam Ferrara samferrara",
+    "license": "CC0",
+    "source": "https://commons.wikimedia.org/wiki/File:Matterhorn_sunset_2016_(Unsplash).jpg"
+  },
+  "lauterbrunnen": {
+    "file": "File:Lauterbrunnen valley mid summer.jpg",
+    "author": "The original uploader was Marine4 at English Wikipedia.",
+    "license": "Public domain",
+    "source": "https://commons.wikimedia.org/wiki/File:Lauterbrunnen_valley_mid_summer.jpg"
+  }
+}

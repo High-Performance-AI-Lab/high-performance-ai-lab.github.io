@@ -2,142 +2,253 @@
 import { getCollection } from "astro:content";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import LabMark from "../components/LabMark.astro";
+import GridMarker from "../components/GridMarker.astro";
 import { SITE_LOCATION, SITE_NAME } from "../consts.ts";
 
-const kvpackUrl = "https://github.com/High-Performance-AI-Lab/kvpack";
-const muserUrl = "https://github.com/High-Performance-AI-Lab/muser";
 const labUrl = "https://github.com/High-Performance-AI-Lab";
+const muserUrl = `${labUrl}/muser`;
+const kvpackUrl = `${labUrl}/kvpack`;
+const consoleUrl = `${labUrl}/muser-console`;
+const bookRepoUrl = `${labUrl}/muser-book`;
+const bookUrl = "https://high-performance-ai-lab.github.io/muser-book/";
 
 const team = (await getCollection("team"))
   .map((entry) => entry.data)
   .sort((a, b) => a.order - b.order);
 
-const focusAreas = ["Inference", "State", "Proofs", "Measurement", "Kernels", "Metal", "CUDA", "Education"];
-const marquee = [...focusAreas, ...focusAreas];
+// Real run conditions, not vibes — the tape restates the muser README.
+const tape = [
+  "MUSE GLIMMER · 52 LAYERS · ~30B",
+  "METAL DECODE",
+  "NVFP4 PREFILL · GB10",
+  "EXACT-TOKEN MATCH · 5 REPS PER CELL",
+  "WIRED 10GbE · EEE DISABLED",
+  "PINNED COMPARATOR · 89e0aa6",
+  "RECEIPTS RETAINED",
+];
+const tapeLoop = [...tape, ...tape];
 
-const futureSystems = [
-  { code: "03", phase: "qualifying", width: "74%" },
-  { code: "04", phase: "measuring", width: "58%" },
-  { code: "05", phase: "containment", width: "82%" },
-  { code: "06", phase: "prototype", width: "66%" },
-  { code: "07", phase: "verifying", width: "71%" },
+// Above-the-fold numbers. Each restates a claim from the public muser README,
+// conditions attached; the colophon carries the shared caveats.
+const stats = [
+  {
+    value: "1.05×",
+    label: "decode vs pinned llama.cpp",
+    cond: "llama.cpp ÷ muser · 2,048 tok · 5-rep mean",
+  },
+  {
+    value: "3.75–4.26×",
+    label: "faster first token, GB10 prefill",
+    cond: "5 counted reps per depth · deterministic output",
+  },
+  {
+    value: "~65 ms",
+    label: "warm local prefix resume",
+    cond: "one Mac · exact-prefix hit",
+  },
+  {
+    value: "8/8",
+    label: "deep-handoff soak, no losses",
+    cond: "130,815 tok per handoff · back to back",
+  },
+];
+
+const roadmap = [
+  {
+    name: "Multi-producer scheduling",
+    now: "today's qualified topology is one Mac and one GB10 node",
+  },
+  {
+    name: "Node de-enrollment",
+    now: "nodes can join in one command; leaving cleanly is next",
+  },
+  {
+    name: "Remote multimodal prefill",
+    now: "unqualified — requests with images fall back to local prefill",
+  },
+  {
+    name: "The evaluation half: evaluation-proofs + model-binding",
+    now: "sealed eval evidence and promotion statistics, running privately; they publish when their receipts do",
+  },
 ];
 ---
 
 <BaseLayout
   title={SITE_NAME}
-  description="High Performance AI Lab builds open systems for local inference, evaluation, reusable model state, and efficient execution on Apple and NVIDIA hardware."
+  description="High Performance AI Lab builds open inference systems and publishes the conditions behind every number — device, model, quant, and rep count."
 >
   <header class="site-nav" data-header>
     <LabMark />
     <nav class="site-nav__links" aria-label="Primary">
       <a href="#ethos" data-nav-section="ethos"><span>01</span><b>Scope</b></a>
-      <a href="#release" data-nav-section="projects"><span>02</span><b>Projects</b></a>
+      <a href="#systems" data-nav-section="projects"><span>02</span><b>Systems</b></a>
       <a href="#founders" data-nav-section="founders"><span>03</span><b>Founders</b></a>
       <a href="#next" data-nav-section="next"><span>04</span><b>Next</b></a>
     </nav>
     <div class="site-nav__cta">
       <a class="btn btn--ghost" href={labUrl} target="_blank" rel="noreferrer">GitHub <b aria-hidden="true">↗</b></a>
-      <a class="btn btn--primary" href="#release">Projects <b aria-hidden="true">↓</b></a>
+      <a class="btn btn--primary" href={bookUrl} target="_blank" rel="noreferrer">Read the book <b aria-hidden="true">↗</b></a>
     </div>
   </header>
 
   <main id="main">
     <section class="hero lab-hero" id="top" tabindex="-1" aria-labelledby="hero-title">
-      <span class="hero__status reveal"><i aria-hidden="true"></i> Independent systems lab</span>
+      <div class="hero__copy">
+        <span class="hero__status"><i aria-hidden="true"></i> Independent systems lab · Zurich + Buenos Aires</span>
 
-      <h1 id="hero-title" class="reveal">
-        High Performance<br /><span class="accent">AI Lab</span>.
-      </h1>
+        <h1 id="hero-title">
+          High Performance<br /><span class="accent">AI Lab</span>.
+        </h1>
 
-      <p class="hero__lead reveal">
-        We build complete AI systems for demanding local workloads—from model behavior
-        and evaluation to inference engines, reusable state, and the low-level work that
-        makes models run efficiently on Apple and NVIDIA hardware. <strong>Designed to be run, measured, and inspected.</strong>
-      </p>
+        <p class="hero__lead">
+          We build inference systems and publish the conditions behind every number.
+          Muser runs Muse Glimmer — 52 layers, ~30B — on Apple Silicon with Metal
+          decode, and matches or beats a source-pinned llama.cpp at every depth we
+          tested. Add one GB10 node for prefill and first-token time drops 3.75–4.26×.
+        </p>
 
-      <div class="hero__cta reveal">
-        <a class="btn btn--primary" href="#release">Explore the projects <b aria-hidden="true">↓</b></a>
-        <a class="btn btn--ghost" href="#ethos">See how we work <b aria-hidden="true">→</b></a>
+        <div class="hero__cta">
+          <a class="btn btn--primary" href="#systems">See the systems <b aria-hidden="true">↓</b></a>
+          <a class="btn btn--ghost" href={bookUrl} target="_blank" rel="noreferrer">How it's built <b aria-hidden="true">↗</b></a>
+        </div>
+
+        <dl class="hero__stats" aria-label="Measured results from the muser benchmark suite">
+          {stats.map((stat) => (
+            <div class="hero__stat">
+              <dt>{stat.label}</dt>
+              <dd>{stat.value}</dd>
+              <span class="hero__stat-cond">{stat.cond}</span>
+            </div>
+          ))}
+        </dl>
       </div>
 
+      <figure class="hero__art" aria-hidden="true">
+        <div class="dither dither--ink" style="--plate:url('/img/hero-fitzroy-ink.png')"></div>
+        <div class="dither dither--ox" style="--plate:url('/img/hero-fitzroy-ox.png')"></div>
+        <figcaption>MONTE FITZ ROY · 49.27°S 73.04°W · FLOYD–STEINBERG · 1-BIT</figcaption>
+      </figure>
     </section>
 
-    <div class="marquee reveal" aria-hidden="true">
-      <div class="marquee__track">
-        {marquee.map((item) => <span>{item}</span>)}
+    <div class="tape" aria-hidden="true">
+      <div class="tape__track">
+        {tapeLoop.map((item) => <span>{item}</span>)}
       </div>
     </div>
 
-    <section class="section section--contained" id="ethos" aria-labelledby="ethos-title" data-observed-section data-section="ethos">
-      <div class="section-head reveal">
-        <div>
-          <span class="section-code">01 / FROM TASK TO HARDWARE</span>
-          <h2 id="ethos-title">A model is only one part of the <span class="accent">system</span>.</h2>
-        </div>
-        <p>We work from the job that needs doing to the hardware that does it—shaping the model, proving the behavior, and engineering the path between them.</p>
-      </div>
-
-      <div class="role-notes scope-map reveal">
-        <article><span>BIND + TEACH</span><h3>Fit intelligence to the work.</h3><p>Choose models for a real workflow, then build the prompts, tools, checks, and control loop they need to succeed reliably.</p></article>
-        <article><span>PROVE + REMEMBER</span><h3>Make behavior inspectable.</h3><p>Preserve evaluation evidence and treat context, state, and traces as identified artifacts that survive boundaries and fail closed.</p></article>
-        <article><span>RUN + SHARE</span><h3>Engineer the complete path.</h3><p>Build runtimes, inspect traces, improve kernels, place work on the right hardware, and publish the conditions behind every claim.</p></article>
-      </div>
+    <section class="section section--narrow" id="ethos" aria-labelledby="ethos-title" data-observed-section data-section="ethos">
+      <div class="section-mark"><GridMarker step={1} /><span class="section-code">01 / SCOPE</span></div>
+      <h2 id="ethos-title">A model is only one part of the system.</h2>
+      <p>
+        We work from the job that needs doing to the hardware that does it: the
+        engine, the state it keeps, the kernels underneath, and the evidence that
+        says whether any of it worked. Say what you measured. Name the machine.
+        Show the receipt.
+      </p>
+      <p class="ethos-rule">
+        Measured, or it doesn't ship.
+      </p>
     </section>
 
-    <section class="section section--contained section--tinted" id="release" aria-labelledby="release-title" data-observed-section data-section="projects">
-      <div class="section-head reveal">
+    <div class="band-horizon" role="img" aria-label="The Matterhorn, dithered to one bit">
+      <div class="band-horizon__plate" style="--plate:url('/img/band-matterhorn-solo.png')"></div>
+      <span class="band-horizon__caption">45.98°N 7.66°E · MATTERHORN · ZERMATT</span>
+    </div>
+
+    <section class="section section--tinted" id="systems" aria-labelledby="systems-title" data-observed-section data-section="projects">
+      <div class="section-head section-head--flipped">
         <div>
-          <span class="section-code">02 / PROJECTS · KVPACK · LATEST RELEASE</span>
-          <h2 id="release-title">Context reuse isn’t new.<br /><span class="accent">Safe state movement is</span>.</h2>
+          <div class="section-mark"><GridMarker step={2} /><span class="section-code">02 / SYSTEMS · PUBLIC TODAY</span></div>
+          <h2 id="systems-title">One engine, one cache format,<br />one dashboard, one book.</h2>
         </div>
-        <p>kvpack turns KV and recurrent state into a durable, verifiable artifact. Save completed work, recover it after a restart, reuse an exact prefix, or hand it to another engine without recomputing the prompt.</p>
+        <p>
+          Two people published the muser program this month, receipts attached.
+          Every number below restates a claim from the project's own README,
+          with its conditions.
+        </p>
       </div>
 
-      <div class="kvpack-hero__lockup release-lockup reveal" aria-label="kvpack">
-        <strong>kvpack</strong>
-        <span>Exact state replay</span>
-      </div>
-
-      <div class="role-notes release-capabilities reveal">
-        <article><span>01 / KEEP</span><h3>Let the work outlive the process.</h3><p>Publish complete state crash-safely and resume it after a restart, crash, or exact-prefix match.</p></article>
-        <article><span>02 / MOVE</span><h3>Carry completed prefill elsewhere.</h3><p>Transfer exact inference state between engines and machines through one documented format.</p></article>
-        <article><span>03 / REFUSE</span><h3>Reject the wrong state.</h3><p>Restore only when the model, tokens, configuration, and state format match. Otherwise, fail closed.</p></article>
-      </div>
-      <div class="release-actions reveal">
-        <code><span>01</span> export → identify → seal → move → verify → install</code>
-        <a class="btn btn--primary" href={kvpackUrl} target="_blank" rel="noreferrer">Open kvpack <b aria-hidden="true">↗</b></a>
-      </div>
+      <ol class="ledger">
+        <li class="ledger__row">
+          <span class="ledger__index">01</span>
+          <div class="ledger__body">
+            <h3><a href={muserUrl} target="_blank" rel="noreferrer">muser <b aria-hidden="true">↗</b></a></h3>
+            <p class="ledger__claim">
+              A standalone engine for one model: Muse Glimmer, 52 layers, ~30B.
+              On its exact-token benchmark suite it matches or beats a
+              source-pinned llama.cpp at every tested depth, with or without
+              speculation — 1.050× decode at 2,048 tokens, 1.028× at 131,008,
+              five-rep means. Run the whole request on one Mac, or move prefill
+              to a GB10 node.
+            </p>
+            <p class="ledger__limit">On natural text the speculative lanes split by content; both sides are published.</p>
+          </div>
+          <span class="ledger__tag">ENGINE · RUST + METAL</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__index">02</span>
+          <div class="ledger__body">
+            <h3><a href={kvpackUrl} target="_blank" rel="noreferrer">kvpack <b aria-hidden="true">↗</b></a></h3>
+            <p class="ledger__claim">
+              Prefill once. Restore the same bytes — or refuse. kvpack saves a KV
+              or recurrent cache and restores the original bytes after a restart,
+              a crash, or on another machine. It binds state to model, revision,
+              quantization, tokenizer, template, layout, and engine ABI; any
+              difference is a miss, not a best-effort restore. Commits are written
+              last and pack sets publish atomically — a torn write cannot replace
+              the last known-good generation.
+            </p>
+            <p class="ledger__limit">Cross-engine reuse works when two adapters deliberately share a representation — kvpack does not invent one.</p>
+          </div>
+          <span class="ledger__tag">STATE · RUST</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__index">03</span>
+          <div class="ledger__body">
+            <h3><a href={consoleUrl} target="_blank" rel="noreferrer">muser-console <b aria-hidden="true">↗</b></a></h3>
+            <p class="ledger__claim">
+              A live dashboard that never turns missing measurements into zeroes
+              or demo data: unavailable stays visibly unavailable, and history
+              charts preserve real gaps instead of connecting them. One Rust
+              binary, one checked-in HTML file — no CDN, no package tree, no
+              frontend build step.
+            </p>
+            <p class="ledger__limit">A non-loopback listener is HTTPS-only; the server refuses to start remotely over plain HTTP.</p>
+          </div>
+          <span class="ledger__tag">TELEMETRY · RUST</span>
+        </li>
+        <li class="ledger__row">
+          <span class="ledger__index">04</span>
+          <div class="ledger__body">
+            <h3><a href={bookUrl} target="_blank" rel="noreferrer">How to Write an Inference Engine <b aria-hidden="true">↗</b></a></h3>
+            <p class="ledger__claim">
+              The muser book: forty chapters on how one token of Muse Glimmer is
+              generated on Apple Silicon, how the speculative lanes work, how
+              kvpack replays state exactly, and how a GB10 node hands prefill to
+              a Mac. Chapters are written against pinned source revisions, and
+              every measured number cites a retained evidence receipt.
+            </p>
+            <p class="ledger__limit">Free to read online · <a href={bookRepoUrl} target="_blank" rel="noreferrer">source ↗</a></p>
+          </div>
+          <span class="ledger__tag">BOOK · 40 CHAPTERS</span>
+        </li>
+      </ol>
     </section>
 
-    <section class="section section--contained disagg" id="architecture" aria-labelledby="architecture-title" data-observed-section data-section="projects">
-      <div class="section-head reveal">
+    <section class="section disagg" id="architecture" aria-labelledby="architecture-title" data-observed-section data-section="projects">
+      <div class="section-head">
         <div>
-          <span class="section-code">02 / PROJECTS · MUSER · LOCAL + HYBRID</span>
-          <h2 id="architecture-title">Muser runs<br /><span class="accent">Muse Glimmer-30B</span><br />across NVIDIA and Apple.</h2>
+          <div class="section-mark"><GridMarker step={3} /><span class="section-code">02 / SYSTEMS · DISAGGREGATED</span></div>
+          <h2 id="architecture-title">Prefill on a GB10.<br />Decode on a <span class="accent">Mac</span>.</h2>
         </div>
-        <p>Muser is our purpose-built inference engine for Muse Glimmer-30B—a 52-layer, roughly 30B model. Run the whole request on Apple Silicon, or use disaggregated prefill and decode across NVIDIA and Apple.</p>
+        <p>
+          vLLM prefills long context in NVFP4 on a GB10 node; Muser decodes on
+          Apple Metal. At 130,815 tokens that is 137.4 s to first token instead
+          of 570.1 s — 4.15×, five counted reps, deterministic output in every one.
+        </p>
       </div>
 
-      <div class="muser-identity reveal">
-        <div class="muser-identity__brand">
-          <span>PURPOSE-BUILT INFERENCE ENGINE</span>
-          <strong>Muser</strong>
-          <a class="btn btn--primary" href={muserUrl} target="_blank" rel="noreferrer">Explore Muser <b aria-hidden="true">↗</b></a>
-        </div>
-        <article>
-          <span>LOCAL</span>
-          <h3>One Mac.</h3>
-          <p>Muser handles both prompt processing and token generation with Metal on Apple Silicon.</p>
-        </article>
-        <article class="is-hybrid">
-          <span>HYBRID NVIDIA + APPLE</span>
-          <h3>Disaggregated.</h3>
-          <p>vLLM prefills long context on NVIDIA CUDA; Muser continues generation on Apple Metal.</p>
-        </article>
-      </div>
-
-      <div class="role-map role-map--hybrid reveal" aria-label="Disaggregated prefill with vLLM on NVIDIA CUDA and decode with Muser on Apple Metal">
+      <div class="role-map role-map--hybrid" aria-label="Disaggregated prefill with vLLM on NVIDIA CUDA and decode with Muser on Apple Metal">
         <article class="role-map__node role-map__node--producer">
           <div class="role-map__top"><span>01 / LONG-PROMPT PREFILL</span><b>CUDA</b></div>
           <div class="role-map__icon" aria-hidden="true">N</div>
@@ -149,34 +260,56 @@ const futureSystems = [
         <div class="role-map__handoff" aria-label="Authenticated verified state handoff">
           <span>02 / VERIFIED STATE HANDOFF</span>
           <div aria-hidden="true"><i></i><b>KV</b><i></i></div>
-          <p>kvpack · authenticated<br />mismatch → reject</p>
+          <p>kvpack · TLS + HMAC<br />mismatch → reject</p>
         </div>
 
         <article class="role-map__node role-map__node--consumer role-map__node--muser">
           <div class="role-map__top"><span>03 / TOKEN-BY-TOKEN DECODE</span><b>METAL</b></div>
           <div class="role-map__icon" aria-hidden="true">M</div>
           <h3>Decode with Muser.</h3>
-          <p>The Mac verifies and installs the KV state, then Muser continues generation with Metal on Apple Silicon.</p>
+          <p>The Mac verifies identity and integrity, installs the KV state, then Muser continues generation with Metal.</p>
           <ul><li>Apple Silicon</li><li>Muser</li><li>Metal decode</li></ul>
         </article>
       </div>
 
-      <p class="architecture-caption reveal"><strong>One request, two architectures.</strong> The Mac verifies identity and integrity before installing transferred state. The demonstrated topology is one GB10-class producer and one Mac consumer.</p>
+      <div class="reuse-ladder">
+        <div class="reuse-ladder__step"><b>~65 ms</b><span>warm local prefix, one Mac</span></div>
+        <div class="reuse-ladder__step"><b>0.61 s / 1.06 s</b><span>warm 65k / 131k prefix with a producer — vs 68.6 s / 147.8 s cold, bit-identical output</span></div>
+        <div class="reuse-ladder__step"><b>54.2851%</b><span>of the bytes moved for a half-cached prompt, output SHA-256 equal to a full handoff's</span></div>
+        <div class="reuse-ladder__step reuse-ladder__step--miss"><b>~12.9 s</b><span>a miss through the same path stays slow — measured reuse, not cache-forever</span></div>
+      </div>
+
+      <p class="architecture-caption">
+        <strong>One request, two architectures.</strong> A mismatch is a rejection
+        with a retained receipt. The demonstrated topology is one GB10-class
+        producer and one Mac consumer — an 8/8 back-to-back soak at 130,815
+        tokens per handoff ran with zero producer deaths and deterministic
+        output. Scale-out is roadmap. Speculative decoding across the wire was
+        measured, rejected, and published anyway.
+      </p>
     </section>
 
-    <section class="section section--contained section--tinted" id="founders" aria-labelledby="founders-title" data-observed-section data-section="founders">
-      <div class="section-head founders-head reveal">
+    <div class="band-horizon" role="img" aria-label="The towers of Torres del Paine, dithered to one bit">
+      <div class="band-horizon__plate" style="--plate:url('/img/band-paine-solo.png')"></div>
+      <span class="band-horizon__caption">50.94°S 72.99°W · TORRES DEL PAINE · PATAGONIA</span>
+    </div>
+
+    <section class="section section--tinted" id="founders" aria-labelledby="founders-title" data-observed-section data-section="founders">
+      <div class="section-head founders-head">
         <div>
-          <span class="section-code">03 / FOUNDERS</span>
-          <h2 id="founders-title">Behind the <span class="accent">lab</span>.</h2>
+          <div class="section-mark"><GridMarker step={4} /><span class="section-code">03 / FOUNDERS</span></div>
+          <h2 id="founders-title">Two founders, eight time zones apart.</h2>
         </div>
-        <p>We’re a small, curious team passionate about making AI systems faster, more transparent, and more useful on hardware people can own. We turn research questions into working systems and share what we learn along the way.</p>
+        <p>One in Zurich, one in Buenos Aires, with Patagonia in common. Everything above was published by the two of us, this month, with its receipts.</p>
       </div>
 
       <div class="team-ledger">
-        {team.map((member) => (
-          <article class:list={["team-record", `accent-${member.accent}`, "reveal"]}>
-            <div class="team-record__portrait" aria-hidden="true"><span>{member.initials}</span></div>
+        {team.map((member, index) => (
+          <article class:list={["team-record", `accent-${member.accent}`]}>
+            <div class="team-record__portrait" aria-hidden="true">
+              <div class="dither dither--ink" style={`--plate:url('/img/${index === 0 ? "place-zurich" : "place-patagonia"}-ink.png')`}></div>
+              <div class="dither dither--tint" style={`--plate:url('/img/${index === 0 ? "place-zurich" : "place-patagonia"}-ox.png')`}></div>
+            </div>
             <div class="team-record__identity">
               <p class="eyebrow">Co-founder · {member.role}</p>
               <h3>{member.name}</h3>
@@ -193,47 +326,43 @@ const futureSystems = [
         ))}
       </div>
 
-      <aside class="team-note reveal">
+      <aside class="team-note">
         <span>COLLABORATION::OPEN</span>
         <p>We work with researchers, engineers, and hardware teams who care about fast systems and defensible evidence.</p>
-        <a href={labUrl} target="_blank" rel="noreferrer">Start a conversation <span aria-hidden="true">↗</span></a>
+        <a href={labUrl} target="_blank" rel="noreferrer">Read the code <span aria-hidden="true">↗</span></a>
       </aside>
     </section>
 
-    <section class="section section--contained future" id="next" aria-labelledby="next-title" data-observed-section data-section="next">
-      <div class="section-head reveal">
+    <section class="section future" id="next" aria-labelledby="next-title" data-observed-section data-section="next">
+      <div class="section-head">
         <div>
-          <span class="section-code">04 / WHAT FOLLOWS</span>
-          <h2 id="next-title">The rest of the stack<br /><span class="accent">is already moving</span>.</h2>
+          <div class="section-mark"><GridMarker step={4} /><span class="section-code">04 / WHAT FOLLOWS</span></div>
+          <h2 id="next-title">The roadmap is a list of named gaps.</h2>
         </div>
-        <p>We are building the machinery that decides whether an AI system worked, preserves the evidence, coordinates what happens next, and drives the hardware underneath it harder.</p>
+        <p>No teasers, no redaction bars. These are the limits the current
+        releases state about themselves, in the order we intend to close them.</p>
       </div>
 
-      <div class="future-vault reveal" aria-label="Five unannounced systems in development">
-        <div class="future-vault__head"><span>LAB / PRIVATE INDEX</span><b>05 ENTRIES · SIGNAL DETECTED</b></div>
-        <ol>
-          {futureSystems.map((system) => (
-            <li>
-              <span class="future-vault__code">{system.code}</span>
-              <span class="sr-only">Unannounced system {system.code}, currently {system.phase}</span>
-              <span class="future-vault__name" style={`--future-width:${system.width}`} aria-hidden="true">repository / unannounced-system</span>
-              <span class="future-vault__phase">{system.phase}</span>
-              <span class="future-vault__lock" aria-hidden="true">◌</span>
-            </li>
-          ))}
-        </ol>
-        <div class="future-vault__foot"><span>The next bottleneck is already running.</span><span>More soon.</span></div>
-      </div>
+      <ol class="roadmap">
+        {roadmap.map((item, index) => (
+          <li class="roadmap__row">
+            <span class="roadmap__index">{String(index + 1).padStart(2, "0")}</span>
+            <h3>{item.name}</h3>
+            <p>{item.now}</p>
+          </li>
+        ))}
+      </ol>
     </section>
 
-    <section class="cta-band reveal">
+    <section class="cta-band">
+      <div class="cta-band__plate" aria-hidden="true" style="--plate:url('/img/band-matterhorn-ink.png')"></div>
       <div class="cta-band__inner">
-        <span class="eyebrow">RUNNING NOW</span>
-        <h2>Explore what has<br /><span class="accent">left the lab bench</span>.</h2>
-        <p>Reproduce the current work, inspect the evidence, and follow the next systems as they emerge from the lab.</p>
+        <span class="eyebrow">PUBLIC · TODAY</span>
+        <h2>Run it. Check the numbers.</h2>
+        <p>Every claim on this page restates a project README and names its conditions. The fastest way to test us is to read one.</p>
         <div class="cta-band__actions">
-          <a class="btn btn--primary" href={kvpackUrl} target="_blank" rel="noreferrer">Explore kvpack <b aria-hidden="true">↗</b></a>
-          <a class="btn btn--ghost" href={labUrl} target="_blank" rel="noreferrer">Visit the lab on GitHub <b aria-hidden="true">↗</b></a>
+          <a class="btn btn--paper" href={bookUrl} target="_blank" rel="noreferrer">Read the book <b aria-hidden="true">↗</b></a>
+          <a class="btn btn--paper-ghost" href={labUrl} target="_blank" rel="noreferrer">The lab on GitHub <b aria-hidden="true">↗</b></a>
         </div>
       </div>
     </section>
@@ -242,12 +371,24 @@ const futureSystems = [
   <footer class="site-footer">
     <div class="site-footer__brand">
       <span>HPAL / END OF INDEX</span>
-      <h2>Systems for <span class="accent">fitted intelligence</span>.</h2>
+      <h2>Systems you can inspect,<br />from task to silicon.</h2>
     </div>
     <div class="site-footer__cols">
-      <div class="site-footer__col"><span>Lab</span><a href="#ethos">From task to hardware</a><a href="#founders">Founders</a><a href="#next">What follows</a></div>
-      <div class="site-footer__col"><span>Current work</span><a href="#release">kvpack</a><a href="#architecture">Muser</a><a href={muserUrl} target="_blank" rel="noreferrer">Source ↗</a></div>
+      <div class="site-footer__col"><span>Systems</span><a href={muserUrl} target="_blank" rel="noreferrer">muser ↗</a><a href={kvpackUrl} target="_blank" rel="noreferrer">kvpack ↗</a><a href={consoleUrl} target="_blank" rel="noreferrer">muser-console ↗</a><a href={bookUrl} target="_blank" rel="noreferrer">the book ↗</a></div>
+      <div class="site-footer__col"><span>Lab</span><a href="#ethos">Scope</a><a href="#founders">Founders</a><a href="#next">What follows</a></div>
       <div class="site-footer__col"><span>Connect</span><a href={labUrl} target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div>
+    </div>
+    <div class="colophon">
+      <span>COLOPHON</span>
+      <p>
+        Set in Inter, IBM Plex Sans, and JetBrains Mono. Photography dithered to
+        one bit, Floyd–Steinberg, 2px dot: Monte Fitz Roy by Raven Winters
+        (CC BY 4.0); the Matterhorn by Sam Ferrara (CC0); Torres del Paine by
+        Winky (CC BY 2.0); Fitz Roy massif and the Lauterbrunnen valley, public
+        domain — all via Wikimedia Commons. Numbers on this page restate the
+        muser and kvpack READMEs; each carries its conditions, and the receipts
+        stay in the repos.
+      </p>
     </div>
     <div class="site-footer__base"><span>© 2026 {SITE_NAME} — {SITE_LOCATION}</span><a href="#top">RETURN TO 000 ↑</a></div>
   </footer>

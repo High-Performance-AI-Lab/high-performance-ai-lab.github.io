@@ -28,7 +28,7 @@ Say what you measured. Name the machine. Show the receipt. Skip the adjectives. 
    We document the path from first principle to fast kernel — including the wrong turns — so the next person starts further ahead.
 
 6. **Intelligence must fit the work.**
-   The next leap will not come from one model doing everything. It will come from understanding the task, the machine, the boundary, and the people who depend on it well enough to build the system they actually need.
+   The next leap will not come from one model doing everything. Understand the task, the machine, and the boundary well enough, and you can build the system the work actually needs.
 
 ## What we do
 
