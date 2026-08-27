@@ -40,8 +40,8 @@ We work across the whole path from task to silicon:
 - **Optimize** — Crucible, a search loop for verified faster kernels.
 - **Port** — The ANE Book, a field guide to deploying on the Neural Engine.
 - **Teach** — Inference School, an open curriculum from first principles.
-- **Prove** — evaluation-proofs, fail-closed evaluation and proof artifacts for agents.
-- **Bind** — model-binding, workflow-level model binding with statistics.
+- **Prove** — fail-closed evaluation and proof artifacts for agents.
+- **Bind** — workflow-level model binding with statistics.
 - **Discover** — autoharness, autonomous harness discovery for small models.
 - **Craft** — Handwerk, small-model tool calling learned through craft.
 

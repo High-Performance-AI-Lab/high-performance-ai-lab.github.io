@@ -67,8 +67,8 @@ const roadmap = [
     now: "unqualified — requests with images fall back to local prefill",
   },
   {
-    name: "The evaluation half: evaluation-proofs + model-binding",
-    now: "sealed eval evidence and promotion statistics, running privately; they publish when their receipts do",
+    name: "The evaluation half",
+    now: "how we decide whether an agent system worked — in private development",
   },
 ];
 ---
@@ -101,10 +101,11 @@ const roadmap = [
         </h1>
 
         <p class="hero__lead">
-          We build inference systems and publish the conditions behind every number.
-          Muser runs Muse Glimmer — 52 layers, ~30B — on Apple Silicon with Metal
-          decode, and matches or beats a source-pinned llama.cpp at every depth we
-          tested. Add one GB10 node for prefill and first-token time drops 3.75–4.26×.
+          We're an independent lab for local AI. Intelligence you rely on should
+          run on hardware you own, stay open to inspection, and be measured
+          honestly. We build the pieces that make that possible — an inference
+          engine, a reusable state format, a dashboard, and the book that
+          explains how it all works.
         </p>
 
         <div class="hero__cta">
@@ -158,13 +159,12 @@ const roadmap = [
     <section class="section section--tinted" id="systems" aria-labelledby="systems-title" data-observed-section data-section="projects">
       <div class="section-head section-head--flipped">
         <div>
-          <div class="section-mark"><GridMarker step={2} /><span class="section-code">02 / SYSTEMS · PUBLIC TODAY</span></div>
-          <h2 id="systems-title">One engine, one cache format,<br />one dashboard, one book.</h2>
+          <div class="section-mark"><GridMarker step={2} /><span class="section-code">02 / SYSTEMS · OPEN SOURCE</span></div>
+          <h2 id="systems-title">The systems we've<br />released so far.</h2>
         </div>
         <p>
-          Two people published the muser program this month, receipts attached.
-          Every number below restates a claim from the project's own README,
-          with its conditions.
+          Four open repositories: the engine, the cache format it replays, the
+          dashboard that watches it, and the book that explains how it all works.
         </p>
       </div>
 
@@ -174,14 +174,13 @@ const roadmap = [
           <div class="ledger__body">
             <h3><a href={muserUrl} target="_blank" rel="noreferrer">muser <b aria-hidden="true">↗</b></a></h3>
             <p class="ledger__claim">
-              A standalone engine for one model: Muse Glimmer, 52 layers, ~30B.
-              On its exact-token benchmark suite it matches or beats a
-              source-pinned llama.cpp at every tested depth, with or without
-              speculation — 1.050× decode at 2,048 tokens, 1.028× at 131,008,
-              five-rep means. Run the whole request on one Mac, or move prefill
-              to a GB10 node.
+              We built Muser to show what local inference can be: Muse Glimmer,
+              a 52-layer ~30B model, running well on one Mac — with the option
+              of handing long prompts to a GPU node for prefill. On our
+              exact-token benchmarks it matches or beats a source-pinned
+              llama.cpp at every depth we tested, with or without speculation.
             </p>
-            <p class="ledger__limit">On natural text the speculative lanes split by content; both sides are published.</p>
+            <p class="ledger__limit">On natural text, speculation helps on some content and not on others — the benchmarks publish both sides.</p>
           </div>
           <span class="ledger__tag">ENGINE · RUST + METAL</span>
         </li>
@@ -190,15 +189,14 @@ const roadmap = [
           <div class="ledger__body">
             <h3><a href={kvpackUrl} target="_blank" rel="noreferrer">kvpack <b aria-hidden="true">↗</b></a></h3>
             <p class="ledger__claim">
-              Prefill once. Restore the same bytes — or refuse. kvpack saves a KV
-              or recurrent cache and restores the original bytes after a restart,
-              a crash, or on another machine. It binds state to model, revision,
-              quantization, tokenizer, template, layout, and engine ABI; any
-              difference is a miss, not a best-effort restore. Commits are written
-              last and pack sets publish atomically — a torn write cannot replace
-              the last known-good generation.
+              We built kvpack because a computed KV cache is work worth keeping.
+              It saves inference state and restores exactly the same bytes —
+              after a restart, a crash, or on another machine — and it refuses
+              state that doesn't match the model, tokenizer, and configuration
+              it came from. The refusal is the point: a wrong restore should
+              never be silent.
             </p>
-            <p class="ledger__limit">Cross-engine reuse works when two adapters deliberately share a representation — kvpack does not invent one.</p>
+            <p class="ledger__limit">Cross-engine reuse works when two adapters deliberately share a representation — kvpack doesn't invent one.</p>
           </div>
           <span class="ledger__tag">STATE · RUST</span>
         </li>
@@ -207,13 +205,12 @@ const roadmap = [
           <div class="ledger__body">
             <h3><a href={consoleUrl} target="_blank" rel="noreferrer">muser-console <b aria-hidden="true">↗</b></a></h3>
             <p class="ledger__claim">
-              A live dashboard that never turns missing measurements into zeroes
-              or demo data: unavailable stays visibly unavailable, and history
-              charts preserve real gaps instead of connecting them. One Rust
-              binary, one checked-in HTML file — no CDN, no package tree, no
-              frontend build step.
+              The dashboard we wanted while running Muser: fleet health, cache
+              savings, and live sessions, with one rule everywhere — missing
+              data stays visibly missing. No zero-filling, no demo numbers, no
+              gaps quietly connected on a chart.
             </p>
-            <p class="ledger__limit">A non-loopback listener is HTTPS-only; the server refuses to start remotely over plain HTTP.</p>
+            <p class="ledger__limit">One Rust binary and one checked-in HTML page — no CDN, no package tree, no frontend build.</p>
           </div>
           <span class="ledger__tag">TELEMETRY · RUST</span>
         </li>
@@ -222,13 +219,13 @@ const roadmap = [
           <div class="ledger__body">
             <h3><a href={bookUrl} target="_blank" rel="noreferrer">How to Write an Inference Engine <b aria-hidden="true">↗</b></a></h3>
             <p class="ledger__claim">
-              The muser book: forty chapters on how one token of Muse Glimmer is
-              generated on Apple Silicon, how the speculative lanes work, how
-              kvpack replays state exactly, and how a GB10 node hands prefill to
-              a Mac. Chapters are written against pinned source revisions, and
-              every measured number cites a retained evidence receipt.
+              Everything we learned building these systems, written down: how
+              one token is generated on Apple Silicon, how the speculative
+              lanes work, how kvpack replays state exactly, and how a GPU node
+              hands prefill to a Mac. Forty chapters, with every measured
+              number cited to a receipt.
             </p>
-            <p class="ledger__limit">Free to read online · <a href={bookRepoUrl} target="_blank" rel="noreferrer">source ↗</a></p>
+            <p class="ledger__limit"><a href={bookUrl} target="_blank" rel="noreferrer">Read it online ↗</a> · <a href={bookRepoUrl} target="_blank" rel="noreferrer">source ↗</a></p>
           </div>
           <span class="ledger__tag">BOOK · 40 CHAPTERS</span>
         </li>
@@ -280,12 +277,13 @@ const roadmap = [
       </div>
 
       <p class="architecture-caption">
-        <strong>One request, two architectures.</strong> A mismatch is a rejection
-        with a retained receipt. The demonstrated topology is one GB10-class
-        producer and one Mac consumer — an 8/8 back-to-back soak at 130,815
-        tokens per handoff ran with zero producer deaths and deterministic
-        output. Scale-out is roadmap. Speculative decoding across the wire was
-        measured, rejected, and published anyway.
+        <strong>One request, two architectures.</strong> The Mac checks identity
+        and integrity before installing anything; a mismatch is rejected, and
+        the rejection keeps its receipt. The demonstrated topology is one
+        GB10-class producer and one Mac consumer — scale-out is what we're
+        working on next. We also tried speculative decoding across the wire:
+        it didn't pay for itself, so we published the negative result and
+        moved on.
       </p>
     </section>
 
@@ -298,9 +296,9 @@ const roadmap = [
       <div class="section-head founders-head">
         <div>
           <div class="section-mark"><GridMarker step={4} /><span class="section-code">03 / FOUNDERS</span></div>
-          <h2 id="founders-title">Two founders, eight time zones apart.</h2>
+          <h2 id="founders-title">Behind the lab.</h2>
         </div>
-        <p>One in Zurich, one in Buenos Aires, with Patagonia in common. Everything above was published by the two of us, this month, with its receipts.</p>
+        <p>One of us lives in Zurich, the other in Buenos Aires; Patagonia is the shared love. The lab is the two of us, building these systems end to end.</p>
       </div>
 
       <div class="team-ledger">
@@ -328,7 +326,7 @@ const roadmap = [
 
       <aside class="team-note">
         <span>COLLABORATION::OPEN</span>
-        <p>We work with researchers, engineers, and hardware teams who care about fast systems and defensible evidence.</p>
+        <p>If you're building local AI and care about honest measurement, we'd like to hear from you.</p>
         <a href={labUrl} target="_blank" rel="noreferrer">Read the code <span aria-hidden="true">↗</span></a>
       </aside>
     </section>
@@ -337,10 +335,9 @@ const roadmap = [
       <div class="section-head">
         <div>
           <div class="section-mark"><GridMarker step={4} /><span class="section-code">04 / WHAT FOLLOWS</span></div>
-          <h2 id="next-title">The roadmap is a list of named gaps.</h2>
+          <h2 id="next-title">What we're working on.</h2>
         </div>
-        <p>No teasers, no redaction bars. These are the limits the current
-        releases state about themselves, in the order we intend to close them.</p>
+        <p>The next pieces of work, and where each one stands today.</p>
       </div>
 
       <ol class="roadmap">
@@ -357,9 +354,9 @@ const roadmap = [
     <section class="cta-band">
       <div class="cta-band__plate" aria-hidden="true" style="--plate:url('/img/band-matterhorn-ink.png')"></div>
       <div class="cta-band__inner">
-        <span class="eyebrow">PUBLIC · TODAY</span>
+        <span class="eyebrow">OPEN SOURCE</span>
         <h2>Run it. Check the numbers.</h2>
-        <p>Every claim on this page restates a project README and names its conditions. The fastest way to test us is to read one.</p>
+        <p>All of it is open — clone the repos, run the benchmarks, and see for yourself.</p>
         <div class="cta-band__actions">
           <a class="btn btn--paper" href={bookUrl} target="_blank" rel="noreferrer">Read the book <b aria-hidden="true">↗</b></a>
           <a class="btn btn--paper-ghost" href={labUrl} target="_blank" rel="noreferrer">The lab on GitHub <b aria-hidden="true">↗</b></a>
