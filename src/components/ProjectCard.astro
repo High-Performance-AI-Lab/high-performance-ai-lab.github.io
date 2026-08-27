@@ -1,0 +1,76 @@
+---
+import ProjectGlyph from "./ProjectGlyph.astro";
+
+interface Project {
+  id: string;
+  title: string;
+  tagline: string;
+  eyebrow: string;
+  description: string;
+  url?: string;
+  category: "systems" | "tools" | "education" | "proofs";
+  tags: string[];
+  accent: "oxide" | "cobalt" | "citron" | "violet" | "moss" | "amber" | "teal" | "cyan" | "rose";
+  icon: "lattice" | "checkpoint" | "proof" | "curriculum" | "neural-die" | "trace";
+  status: string;
+  metric?: string;
+  metricLabel?: string;
+  command?: string;
+}
+
+interface Props {
+  project: Project;
+  index: number;
+  total: number;
+}
+
+const { project, index, total } = Astro.props;
+const label = String(index + 1).padStart(2, "0");
+const totalLabel = String(total).padStart(2, "0");
+---
+
+<article
+  id={`project-${project.id}`}
+  class:list={["project-record", `accent-${project.accent}`]}
+  data-project-card
+  data-category={project.category}
+>
+  <div class="project-record__index">
+    <strong>{label}</strong>
+    <span>/ {totalLabel}</span>
+  </div>
+
+  <div class="project-record__body">
+    <div class="project-record__identity">
+      <p class="eyebrow">{project.eyebrow}</p>
+      <h3>{project.title}</h3>
+      <p class="project-record__tagline">{project.tagline}</p>
+    </div>
+    <div class="project-record__summary">
+      <p>{project.description}</p>
+      {project.metric && (
+        <div class="project-record__metric">
+          <strong>{project.metric}</strong>
+          <span>{project.metricLabel}</span>
+        </div>
+      )}
+    </div>
+  </div>
+
+  <ProjectGlyph kind={project.icon} label={project.title} />
+
+  <div class="project-record__lower">
+    <ul aria-label="Technologies">
+      {project.tags.map((tag) => <li>{tag}</li>)}
+    </ul>
+    <span class="project-record__status"><i></i>{project.status}</span>
+    {project.command && <code>$ {project.command}</code>}
+    {project.url ? (
+      <a href={project.url} target="_blank" rel="noreferrer" aria-label={`Explore ${project.title} on GitHub`}>
+        Open repository <span aria-hidden="true">↗</span>
+      </a>
+    ) : (
+      <span class="project-record__soon">Research notes forthcoming</span>
+    )}
+  </div>
+</article>

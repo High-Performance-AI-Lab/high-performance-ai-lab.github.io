@@ -1,0 +1,466 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import "../styles/deck.css";
+import { SITE_NAME, SITE_SHORT_NAME, SITE_TAGLINE } from "../consts.ts";
+---
+
+<BaseLayout
+  title="Investor Briefing 2026"
+  description={`${SITE_NAME} — ${SITE_TAGLINE}. Open systems for fitted, inspectable intelligence: inference engines, proofs, kernels, and measurement.`}
+>
+  <div class="deck" id="deck" aria-label="Investor presentation">
+    <div class="deck__progress" id="progress"></div>
+
+    <div class="deck__stage" id="stage">
+
+      {/* 01 — COVER */}
+      <section class="slide is-active" data-label="Cover" data-title="Cover">
+        <div class="slide__inner cover">
+          <div class="stagger">
+            <div class="slide__kicker">Investor briefing <b>2026 · Confidential</b></div>
+            <div class="cover__word">High Performance<br /><span class="accent">AI Lab</span></div>
+            <p class="cover__sub">Intelligence should fit the work. We build open systems for local inference, proofs, and measured intelligence — from task to silicon.</p>
+            <div class="cover__meta">
+              <span class="tag tag--live"><i></i> Open systems</span>
+              <span class="tag">Local inference</span>
+              <span class="tag">Agent proofs</span>
+              <span class="tag">Zurich / Worldwide</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 02 — THESIS */}
+      <section class="slide" data-label="Thesis" data-title="The thesis">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">The thesis</div>
+            <p class="statement">AI has learned to <span class="accent">scale</span>.<br />Now it must learn to <span class="accent">fit</span>.</p>
+            <p class="lead" style="margin-top:32px">Fit the task. Fit the machine. Fit the boundary. Fit the people who will depend on it. The next leap won't come from one model doing everything — it will come from understanding the work well enough to build the system it actually needs.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 03 — PROBLEM */}
+      <section class="slide" data-label="Problem" data-title="Why now">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Why now <b>The cost of the status quo</b></div>
+            <h2 style="margin-bottom:36px">Today, intelligence is <span class="accent">rented by the token</span>, far from the work.</h2>
+            <ul class="bullets">
+              <li><span><b>Repeated prefill dominates inference cost.</b> The same long context is computed again and again — across sessions, agents, and machines.</span></li>
+              <li><span><b>Private work leaks.</b> Prompts, traces, corrections, and memory leave their boundary without reason, feeding someone else's model.</span></li>
+              <li><span><b>Capability is locked.</b> To one frontier model, one cloud, one price — with no path to ownership or improvement.</span></li>
+              <li><span><b>The model is not the system.</b> The harness, the memory, the runtime, the hardware, and the human understanding all matter — and none of them are for sale.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 04 — THE LAB */}
+      <section class="slide" data-label="The Lab" data-title="The lab">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">The work</div>
+            <h2 style="margin-bottom:18px">We study the entire path —<br /><span class="accent">from task to silicon.</span></h2>
+            <p class="lead" style="margin-bottom:40px">{SITE_NAME} builds open infrastructure for fitted, inspectable intelligence: local inference engines, proof and evaluation systems, kernel tooling, and the methods that make fast systems reproducible.</p>
+            <div class="grid-4">
+              <div class="card ca-teal"><span class="card__num">01</span><h3>Gate correctness first</h3><p>Measured on real hardware. No borrowed claims, no performance without parity.</p></div>
+              <div class="card ca-cyan"><span class="card__num">02</span><h3>Bind the state</h3><p>KV caches, traces, and proof artifacts carry identity. Boundaries fail closed.</p></div>
+              <div class="card ca-violet"><span class="card__num">03</span><h3>Local where it matters</h3><p>Run on the hardware people already own. Private work stays private.</p></div>
+              <div class="card ca-amber"><span class="card__num">04</span><h3>Publish the receipt</h3><p>Source, conditions, and evidence travel with every claim. Methods improve when others can inspect them.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 05 — THE STACK */}
+      <section class="slide" data-label="The Stack" data-title="One system">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">One system <b>Ten pressure points</b></div>
+            <h2 style="margin-bottom:36px">Every layer of the stack, <span class="accent">instrumented</span>.</h2>
+            <div class="stack-rows">
+              <div class="stack-row la-oxide"><span class="stack-row__n">01</span><span class="stack-row__name">ferrite</span><span class="stack-row__role">Inference runtime — Rust + Metal, Apple Silicon</span><span class="stack-row__verb">Run</span></div>
+              <div class="stack-row la-cobalt"><span class="stack-row__n">02</span><span class="stack-row__name">kvpack</span><span class="stack-row__role">KV-cache replay — resume context, skip prefill</span><span class="stack-row__verb">Remember</span></div>
+              <div class="stack-row la-violet"><span class="stack-row__n">03</span><span class="stack-row__name">gputrace</span><span class="stack-row__role">Profiler — queryable Metal trace evidence</span><span class="stack-row__verb">Observe</span></div>
+              <div class="stack-row la-citron"><span class="stack-row__n">04</span><span class="stack-row__name">crucible</span><span class="stack-row__role">Kernel synthesis — search with invariants</span><span class="stack-row__verb">Optimize</span></div>
+              <div class="stack-row la-amber"><span class="stack-row__n">05</span><span class="stack-row__name">The ANE Book</span><span class="stack-row__role">Field guide — deploy on the Neural Engine</span><span class="stack-row__verb">Port</span></div>
+              <div class="stack-row la-moss"><span class="stack-row__n">06</span><span class="stack-row__name">Inference School</span><span class="stack-row__role">Open curriculum — from first principles</span><span class="stack-row__verb">Teach</span></div>
+              <div class="stack-row la-rose"><span class="stack-row__n">07</span><span class="stack-row__name">evaluation-proofs</span><span class="stack-row__role">Agent eval proofs — sealed, replayable evidence</span><span class="stack-row__verb">Certify</span></div>
+              <div class="stack-row la-teal"><span class="stack-row__n">08</span><span class="stack-row__name">model-binding</span><span class="stack-row__role">Model binding spine — workflow-level statistics</span><span class="stack-row__verb">Bind</span></div>
+              <div class="stack-row la-cyan"><span class="stack-row__n">09</span><span class="stack-row__name">autoharness</span><span class="stack-row__role">Harness discovery — autonomous prompt optimization</span><span class="stack-row__verb">Discover</span></div>
+              <div class="stack-row la-rose"><span class="stack-row__n">10</span><span class="stack-row__name">handwerk</span><span class="stack-row__role">Small-model craft — 46M tool-calling controller</span><span class="stack-row__verb">Craft</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 06 — MANIFESTO / PRINCIPLES */}
+      <section class="slide" data-label="Principles" data-title="How we build">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">How we build <b>The standard</b></div>
+            <p class="statement">No borrowed claims.<br /><span class="muted">No performance without parity.<br />No progress without a way back.</span></p>
+            <div class="grid-2" style="margin-top:40px">
+              <div class="card card--plain"><span class="card__num">01</span><h3>Gate correctness first</h3><p>We compare against a reference before we time. A faster wrong answer is not progress.</p></div>
+              <div class="card card--plain"><span class="card__num">02</span><h3>Name the conditions</h3><p>Device, model, route, seed, baseline, raw trials. The machine is part of the result.</p></div>
+              <div class="card card--plain"><span class="card__num">03</span><h3>Bind the state</h3><p>KV caches, traces, and proof artifacts carry identity. Boundaries fail closed.</p></div>
+              <div class="card card--plain"><span class="card__num">04</span><h3>Publish the receipt</h3><p>Source, conditions, and evidence travel with every claim. Methods improve when others can inspect them.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 07 — FOUNDERS */}
+      <section class="slide" data-label="Founders" data-title="Founders">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Founders <b>Hands-on, end to end</b></div>
+            <h2 style="margin-bottom:36px">The people behind <span class="accent">the work</span>.</h2>
+            <div class="grid-2">
+              <div class="founder fa-cobalt">
+                <div class="founder__avatar">AV</div>
+                <div>
+                  <span class="role">Independent systems researcher</span>
+                  <h3>Alvaro Videla</h3>
+                  <p>Former RabbitMQ core developer and Apple alum. Co-author of <b>RabbitMQ in Action</b>. Now builds reproducible inference systems for Apple Silicon — across local AI, distributed systems, and developer education.</p>
+                  <div class="founder__meta"><span class="tag">Zurich, CH</span><span class="tag">Systems · Distributed · DevX</span></div>
+                </div>
+              </div>
+              <div class="founder fa-violet">
+                <div class="founder__avatar">SS</div>
+                <div>
+                  <span class="role">AI researcher</span>
+                  <h3>Sergio Soage</h3>
+                  <p>Research across language models, deep learning, and reinforcement learning. Public work spans NLP and sequence tagging, question-answering systems, generative AI, and deep-research agents — connecting research ideas to practical code.</p>
+                  <div class="founder__meta"><span class="tag">Buenos Aires, AR</span><span class="tag">LLMs · RL · Agents</span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 08 — PORTFOLIO */}
+      <section class="slide" data-label="Portfolio" data-title="The portfolio">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">The portfolio <b>Ten open systems</b></div>
+            <h2 style="margin-bottom:36px">A complete stack — <span class="accent">open source, today</span>.</h2>
+            <div class="grid-6">
+              <div class="card card--plain ca-teal"><span class="tag tag--live">Live</span><h3>ferrite</h3><p>Rust + Metal inference server.</p></div>
+              <div class="card card--plain ca-cyan"><span class="tag tag--live">Flagship</span><h3>kvpack</h3><p>KV-cache replay layer.</p></div>
+              <div class="card card--plain la-violet"><span class="tag tag--live">Live</span><h3>gputrace</h3><p>Metal profiler toolkit.</p></div>
+              <div class="card card--plain la-citron"><span class="tag tag--soon">Coming soon</span><h3>crucible</h3><p>Kernel synthesis.</p></div>
+              <div class="card card--plain la-amber"><span class="tag tag--live">Open</span><h3>ANE Book</h3><p>Neural Engine field guide.</p></div>
+              <div class="card card--plain la-moss"><span class="tag tag--live">Open</span><h3>Inference School</h3><p>From 0 → kernels.</p></div>
+              <div class="card card--plain la-rose"><span class="tag tag--live">Live</span><h3>evaluation-proofs</h3><p>Agent eval proofs.</p></div>
+              <div class="card card--plain ca-teal"><span class="tag tag--live">Live</span><h3>model-binding</h3><p>Model binding spine.</p></div>
+              <div class="card card--plain ca-cyan"><span class="tag tag--live">Live</span><h3>autoharness</h3><p>Harness discovery.</p></div>
+              <div class="card card--plain la-rose"><span class="tag tag--live">Live</span><h3>handwerk</h3><p>Small-model craft.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 09 — KVPACK HEADLINE */}
+      <section class="slide" data-label="kvpack" data-title="kvpack — flagship">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">Flagship differentiator <b>kvpack</b></div>
+            <h1 style="margin-bottom:24px">Compute once.<br /><span class="accent">Restore exactly.</span></h1>
+            <p class="lead">kvpack is a fast, safe KV-cache replay layer for LLM inference. Save already-computed model state once — then restore it exactly after a restart, a crash, or on another machine. On a cache hit, the engine skips prefill and resumes from the restored state.</p>
+            <div class="cover__meta" style="margin-top:32px">
+              <span class="tag tag--live"><i></i> Open source</span>
+              <span class="tag">Rust + C ABI</span>
+              <span class="tag">Crash-safe</span>
+              <span class="tag">Encrypted at rest</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 10 — KVPACK WHY IT MATTERS */}
+      <section class="slide" data-label="Why it matters" data-title="Why kvpack matters">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Why it matters <b>The economics</b></div>
+            <h2 style="margin-bottom:18px">Prefill is the dominant cost of inference.<br /><span class="accent">kvpack turns it into a one-time cost.</span></h2>
+            <p class="lead" style="margin-bottom:40px">Long system prompts, repeated RAG documents, recurring sessions, and precomputed contexts — all become restorable state instead of recomputed tokens.</p>
+            <div class="stats">
+              <div class="stat"><strong>↓ Latency</strong><span>First-token time on cache hit</span></div>
+              <div class="stat"><strong>↓ Cost</strong><span>Pay for prefill once, not per request</span></div>
+              <div class="stat"><strong>↑ Capacity</strong><span>More concurrent sessions per machine</span></div>
+            </div>
+            <p style="margin-top:24px;font:600 9px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--faint)">Measured evidence published with every result — device, model, route, seed, raw trials.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 11 — KVPACK HOW IT WORKS */}
+      <section class="slide" data-label="How it works" data-title="How kvpack works">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">How it works <b>The replay loop</b></div>
+            <h2 style="margin-bottom:36px">Describe → Bind → Seal → Lookup → <span class="accent">Restore</span>.</h2>
+            <div class="steps">
+              <div class="step"><span class="step__n">01</span><h4>Describe</h4><p>The engine adapter supplies exact token IDs and live state.</p></div>
+              <div class="step"><span class="step__n">02</span><h4>Bind</h4><p>State is bound to model, revision, quant, layout, and engine ABI.</p></div>
+              <div class="step"><span class="step__n">03</span><h4>Seal</h4><p>Append-only pack, commit written last, Merkle-verified, atomic publish.</p></div>
+              <div class="step"><span class="step__n">04</span><h4>Lookup</h4><p>Find the longest exact-token prefix in the content-addressed index.</p></div>
+              <div class="step"><span class="step__n">05</span><h4>Restore</h4><p>Stream verified state into engine buffers; compute only the suffix.</p></div>
+            </div>
+            <p style="margin-top:32px" class="lead">kvpack proves the saved bytes came back unchanged, under the expected identity. Only the engine proves those bytes are a correct cache for its runtime — a deliberate, defensible boundary.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 12 — KVPACK DEFENSIBILITY */}
+      <section class="slide" data-label="Defensibility" data-title="What makes kvpack defensible">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Defensibility <b>Correctness as a moat</b></div>
+            <h2 style="margin-bottom:36px">What makes kvpack <span class="accent">defensible</span>.</h2>
+            <div class="grid-3">
+              <div class="card ca-teal"><span class="card__num">01</span><h3>Fail-closed compatibility</h3><p>A different model, tokenizer, template, quantization, layout, or engine ABI is a miss — never a best-effort restore.</p></div>
+              <div class="card ca-cyan"><span class="card__num">02</span><h3>Crash-safe publication</h3><p>Append-only packs, commits written last, atomic publish. A torn write can never replace the last known-good state.</p></div>
+              <div class="card ca-violet"><span class="card__num">03</span><h3>Private by design</h3><p>Content-addressed lookup puts no raw prompt in paths or telemetry. Optional ChaCha20-Poly1305 encryption at rest.</p></div>
+              <div class="card ca-amber"><span class="card__num">04</span><h3>Layered integrity</h3><p>Record hashes, Merkle-verified commits, whole-pack seals. Corruption, truncation, and single-bit changes are rejected.</p></div>
+              <div class="card ca-teal"><span class="card__num">05</span><h3>Portable & embeddable</h3><p>Native Rust adapter contract plus a stable C ABI. Link it from any runtime.</p></div>
+              <div class="card ca-cyan"><span class="card__num">06</span><h3>Reference integrations</h3><p>llama.cpp and mlx-lm adapters — bitwise round-trip verified for f16, f32, bf16.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 13 — KVPACK DISTRIBUTED */}
+      <section class="slide" data-label="Intelligence moves" data-title="Distributed — intelligence moves">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Intelligence moves <b>Disaggregated prefill</b></div>
+            <h2 style="margin-bottom:18px">Prefill where it's powerful.<br /><span class="accent">Serve where it matters.</span></h2>
+            <p class="lead" style="margin-bottom:36px">Compute prefill once on a GPU node, then stream the KV cache to a Mac or edge device that serves the user. Capability stays on the frontier; private inference stays local.</p>
+            <div class="grid-3">
+              <div class="card ca-cyan"><span class="tag tag--soon">In qualification</span><h3>DGX → Mac pipeline</h3><p>Iodyne DGX-writer / Mac-reader I/O spec: pack access pattern, Merkle/seal boundary, crash & publication requirements.</p></div>
+              <div class="card ca-teal"><span class="tag tag--soon">Coming soon</span><h3>Spark GX10 E2E</h3><p>End-to-end runbook for GPU prefill → edge restore. Live-run memory guard enforced.</p></div>
+              <div class="card ca-violet"><span class="tag tag--soon">Coming soon</span><h3>Format freeze (Z1)</h3><p>kvpack is a pre-freeze production candidate. The v1 contract freezes at the Z1 release gate.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 14 — KVPACK EVIDENCE */}
+      <section class="slide" data-label="Proven" data-title="Proven, not claimed">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Proven, not claimed <b>The rigor</b></div>
+            <h2 style="margin-bottom:36px">Three independent implementations.<br /><span class="accent">Byte-identical results.</span></h2>
+            <ul class="bullets">
+              <li><span><b>Cross-language conformance.</b> Rust, stdlib C99, and stdlib Python produce identical deterministic fixtures and agree on every accept/reject verdict.</span></li>
+              <li><span><b>Adversarial testing.</b> Exhaustive truncation and single-bit-flip mutation corpus, decoder fuzz targets, and SIGKILL crash-injection suites.</span></li>
+              <li><span><b>Pinned corpora.</b> Conformance fixtures are SHA-256-pinned in both manifest and source — reproducible on any machine.</span></li>
+              <li><span><b>Reference integrations.</b> llama.cpp whole-blob adapter and mlx-lm structured-record adapter with shared-prefix examples.</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* 15 — FERRITE */}
+      <section class="slide" data-label="Ferrite" data-title="Ferrite — inference engine">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Inference engine <b>ferrite</b></div>
+            <h1 style="margin-bottom:18px">Fast, predictable,<br /><span class="accent">honestly measured</span>.</h1>
+            <p class="lead" style="margin-bottom:40px">A Rust + Metal LLM server engineered for Apple Silicon. Ollama- and OpenAI-compatible APIs, with a correctness gate against a reference decode before any throughput number is published.</p>
+            <div class="stats">
+              <div class="stat"><strong>75.6<span style="font-size:.4em;color:var(--muted);margin-left:6px">tok/s</span></strong><span>Decode · Qwen 0.5B · A18 Pro</span></div>
+              <div class="stat"><strong>0.046<span style="font-size:.4em;color:var(--muted);margin-left:6px">J/tok</span></strong><span>Energy per token · same point</span></div>
+              <div class="stat"><strong>100<span style="font-size:.4em;color:var(--muted);margin-left:6px">%</span></strong><span>Outputs verified against reference</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 16 — GPUTRACE */}
+      <section class="slide" data-label="gputrace" data-title="gputrace — profiler">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">Profiler toolkit <b>gputrace</b></div>
+            <h1 style="margin-bottom:24px">Turn opaque Metal traces into <span class="accent">evidence</span>.</h1>
+            <p class="lead" style="margin-bottom:32px">A command-line toolkit that inspects, compares, and explains Apple Metal GPU traces — with exports to pprof, Perfetto, JSON, and Markdown. Repeatable comparisons turn profiler artifacts into reviewable, shareable reports.</p>
+            <div class="cover__meta">
+              <span class="tag tag--live"><i></i> Open source</span>
+              <span class="tag">Go</span>
+              <span class="tag">Diff · attribute · replay</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 17 — CRUCIBLE (coming soon) */}
+      <section class="slide" data-label="Crucible" data-title="Crucible — coming soon">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">Kernel synthesis <b>crucible</b></div>
+            <h1 style="margin-bottom:18px">Optimize. Then <span class="accent">certify</span>.</h1>
+            <div style="margin:18px 0 24px"><span class="tag tag--soon"><i></i> Coming soon · in the lab</span></div>
+            <p class="lead">An auto-kernel loop that searches, benchmarks, and certifies faster GPU kernels. Crucible brings measurement and specification together — so optimization doesn't mean giving up a reasoned correctness story. Candidate kernels are gated by invariants (TLA+) before they ship.</p>
+          </div>
+        </div>
+      </section>
+
+      {/* 18 — EDUCATION */}
+      <section class="slide" data-label="Education" data-title="Shared knowledge">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">Shared knowledge <b>Leave a better map</b></div>
+            <h2 style="margin-bottom:36px">The path from first principle to <span class="accent">fast kernel</span> — open.</h2>
+            <div class="grid-2">
+              <div class="card la-amber"><span class="tag tag--live">Open book</span><span class="card__num">Field guide</span><h3>The ANE Book</h3><p>Build high-performance LLM inference for Apple's Neural Engine — converters, Swift runtimes, validated manifests, and repeatable measurements. Every model ships with 100% ANE residency and no silent fallback.</p></div>
+              <div class="card la-moss"><span class="tag tag--live">Open curriculum</span><span class="card__num">Curriculum</span><h3>Inference School</h3><p>A first-principles path through transformers, memory traffic, quantization, kernels, runtimes, and rigorous performance measurement — from 0 to production kernels.</p></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 19 — ROADMAP */}
+      <section class="slide" data-label="Roadmap" data-title="What's coming">
+        <div class="slide__inner">
+          <div class="stagger">
+            <div class="slide__kicker">What's coming <b>Roadmap</b></div>
+            <h2 style="margin-bottom:36px">From pre-freeze to <span class="accent">production lane</span>.</h2>
+            <div class="stack-rows">
+              <div class="stack-row la-cobalt"><span class="stack-row__n">Q4</span><span class="stack-row__name">kvpack format freeze</span><span class="stack-row__role">Z1 release gate — v1 contract frozen</span><span class="stack-row__verb"><span class="tag tag--soon">Coming soon</span></span></div>
+              <div class="stack-row la-oxide"><span class="stack-row__n">Q4</span><span class="stack-row__name">kvpack × Ferrite live</span><span class="stack-row__role">Wire replay into the live Qwen inference path</span><span class="stack-row__verb"><span class="tag tag--soon">Coming soon</span></span></div>
+              <div class="stack-row la-cobalt"><span class="stack-row__n">Q1</span><span class="stack-row__name">Qwen2.5-7B production lane</span><span class="stack-row__role">First qualified ordinary-KV production model</span><span class="stack-row__verb"><span class="tag tag--soon">In qualification</span></span></div>
+              <div class="stack-row la-violet"><span class="stack-row__n">Q1</span><span class="stack-row__name">Disaggregated prefill</span><span class="stack-row__role">DGX/Spark GPU prefill → Mac edge restore, at scale</span><span class="stack-row__verb"><span class="tag tag--soon">In qualification</span></span></div>
+              <div class="stack-row la-citron"><span class="stack-row__n">Q2</span><span class="stack-row__name">Crucible</span><span class="stack-row__role">Certified kernel synthesis loop</span><span class="stack-row__verb"><span class="tag tag--soon">In the lab</span></span></div>
+              <div class="stack-row la-moss"><span class="stack-row__n">R&D</span><span class="stack-row__name">Lossy Q8 replay</span><span class="stack-row__role">Higher compression lane — research only</span><span class="stack-row__verb"><span class="tag tag--research">Research</span></span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 20 — CLOSE / ASK */}
+      <section class="slide" data-label="Close" data-title="The right intelligence">
+        <div class="slide__inner slide__inner--narrow">
+          <div class="stagger">
+            <div class="slide__kicker">The right intelligence <b>In the right place · at the right price</b></div>
+            <p class="statement"><span class="accent">Proven.</span></p>
+            <p class="lead" style="margin-top:28px">We build open infrastructure for the next decade of local AI — measured, private, and owned. Partner with us to ship it.</p>
+            <h2 style="margin-top:40px;font-size:clamp(1.6rem,3vw,2.6rem)">Build it. Measure it.<br /><span class="accent">Show your work.</span></h2>
+            <div class="cover__meta" style="margin-top:36px">
+              <span class="tag tag--live"><i></i> github.com/High-Performance-AI-Lab</span>
+              <span class="tag">High Performance AI Lab</span>
+              <span class="tag">Zurich / Worldwide</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    {/* Chrome */}
+    <div class="deck__hint">← → / space · F fullscreen · O overview</div>
+    <div class="deck__chrome">
+      <div class="deck__brand"><b>{SITE_SHORT_NAME}</b> · Investor briefing</div>
+      <div class="deck__title" id="deckTitle">Cover</div>
+      <div class="deck__counter"><b id="counterCurrent">01</b> / <span id="counterTotal">20</span></div>
+      <div class="deck__nav">
+        <button class="deck__btn" id="prev" aria-label="Previous slide">‹</button>
+        <button class="deck__btn" id="next" aria-label="Next slide">›</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const deck = document.getElementById("deck")!;
+    const stage = document.getElementById("stage")!;
+    const slides = Array.from(stage.querySelectorAll<HTMLElement>(".slide"));
+    const total = slides.length;
+    const progress = document.getElementById("progress")!;
+    const prevBtn = document.getElementById("prev") as HTMLButtonElement;
+    const nextBtn = document.getElementById("next") as HTMLButtonElement;
+    const titleEl = document.getElementById("deckTitle")!;
+    const currentEl = document.getElementById("counterCurrent")!;
+    const totalEl = document.getElementById("counterTotal")!;
+    totalEl.textContent = String(total).padStart(2, "0");
+
+    let current = 0;
+
+    const render = () => {
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === current));
+      // re-trigger stagger by toggling class
+      const active = slides[current];
+      active.classList.remove("is-active");
+      void active.offsetWidth;
+      active.classList.add("is-active");
+      progress.style.width = `${((current + 1) / total) * 100}%`;
+      currentEl.textContent = String(current + 1).padStart(2, "0");
+      titleEl.textContent = active.dataset.title || "";
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === total - 1;
+      if (!deck.classList.contains("deck--overview")) {
+        active.scrollTop = 0;
+      }
+      history.replaceState(null, "", `#s${current + 1}`);
+    };
+
+    const go = (i: number) => {
+      current = Math.max(0, Math.min(total - 1, i));
+      render();
+    };
+    const next = () => go(current + 1);
+    const prev = () => go(current - 1);
+
+    const toggleOverview = () => {
+      const on = deck.classList.toggle("deck--overview");
+      if (!on) render();
+    };
+    const toggleFullscreen = () => {
+      if (!document.fullscreenElement) document.documentElement.requestFullscreen?.();
+      else document.exitFullscreen?.();
+    };
+
+    prevBtn.addEventListener("click", prev);
+    nextBtn.addEventListener("click", next);
+
+    document.addEventListener("keydown", (e) => {
+      const tag = (e.target as HTMLElement)?.tagName;
+      if (tag === "INPUT" || tag === "TEXTAREA") return;
+      switch (e.key) {
+        case "ArrowRight":
+        case "ArrowDown":
+        case "PageDown":
+        case " ":
+          e.preventDefault(); next(); break;
+        case "ArrowLeft":
+        case "ArrowUp":
+        case "PageUp":
+          e.preventDefault(); prev(); break;
+        case "Home": e.preventDefault(); go(0); break;
+        case "End": e.preventDefault(); go(total - 1); break;
+        case "f": case "F": toggleFullscreen(); break;
+        case "o": case "O": case "g": case "G": toggleOverview(); break;
+      }
+    });
+
+    // Click-jump in overview
+    stage.addEventListener("click", (e) => {
+      if (!deck.classList.contains("deck--overview")) return;
+      const slide = (e.target as HTMLElement).closest(".slide") as HTMLElement | null;
+      if (!slide) return;
+      current = slides.indexOf(slide);
+      toggleOverview();
+    });
+
+    // Hash routing
+    const fromHash = () => {
+      const m = location.hash.match(/^#s(\d+)$/);
+      if (m) go(parseInt(m[1], 10) - 1);
+      else render();
+    };
+    fromHash();
+  </script>
+</BaseLayout>

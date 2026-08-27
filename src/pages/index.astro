@@ -1,0 +1,291 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import LabMark from "../components/LabMark.astro";
+import { SITE_LOCATION, SITE_NAME } from "../consts.ts";
+
+const kvpackUrl = "https://github.com/High-Performance-AI-Lab/kvpack";
+const muserUrl = "https://github.com/High-Performance-AI-Lab/muser";
+const labUrl = "https://github.com/High-Performance-AI-Lab";
+
+const team = (await getCollection("team"))
+  .map((entry) => entry.data)
+  .sort((a, b) => a.order - b.order);
+
+const focusAreas = ["Inference", "State", "Proofs", "Measurement", "Kernels", "Metal", "CUDA", "Education"];
+const marquee = [...focusAreas, ...focusAreas];
+
+const futureSystems = [
+  { code: "03", phase: "qualifying", width: "74%" },
+  { code: "04", phase: "measuring", width: "58%" },
+  { code: "05", phase: "containment", width: "82%" },
+  { code: "06", phase: "prototype", width: "66%" },
+  { code: "07", phase: "verifying", width: "71%" },
+];
+---
+
+<BaseLayout
+  title={SITE_NAME}
+  description="High Performance AI Lab builds open systems for local inference, evaluation, reusable model state, and efficient execution on Apple and NVIDIA hardware."
+>
+  <header class="site-nav" data-header>
+    <LabMark />
+    <nav class="site-nav__links" aria-label="Primary">
+      <a href="#ethos" data-nav-section="ethos"><span>01</span><b>Scope</b></a>
+      <a href="#release" data-nav-section="projects"><span>02</span><b>Projects</b></a>
+      <a href="#founders" data-nav-section="founders"><span>03</span><b>Founders</b></a>
+      <a href="#next" data-nav-section="next"><span>04</span><b>Next</b></a>
+    </nav>
+    <div class="site-nav__cta">
+      <a class="btn btn--ghost" href={labUrl} target="_blank" rel="noreferrer">GitHub <b aria-hidden="true">↗</b></a>
+      <a class="btn btn--primary" href="#release">Projects <b aria-hidden="true">↓</b></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero lab-hero" id="top" tabindex="-1" aria-labelledby="hero-title">
+      <span class="hero__status reveal"><i aria-hidden="true"></i> Independent systems lab</span>
+
+      <h1 id="hero-title" class="reveal">
+        High Performance<br /><span class="accent">AI Lab</span>.
+      </h1>
+
+      <p class="hero__lead reveal">
+        We build complete AI systems for demanding local workloads—from model behavior
+        and evaluation to inference engines, reusable state, and the low-level work that
+        makes models run efficiently on Apple and NVIDIA hardware. <strong>Designed to be run, measured, and inspected.</strong>
+      </p>
+
+      <div class="hero__cta reveal">
+        <a class="btn btn--primary" href="#release">Explore the projects <b aria-hidden="true">↓</b></a>
+        <a class="btn btn--ghost" href="#ethos">See how we work <b aria-hidden="true">→</b></a>
+      </div>
+
+    </section>
+
+    <div class="marquee reveal" aria-hidden="true">
+      <div class="marquee__track">
+        {marquee.map((item) => <span>{item}</span>)}
+      </div>
+    </div>
+
+    <section class="section section--contained" id="ethos" aria-labelledby="ethos-title" data-observed-section data-section="ethos">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-code">01 / FROM TASK TO HARDWARE</span>
+          <h2 id="ethos-title">A model is only one part of the <span class="accent">system</span>.</h2>
+        </div>
+        <p>We work from the job that needs doing to the hardware that does it—shaping the model, proving the behavior, and engineering the path between them.</p>
+      </div>
+
+      <div class="role-notes scope-map reveal">
+        <article><span>BIND + TEACH</span><h3>Fit intelligence to the work.</h3><p>Choose models for a real workflow, then build the prompts, tools, checks, and control loop they need to succeed reliably.</p></article>
+        <article><span>PROVE + REMEMBER</span><h3>Make behavior inspectable.</h3><p>Preserve evaluation evidence and treat context, state, and traces as identified artifacts that survive boundaries and fail closed.</p></article>
+        <article><span>RUN + SHARE</span><h3>Engineer the complete path.</h3><p>Build runtimes, inspect traces, improve kernels, place work on the right hardware, and publish the conditions behind every claim.</p></article>
+      </div>
+    </section>
+
+    <section class="section section--contained section--tinted" id="release" aria-labelledby="release-title" data-observed-section data-section="projects">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-code">02 / PROJECTS · KVPACK · LATEST RELEASE</span>
+          <h2 id="release-title">Context reuse isn’t new.<br /><span class="accent">Safe state movement is</span>.</h2>
+        </div>
+        <p>kvpack turns KV and recurrent state into a durable, verifiable artifact. Save completed work, recover it after a restart, reuse an exact prefix, or hand it to another engine without recomputing the prompt.</p>
+      </div>
+
+      <div class="kvpack-hero__lockup release-lockup reveal" aria-label="kvpack">
+        <strong>kvpack</strong>
+        <span>Exact state replay</span>
+      </div>
+
+      <div class="role-notes release-capabilities reveal">
+        <article><span>01 / KEEP</span><h3>Let the work outlive the process.</h3><p>Publish complete state crash-safely and resume it after a restart, crash, or exact-prefix match.</p></article>
+        <article><span>02 / MOVE</span><h3>Carry completed prefill elsewhere.</h3><p>Transfer exact inference state between engines and machines through one documented format.</p></article>
+        <article><span>03 / REFUSE</span><h3>Reject the wrong state.</h3><p>Restore only when the model, tokens, configuration, and state format match. Otherwise, fail closed.</p></article>
+      </div>
+      <div class="release-actions reveal">
+        <code><span>01</span> export → identify → seal → move → verify → install</code>
+        <a class="btn btn--primary" href={kvpackUrl} target="_blank" rel="noreferrer">Open kvpack <b aria-hidden="true">↗</b></a>
+      </div>
+    </section>
+
+    <section class="section section--contained disagg" id="architecture" aria-labelledby="architecture-title" data-observed-section data-section="projects">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-code">02 / PROJECTS · MUSER · LOCAL + HYBRID</span>
+          <h2 id="architecture-title">Muser runs<br /><span class="accent">Muse Glimmer-30B</span><br />across NVIDIA and Apple.</h2>
+        </div>
+        <p>Muser is our purpose-built inference engine for Muse Glimmer-30B—a 52-layer, roughly 30B model. Run the whole request on Apple Silicon, or use disaggregated prefill and decode across NVIDIA and Apple.</p>
+      </div>
+
+      <div class="muser-identity reveal">
+        <div class="muser-identity__brand">
+          <span>PURPOSE-BUILT INFERENCE ENGINE</span>
+          <strong>Muser</strong>
+          <a class="btn btn--primary" href={muserUrl} target="_blank" rel="noreferrer">Explore Muser <b aria-hidden="true">↗</b></a>
+        </div>
+        <article>
+          <span>LOCAL</span>
+          <h3>One Mac.</h3>
+          <p>Muser handles both prompt processing and token generation with Metal on Apple Silicon.</p>
+        </article>
+        <article class="is-hybrid">
+          <span>HYBRID NVIDIA + APPLE</span>
+          <h3>Disaggregated.</h3>
+          <p>vLLM prefills long context on NVIDIA CUDA; Muser continues generation on Apple Metal.</p>
+        </article>
+      </div>
+
+      <div class="role-map role-map--hybrid reveal" aria-label="Disaggregated prefill with vLLM on NVIDIA CUDA and decode with Muser on Apple Metal">
+        <article class="role-map__node role-map__node--producer">
+          <div class="role-map__top"><span>01 / LONG-PROMPT PREFILL</span><b>CUDA</b></div>
+          <div class="role-map__icon" aria-hidden="true">N</div>
+          <h3>Prefill on NVIDIA.</h3>
+          <p>vLLM processes long context in NVFP4 on a DGX Spark or another GB10-class machine.</p>
+          <ul><li>DGX Spark / GB10</li><li>vLLM</li><li>NVFP4 prefill</li></ul>
+        </article>
+
+        <div class="role-map__handoff" aria-label="Authenticated verified state handoff">
+          <span>02 / VERIFIED STATE HANDOFF</span>
+          <div aria-hidden="true"><i></i><b>KV</b><i></i></div>
+          <p>kvpack · authenticated<br />mismatch → reject</p>
+        </div>
+
+        <article class="role-map__node role-map__node--consumer role-map__node--muser">
+          <div class="role-map__top"><span>03 / TOKEN-BY-TOKEN DECODE</span><b>METAL</b></div>
+          <div class="role-map__icon" aria-hidden="true">M</div>
+          <h3>Decode with Muser.</h3>
+          <p>The Mac verifies and installs the KV state, then Muser continues generation with Metal on Apple Silicon.</p>
+          <ul><li>Apple Silicon</li><li>Muser</li><li>Metal decode</li></ul>
+        </article>
+      </div>
+
+      <p class="architecture-caption reveal"><strong>One request, two architectures.</strong> The Mac verifies identity and integrity before installing transferred state. The demonstrated topology is one GB10-class producer and one Mac consumer.</p>
+    </section>
+
+    <section class="section section--contained section--tinted" id="founders" aria-labelledby="founders-title" data-observed-section data-section="founders">
+      <div class="section-head founders-head reveal">
+        <div>
+          <span class="section-code">03 / FOUNDERS</span>
+          <h2 id="founders-title">Behind the <span class="accent">lab</span>.</h2>
+        </div>
+        <p>We’re a small, curious team passionate about making AI systems faster, more transparent, and more useful on hardware people can own. We turn research questions into working systems and share what we learn along the way.</p>
+      </div>
+
+      <div class="team-ledger">
+        {team.map((member) => (
+          <article class:list={["team-record", `accent-${member.accent}`, "reveal"]}>
+            <div class="team-record__portrait" aria-hidden="true"><span>{member.initials}</span></div>
+            <div class="team-record__identity">
+              <p class="eyebrow">Co-founder · {member.role}</p>
+              <h3>{member.name}</h3>
+              <div class="team-record__links">
+                {member.github && <a href={member.github} target="_blank" rel="noreferrer">GitHub ↗</a>}
+                {member.website && <a href={member.website} target="_blank" rel="noreferrer">Website ↗</a>}
+              </div>
+            </div>
+            <div class="team-record__profile">
+              <p>{member.bio}</p>
+              {member.location && <span>{member.location}</span>}
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <aside class="team-note reveal">
+        <span>COLLABORATION::OPEN</span>
+        <p>We work with researchers, engineers, and hardware teams who care about fast systems and defensible evidence.</p>
+        <a href={labUrl} target="_blank" rel="noreferrer">Start a conversation <span aria-hidden="true">↗</span></a>
+      </aside>
+    </section>
+
+    <section class="section section--contained future" id="next" aria-labelledby="next-title" data-observed-section data-section="next">
+      <div class="section-head reveal">
+        <div>
+          <span class="section-code">04 / WHAT FOLLOWS</span>
+          <h2 id="next-title">The rest of the stack<br /><span class="accent">is already moving</span>.</h2>
+        </div>
+        <p>We are building the machinery that decides whether an AI system worked, preserves the evidence, coordinates what happens next, and drives the hardware underneath it harder.</p>
+      </div>
+
+      <div class="future-vault reveal" aria-label="Five unannounced systems in development">
+        <div class="future-vault__head"><span>LAB / PRIVATE INDEX</span><b>05 ENTRIES · SIGNAL DETECTED</b></div>
+        <ol>
+          {futureSystems.map((system) => (
+            <li>
+              <span class="future-vault__code">{system.code}</span>
+              <span class="sr-only">Unannounced system {system.code}, currently {system.phase}</span>
+              <span class="future-vault__name" style={`--future-width:${system.width}`} aria-hidden="true">repository / unannounced-system</span>
+              <span class="future-vault__phase">{system.phase}</span>
+              <span class="future-vault__lock" aria-hidden="true">◌</span>
+            </li>
+          ))}
+        </ol>
+        <div class="future-vault__foot"><span>The next bottleneck is already running.</span><span>More soon.</span></div>
+      </div>
+    </section>
+
+    <section class="cta-band reveal">
+      <div class="cta-band__inner">
+        <span class="eyebrow">RUNNING NOW</span>
+        <h2>Explore what has<br /><span class="accent">left the lab bench</span>.</h2>
+        <p>Reproduce the current work, inspect the evidence, and follow the next systems as they emerge from the lab.</p>
+        <div class="cta-band__actions">
+          <a class="btn btn--primary" href={kvpackUrl} target="_blank" rel="noreferrer">Explore kvpack <b aria-hidden="true">↗</b></a>
+          <a class="btn btn--ghost" href={labUrl} target="_blank" rel="noreferrer">Visit the lab on GitHub <b aria-hidden="true">↗</b></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__brand">
+      <span>HPAL / END OF INDEX</span>
+      <h2>Systems for <span class="accent">fitted intelligence</span>.</h2>
+    </div>
+    <div class="site-footer__cols">
+      <div class="site-footer__col"><span>Lab</span><a href="#ethos">From task to hardware</a><a href="#founders">Founders</a><a href="#next">What follows</a></div>
+      <div class="site-footer__col"><span>Current work</span><a href="#release">kvpack</a><a href="#architecture">Muser</a><a href={muserUrl} target="_blank" rel="noreferrer">Source ↗</a></div>
+      <div class="site-footer__col"><span>Connect</span><a href={labUrl} target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div>
+    </div>
+    <div class="site-footer__base"><span>© 2026 {SITE_NAME} — {SITE_LOCATION}</span><a href="#top">RETURN TO 000 ↑</a></div>
+  </footer>
+
+  <script>
+    const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const revealItems = document.querySelectorAll<HTMLElement>(".reveal");
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("is-visible");
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+    revealItems.forEach((item) => revealObserver.observe(item));
+
+    const navLinks = document.querySelectorAll<HTMLAnchorElement>("[data-nav-section]");
+    const observedSections = document.querySelectorAll<HTMLElement>("[data-observed-section]");
+    const sectionObserver = new IntersectionObserver((entries) => {
+      const visible = entries.filter((entry) => entry.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+      if (!visible) return;
+      navLinks.forEach((link) => link.classList.toggle("is-active", link.dataset.navSection === (visible.target as HTMLElement).dataset.section));
+    }, { rootMargin: "-18% 0px -58% 0px", threshold: [0, 0.15, 0.5] });
+    observedSections.forEach((section) => sectionObserver.observe(section));
+
+    document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]').forEach((link) => {
+      link.addEventListener("click", (event) => {
+        if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const id = link.getAttribute("href")?.slice(1);
+        const target = id ? document.getElementById(id) : null;
+        if (!target) return;
+        event.preventDefault();
+        const distance = Math.abs(target.getBoundingClientRect().top);
+        target.scrollIntoView({ behavior: prefersReducedMotion.matches || distance > window.innerHeight * 1.6 ? "auto" : "smooth", block: "start" });
+        history.pushState(null, "", `#${id}`);
+        window.setTimeout(() => target.focus({ preventScroll: true }), distance > window.innerHeight * 1.6 ? 0 : 450);
+      });
+    });
+  </script>
+</BaseLayout>

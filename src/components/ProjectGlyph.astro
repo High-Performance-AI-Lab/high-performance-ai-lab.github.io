@@ -1,0 +1,21 @@
+---
+type GlyphKind = "lattice" | "checkpoint" | "proof" | "curriculum" | "neural-die" | "trace";
+
+interface Props {
+  kind: GlyphKind;
+  label: string;
+  compact?: boolean;
+}
+
+const { kind, label, compact = false } = Astro.props;
+const initial = label.trim().charAt(0).toUpperCase();
+---
+
+<div class:list={["project-glyph", { "project-glyph--compact": compact }]} data-glyph={kind} aria-hidden={compact ? "true" : undefined}>
+  <span class="project-glyph__mark" aria-hidden="true">{initial}</span>
+  {!compact && (
+    <div class="project-glyph__meta">
+      <strong>{kind.replace("-", "_").toUpperCase()}</strong>
+    </div>
+  )}
+</div>
