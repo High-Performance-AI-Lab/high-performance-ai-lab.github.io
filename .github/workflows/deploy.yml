@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           echo "BASE_PATH=/" >> "$GITHUB_ENV"
-          echo "SITE_URL=https://highperformanceailab.com" >> "$GITHUB_ENV"
+          echo "SITE_URL=https://high-performance-ai-lab.github.io" >> "$GITHUB_ENV"
 
       - name: Set up Node
         uses: actions/setup-node@v4
