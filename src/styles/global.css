@@ -1289,6 +1289,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .role-notes, .muser-identity, .team-note { border-radius: 0; }
 
 @media (max-width: 960px) {
+  .section-head--flipped { grid-template-columns: minmax(0, 1fr); }
+  .colophon { grid-template-columns: minmax(0, 1fr); gap: 10px; }
   .lab-hero { display: flex; flex-direction: column; min-height: 0; }
   .hero__art { order: 3; width: 100%; aspect-ratio: 4 / 3; margin: 28px 0 0; border: 1px solid var(--line-strong); }
   .lab-hero .hero__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 22px clamp(16px, 4vw, 32px); margin-top: 34px; }
