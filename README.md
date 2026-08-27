@@ -1,7 +1,7 @@
 # High Performance AI Lab
 
 A static, markdown-driven home for the lab. Built with Astro and deployed
-to GitHub Pages at <https://high-performance-ai-lab.github.io> — this
+to GitHub Pages at <https://highperformanceailab.com> — this
 repository is the org-domain repository, so the site serves from the
 domain root.
 

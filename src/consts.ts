@@ -6,4 +6,4 @@ export const SITE_DESCRIPTION =
   "High Performance AI Lab builds open systems for local inference, proofs, and measured intelligence — from task to silicon.";
 export const SITE_LEGAL_NAME = "High Performance AI Lab";
 export const SITE_LOCATION = "Buenos Aires / Zurich";
-export const SITE_URL = "https://highperformanceailab.github.io";
+export const SITE_URL = "https://highperformanceailab.com";

@@ -5,7 +5,7 @@ const base = process.env.BASE_PATH || "/";
 export default defineConfig({
   output: "static",
   base,
-  site: process.env.SITE_URL || "https://high-performance-ai-lab.github.io",
+  site: process.env.SITE_URL || "https://highperformanceailab.com",
   build: {
     assets: "assets",
   },

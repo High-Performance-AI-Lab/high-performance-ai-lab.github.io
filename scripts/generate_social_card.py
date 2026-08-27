@@ -87,7 +87,7 @@ def render_card() -> Image.Image:
     d.text((x, 280), "AI Lab", font=font(78), fill=INK)
     d.text((x, 420), "Open systems for local inference,", font=font(40), fill=OXIDE)
     d.text((x, 472), "proofs, and measured intelligence.", font=font(40), fill=OXIDE)
-    d.text((x, 552), "high-performance-ai-lab.github.io", font=font(28), fill=MUTED)
+    d.text((x, 552), "highperformanceailab.com", font=font(28), fill=MUTED)
     return img
 
 
