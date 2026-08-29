@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro check && astro build",
+    "check:social": "python3 scripts/check_social_meta.py dist",
     "preview": "astro preview",
     "check": "astro check"
   },

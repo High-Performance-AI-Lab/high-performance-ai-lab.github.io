@@ -13,6 +13,8 @@ npm run dev
 ```
 
 Run `npm run build` to validate all project frontmatter and produce the static site in `dist/`.
+Run `npm run check:social` after a build to verify that every page has complete
+Open Graph and X card metadata and that the 1200×630 preview is published.
 
 ## Add a product
 
