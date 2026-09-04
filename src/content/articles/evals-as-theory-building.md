@@ -21,18 +21,18 @@ Every organization has a sentence that can change the direction of its work: *Th
 
 Behind that sentence there is usually an evaluation—an eval—whether anybody calls it one or not. A pilot has been compared with the process it might replace. A supplier has been tested against another. A sample of customer interactions has been turned into a rating. Some part of reality has been selected, observed, and given a verdict.
 
-AI makes these verdicts unusually easy to produce. A different model, a revised instruction, or a new arrangement of tools can be tried in hours. An automated research loop can run a hundred variations while the people responsible for the work sleep.
-
-But an eval is not merely a test at the end of that process. It defines what the process can recognize as improvement. It chooses the situations that count, the facts that will be observed, and the rule that turns those facts into a pass, a failure, or a score.
-
-An eval is a theory of success made operational.
-
 In Jorge Luis Borges’s one-paragraph story [“On Exactitude in Science”](https://www.public.asu.edu/~bdaniel6/cll/pdfs/Del_rigor_en_la_ciencia.pdf), an empire constructs a map as large as the empire itself, matching it point for point. It is perfectly faithful and entirely useless. Every useful map is a compromise, defined as much by what it leaves out as by what it contains.
 
 <figure class="article-illustration article-illustration--hero">
   <img src="/img/articles/evals-as-theory-building/map-becomes-territory.webp" width="1536" height="1024" alt="A person draws a red labyrinth whose lines leave the page and become walls around them." decoding="async" fetchpriority="high" />
   <figcaption>The eval begins as a map. Once it directs the work, it becomes part of the territory.</figcaption>
 </figure>
+
+AI makes these verdicts unusually easy to produce. A different model, a revised instruction, or a new arrangement of tools can be tried in hours. An automated research loop can run a hundred variations while the people responsible for the work sleep.
+
+But an eval is not merely a test at the end of that process. It defines what the process can recognize as improvement. It chooses the situations that count, the facts that will be observed, and the rule that turns those facts into a pass, a failure, or a score.
+
+An eval is a theory of success made operational.
 
 Two changes can improve the same score for opposite reasons. One may perform the work better. The other may have learned what the eval rewards. From the dashboard they look alike. Outside it, one is progress and the other is camouflage.
 
