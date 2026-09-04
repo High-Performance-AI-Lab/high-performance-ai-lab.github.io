@@ -46,7 +46,12 @@ The eval has stopped observing the work from a distance. It has begun organizing
 This is the danger in confusing a map with the territory. The map does not need to be malicious or obviously wrong. It only needs to omit something consequential and then acquire authority. Once budgets, promotions, and releases depend on it, the abstraction can begin remaking the reality it was meant to describe.
 
 <aside class="map-warning" aria-label="Warning about evals becoming instructions">
-  <p class="map-warning__label">When the eval becomes the instruction</p>
+  <p class="map-warning__label">Failure mode</p>
+  <h3 class="map-warning__title">When the eval becomes the instruction.</h3>
+  <blockquote class="map-warning__quote" cite="https://stuff.mit.edu/~hauser/Papers/Hauser-Katz%20Measure%2004-98.pdf">
+    <p>“You are what you measure.”</p>
+    <footer>John R. Hauser and Gerald M. Katz · <cite><a href="https://stuff.mit.edu/~hauser/Papers/Hauser-Katz%20Measure%2004-98.pdf">Metrics: You Are What You Measure!</a></cite> · 1998</footer>
+  </blockquote>
   <p>A score does not remain neutral once it selects models, funds projects, rewards teams, or authorizes a release. An error in the eval can move the whole organization in the wrong direction while every dashboard reports progress.</p>
 </aside>
 
@@ -54,11 +59,11 @@ This is not an argument against evals. We need maps because we cannot carry the 
 
 That requires more than adding another decimal place.
 
-## Smoke is not fire
+## The smoke is real. The fire is not.
 
-Smoke rising behind a hill gives us reason to believe there is a fire. The smoke does not resemble the fire. It means something because we trust the connection between the two: fire produces smoke.
+Smoke rises behind a hill. We do not wait for the flames. We infer them. The inference works because the world has taught us to trust the connection: fire produces smoke.
 
-A smoke machine breaks that interpretation without changing what we see. The smoke is real. The fire is not.
+A smoke machine preserves the signal and severs the cause. Nothing about the smoke is false. Only the conclusion is.
 
 <figure class="article-illustration">
   <img src="/img/articles/evals-as-theory-building/smoke-without-fire.webp" width="1536" height="1024" alt="A red smoke plume rises from behind a hill while a hidden bellows, rather than a fire, produces it." loading="lazy" decoding="async" />
@@ -89,8 +94,8 @@ For each run, ProofPack binds the claim to the exact cases, system versions, eva
 This is proof in the empirical sense: not certainty for all time, but a checkable chain between a stated claim and the evidence that survived an attempt to break it.
 
 <aside class="claim-ceiling" aria-label="Definition of a qualified eval">
-  <p class="claim-ceiling__label">A qualified eval</p>
-  <p>We know which counterfeits it rejected, which honest controls it preserved, which conditions produced the result, where its claim ends, and how another person can verify the record.</p>
+  <p class="claim-ceiling__label">Qualification threshold</p>
+  <p>A qualified eval tells us which counterfeits it rejected, which honest controls it preserved, which conditions produced the result, where its claim ends, and how another person can verify the record.</p>
 </aside>
 
 ProofPack can establish those bounded facts. A further question remains: Are they sufficient for the decision at hand?
@@ -150,7 +155,8 @@ We therefore work with two coupled loops. One improves the performer. The other 
 The loops inform each other without collapsing into one. A discovered failure can become a new case. A successful counterfeit can become permanent pressure. A repaired evaluator can become a stronger instrument. But each change creates a new claim. Yesterday’s proof cannot silently authorize today’s eval.
 
 <aside class="map-warning" aria-label="The boundary around self-improving evals">
-  <p class="map-warning__label">No self-certifying loop</p>
+  <p class="map-warning__label">Boundary condition</p>
+  <h3 class="map-warning__title">No self-certifying loop.</h3>
   <p>A system may help improve the performer or redraw the eval. It may not conceal which one changed, inherit authority from a previous version, or grade its own progress.</p>
 </aside>
 
@@ -192,6 +198,130 @@ It needs company: the definitions that shaped the eval, the counterexamples that
 The model may change. The eval should become harder to fool. The theory should deepen. The receipts should remain.
 
 <style>
+  .claim-ceiling {
+    margin: clamp(42px, 7vw, 64px) 0;
+    padding: clamp(24px, 4vw, 34px);
+    border: 1px solid var(--line-strong);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--surface-2);
+  }
+
+  .claim-ceiling__label,
+  .map-warning__label,
+  .evidence-roles__name {
+    margin: 0;
+    color: var(--accent);
+    font: 700 9px/1 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .claim-ceiling > p:last-child {
+    margin: 18px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+
+  .map-warning {
+    margin: clamp(42px, 7vw, 64px) 0;
+    padding: clamp(24px, 4vw, 34px);
+    border: 1px solid var(--line-strong);
+    border-top: 4px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent-soft), transparent 58%), var(--surface);
+  }
+
+  .map-warning__title {
+    margin: 16px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.45rem, 3.4vw, 2.25rem);
+    font-weight: 620;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  .map-warning__quote {
+    margin: clamp(24px, 4vw, 34px) 0 0;
+    padding: clamp(22px, 4vw, 32px) 0;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .map-warning__quote p {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(2.25rem, 5.5vw, 4.2rem);
+    font-weight: 620;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .map-warning__quote footer {
+    margin-top: 18px;
+    color: var(--faint);
+    font: 600 9px/1.55 var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .map-warning__quote a {
+    color: inherit;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+  }
+
+  .map-warning > p:last-child {
+    margin: 22px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.08rem, 1.7vw, 1.25rem);
+    font-weight: 520;
+    letter-spacing: -0.01em;
+    line-height: 1.52;
+  }
+
+  .evidence-roles {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    margin: clamp(42px, 7vw, 64px) 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius);
+    background: var(--line-strong);
+  }
+
+  .evidence-roles section {
+    padding: clamp(24px, 4vw, 34px);
+    background: var(--surface);
+  }
+
+  .evidence-roles__operator {
+    grid-column: 1 / -1;
+  }
+
+  .evidence-roles h3 {
+    margin: 28px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.25rem;
+    font-weight: 620;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+
+  .evidence-roles section > p:last-child {
+    margin: 12px 0 0;
+    color: var(--muted);
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
   .article-illustration {
     width: min(1000px, calc(100vw - 32px));
     margin: clamp(44px, 7vw, 76px) 50%;
@@ -223,6 +353,14 @@ The model may change. The eval should become harder to fool. The theory should d
   }
 
   @media (max-width: 640px) {
+    .evidence-roles {
+      grid-template-columns: 1fr;
+    }
+
+    .evidence-roles__operator {
+      grid-column: auto;
+    }
+
     .article-illustration,
     .article-illustration--hero,
     .article-illustration--narrow {
