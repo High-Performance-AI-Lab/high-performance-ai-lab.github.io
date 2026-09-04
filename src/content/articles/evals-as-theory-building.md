@@ -7,6 +7,9 @@ author: "High Performance AI Lab"
 tags: ["Evals", "Evidence", "Verification", "AI Systems"]
 readingTime: "8 min"
 featured: false
+homepageExcerpt:
+  - "Every organization has a sentence that can change the direction of its work: The numbers look good. Behind that sentence there is usually an evaluation—an eval—whether anybody calls it one or not."
+  - "An eval does more than report performance. It defines what the process can recognize as improvement: the situations that count, the facts that will be observed, and the rule that turns those facts into a verdict."
 ---
 
 Every organization has a sentence that can change the direction of its work: *The numbers look good.*

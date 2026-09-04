@@ -16,6 +16,16 @@ const team = (await getCollection("team"))
   .map((entry) => entry.data)
   .sort((a, b) => a.order - b.order);
 
+const latestWriting = (await getCollection("articles"))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0];
+const assetBase = import.meta.env.BASE_URL.endsWith("/")
+  ? import.meta.env.BASE_URL
+  : `${import.meta.env.BASE_URL}/`;
+const latestWritingHref = latestWriting?.data.url
+  ?? (latestWriting ? `${assetBase}articles/${latestWriting.id}/` : assetBase);
+const latestWritingExcerpt = latestWriting?.data.homepageExcerpt
+  ?? (latestWriting ? [latestWriting.data.description] : []);
+
 // Real run conditions, not vibes — the tape restates the muser README.
 const tape = [
   "MUSE GLIMMER · 52 LAYERS · ~30B",
@@ -80,10 +90,11 @@ const roadmap = [
   <header class="site-nav" data-header>
     <LabMark />
     <nav class="site-nav__links" aria-label="Primary">
-      <a href="#ethos" data-nav-section="ethos"><span>01</span><b>Scope</b></a>
-      <a href="#systems" data-nav-section="projects"><span>02</span><b>Systems</b></a>
-      <a href="#founders" data-nav-section="founders"><span>03</span><b>Founders</b></a>
-      <a href="#next" data-nav-section="next"><span>04</span><b>Next</b></a>
+      <a href="#writing" data-nav-section="writing"><span>01</span><b>Writing</b></a>
+      <a href="#ethos" data-nav-section="ethos"><span>02</span><b>Scope</b></a>
+      <a href="#systems" data-nav-section="projects"><span>03</span><b>Systems</b></a>
+      <a href="#founders" data-nav-section="founders"><span>04</span><b>Founders</b></a>
+      <a href="#next" data-nav-section="next"><span>05</span><b>Next</b></a>
     </nav>
     <div class="site-nav__cta">
       <a class="btn btn--ghost" href={labUrl} target="_blank" rel="noreferrer">GitHub <b aria-hidden="true">↗</b></a>
@@ -137,8 +148,30 @@ const roadmap = [
       </div>
     </div>
 
+    {latestWriting && (
+      <section class="section section--tinted writing" id="writing" aria-labelledby="writing-title" data-observed-section data-section="writing">
+        <div class="section-mark"><GridMarker step={1} /><span class="section-code">01 / FROM THE LAB</span></div>
+        <h2 id="writing-title">From the lab.</h2>
+
+        <article class="writing-feature" aria-labelledby="latest-writing-title">
+          <div class="writing-feature__title">
+            <h3 id="latest-writing-title">{latestWriting.data.title}</h3>
+          </div>
+          <div class="writing-feature__excerpt">
+            {latestWritingExcerpt.map((paragraph) => <p>{paragraph}</p>)}
+            <a
+              href={latestWritingHref}
+              target={latestWriting.data.url ? "_blank" : undefined}
+              rel={latestWriting.data.url ? "noreferrer" : undefined}
+              aria-label={`Read ${latestWriting.data.title}`}
+            >Read more <span aria-hidden="true">{latestWriting.data.url ? "↗" : "→"}</span></a>
+          </div>
+        </article>
+      </section>
+    )}
+
     <section class="section section--narrow" id="ethos" aria-labelledby="ethos-title" data-observed-section data-section="ethos">
-      <div class="section-mark"><GridMarker step={1} /><span class="section-code">01 / SCOPE</span></div>
+      <div class="section-mark"><GridMarker step={2} /><span class="section-code">02 / SCOPE</span></div>
       <h2 id="ethos-title">A model is only one part of the system.</h2>
       <p>
         We work from the job that needs doing to the hardware that does it: the
@@ -159,7 +192,7 @@ const roadmap = [
     <section class="section section--tinted" id="systems" aria-labelledby="systems-title" data-observed-section data-section="projects">
       <div class="section-head section-head--flipped">
         <div>
-          <div class="section-mark"><GridMarker step={2} /><span class="section-code">02 / SYSTEMS · OPEN SOURCE</span></div>
+          <div class="section-mark"><GridMarker step={3} /><span class="section-code">03 / SYSTEMS · OPEN SOURCE</span></div>
           <h2 id="systems-title">The systems we've<br />released so far.</h2>
         </div>
         <p>
@@ -235,7 +268,7 @@ const roadmap = [
     <section class="section disagg" id="architecture" aria-labelledby="architecture-title" data-observed-section data-section="projects">
       <div class="section-head">
         <div>
-          <div class="section-mark"><GridMarker step={3} /><span class="section-code">02 / SYSTEMS · DISAGGREGATED</span></div>
+          <div class="section-mark"><GridMarker step={4} /><span class="section-code">03 / SYSTEMS · DISAGGREGATED</span></div>
           <h2 id="architecture-title">Prefill on a GB10.<br />Decode on a <span class="accent">Mac</span>.</h2>
         </div>
         <p>
@@ -333,7 +366,7 @@ const roadmap = [
     <section class="section future" id="next" aria-labelledby="next-title" data-observed-section data-section="next">
       <div class="section-head">
         <div>
-          <div class="section-mark"><GridMarker step={4} /><span class="section-code">04 / WHAT FOLLOWS</span></div>
+          <div class="section-mark"><GridMarker step={4} /><span class="section-code">05 / WHAT FOLLOWS</span></div>
           <h2 id="next-title">What we're working on.</h2>
         </div>
         <p>The next pieces of work, and where each one stands today.</p>
@@ -371,7 +404,7 @@ const roadmap = [
     </div>
     <div class="site-footer__cols">
       <div class="site-footer__col"><span>Systems</span><a href={muserUrl} target="_blank" rel="noreferrer">muser ↗</a><a href={kvpackUrl} target="_blank" rel="noreferrer">kvpack ↗</a><a href={consoleUrl} target="_blank" rel="noreferrer">muser-console ↗</a><a href={bookUrl} target="_blank" rel="noreferrer">the book ↗</a></div>
-      <div class="site-footer__col"><span>Lab</span><a href="#ethos">Scope</a><a href="#founders">Founders</a><a href="#next">What follows</a></div>
+      <div class="site-footer__col"><span>Lab</span><a href="#writing">From the lab</a><a href="#ethos">Scope</a><a href="#founders">Founders</a><a href="#next">What follows</a></div>
       <div class="site-footer__col"><span>Connect</span><a href={labUrl} target="_blank" rel="noreferrer">GitHub ↗</a><a href="#top">Back to top ↑</a></div>
     </div>
     <div class="colophon">

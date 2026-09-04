@@ -66,6 +66,7 @@ const articles = defineCollection({
     tags: z.array(z.string()),
     readingTime: z.string(),
     featured: z.boolean().default(false),
+    homepageExcerpt: z.array(z.string()).min(2).max(3),
     url: z.url().optional(),
   }),
 });

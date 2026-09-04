@@ -7,6 +7,9 @@ author: "High Performance AI Lab"
 tags: ["Measurement", "Inference", "Method"]
 readingTime: "3 min"
 featured: true
+homepageExcerpt:
+  - "Local inference is full of numbers that look comparable and are not. Tokens per second can describe prefill or decode, a warm cache or a cold start, one token or a long run, a correct implementation or a subtly broken one."
+  - "Our rule is simple: the conditions travel with the claim. Correctness, machine context, and raw evidence belong beside every performance number."
 ---
 
 Local inference is full of numbers that look comparable and are not. Tokens per second can describe prefill or decode, a warm cache or a cold start, one token or a long run, a correct implementation or a subtly broken one.

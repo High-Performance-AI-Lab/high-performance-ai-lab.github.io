@@ -1256,6 +1256,18 @@ button, a { -webkit-tap-highlight-color: transparent; }
 .reuse-ladder__step--miss { background: var(--bg-2); }
 .reuse-ladder__step--miss b { color: var(--accent); }
 
+/* Latest writing: one essay, given room to breathe */
+.writing { padding-block: clamp(62px, 7vw, 96px); }
+.writing > h2 { margin: 18px 0 0; font-family: var(--display); font-size: clamp(2.4rem, 5.4vw, 5.2rem); font-weight: 700; letter-spacing: -0.04em; line-height: 0.98; }
+.writing-feature { display: grid; grid-template-columns: minmax(260px, .86fr) minmax(360px, 1.14fr); gap: clamp(36px, 7vw, 110px); margin-top: clamp(36px, 5vw, 60px); padding: clamp(28px, 4vw, 46px) 0; border-top: 3px solid var(--ink); border-bottom: 1px solid var(--line-strong); }
+.writing-feature__title h3 { max-width: 12ch; margin: 0; font-family: var(--display); font-size: clamp(2rem, 4vw, 3.8rem); font-weight: 700; letter-spacing: -0.035em; line-height: 1; }
+.writing-feature__excerpt { max-width: 64ch; }
+.writing-feature__excerpt p { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.35vw, 1.16rem); line-height: 1.72; }
+.writing-feature__excerpt p + p { margin-top: 18px; }
+.writing-feature__excerpt a { display: inline-flex; align-items: center; gap: 10px; margin-top: 30px; padding-bottom: 5px; border-bottom: 2px solid var(--accent); color: var(--ink); font: 700 11px/1 var(--mono); letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+.writing-feature__excerpt a span { color: var(--accent); transition: transform .18s ease; }
+.writing-feature__excerpt a:hover span { transform: translateX(4px); }
+
 /* Roadmap: named gaps, no theater */
 .roadmap { margin: clamp(40px, 5vw, 60px) 0 0; padding: 0; list-style: none; border-top: 3px solid var(--ink); }
 .roadmap__row { display: grid; grid-template-columns: 56px minmax(200px, 0.9fr) minmax(0, 1.4fr); gap: clamp(16px, 3vw, 44px); align-items: baseline; padding: 24px 0; border-bottom: 1px solid var(--line-strong); }
@@ -1308,6 +1320,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .roadmap__row p { grid-column: 2; }
   .reuse-ladder { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .band-horizon { aspect-ratio: 16 / 7; }
+  .writing-feature { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+  .writing-feature__title h3 { max-width: 16ch; }
   .founders-head, .team-record { grid-template-columns: minmax(0, 1fr); }
   .team-record__portrait { width: 110px; height: 110px; }
 }
