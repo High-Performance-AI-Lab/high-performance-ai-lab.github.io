@@ -10,6 +10,12 @@ featured: false
 homepageExcerpt:
   - "Every organization has a sentence that can change the direction of its work: The numbers look good. Behind that sentence there is usually an evaluation—an eval—whether anybody calls it one or not."
   - "An eval does more than report performance. It defines what the process can recognize as improvement: the situations that count, the facts that will be observed, and the rule that turns those facts into a verdict."
+socialImage:
+  src: "/img/articles/evals-as-theory-building/map-becomes-territory-social.jpg"
+  alt: "A person draws a red labyrinth whose lines leave the page and become walls around them."
+  width: 1200
+  height: 630
+  type: "image/jpeg"
 ---
 
 <blockquote class="article-epigraph">

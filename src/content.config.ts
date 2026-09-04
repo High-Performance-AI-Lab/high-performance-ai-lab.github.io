@@ -67,6 +67,13 @@ const articles = defineCollection({
     readingTime: z.string(),
     featured: z.boolean().default(false),
     homepageExcerpt: z.array(z.string()).min(2).max(3),
+    socialImage: z.object({
+      src: z.string(),
+      alt: z.string(),
+      width: z.number().int().positive(),
+      height: z.number().int().positive(),
+      type: z.enum(["image/jpeg", "image/png", "image/webp"]),
+    }).optional(),
     url: z.url().optional(),
   }),
 });

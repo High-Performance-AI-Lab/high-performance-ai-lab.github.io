@@ -12,6 +12,9 @@ from pathlib import Path
 
 SITE_URL = "https://highperformanceailab.com"
 CARD_URL = f"{SITE_URL}/social-card.png"
+ARTICLE_CARD_PATH = Path("img/articles/evals-as-theory-building/map-becomes-territory-social.jpg")
+ARTICLE_CARD_URL = f"{SITE_URL}/{ARTICLE_CARD_PATH.as_posix()}"
+ARTICLE_PAGE = "articles/evals-as-theory-building/index.html"
 REQUIRED_META = {
     "og:title",
     "og:description",
@@ -30,6 +33,8 @@ REQUIRED_META = {
     "twitter:description",
     "twitter:url",
     "twitter:image",
+    "twitter:image:width",
+    "twitter:image:height",
     "twitter:image:alt",
 }
 
@@ -51,28 +56,59 @@ class HeadMeta(HTMLParser):
             self.canonical = values.get("href")
 
 
-def png_dimensions(path: Path) -> tuple[int, int]:
-    data = path.read_bytes()[:24]
-    if len(data) != 24 or data[:8] != b"\x89PNG\r\n\x1a\n" or data[12:16] != b"IHDR":
-        raise ValueError(f"{path} is not a PNG with an IHDR header")
-    return struct.unpack(">II", data[16:24])
+def image_dimensions(path: Path) -> tuple[int, int]:
+    data = path.read_bytes()
+    if len(data) >= 24 and data[:8] == b"\x89PNG\r\n\x1a\n" and data[12:16] == b"IHDR":
+        return struct.unpack(">II", data[16:24])
+    if data[:2] == b"\xff\xd8":
+        offset = 2
+        start_of_frame = {
+            0xC0, 0xC1, 0xC2, 0xC3,
+            0xC5, 0xC6, 0xC7,
+            0xC9, 0xCA, 0xCB,
+            0xCD, 0xCE, 0xCF,
+        }
+        while offset + 8 < len(data):
+            if data[offset] != 0xFF:
+                offset += 1
+                continue
+            while offset < len(data) and data[offset] == 0xFF:
+                offset += 1
+            marker = data[offset]
+            offset += 1
+            if marker in start_of_frame:
+                height = int.from_bytes(data[offset + 3:offset + 5], "big")
+                width = int.from_bytes(data[offset + 5:offset + 7], "big")
+                return width, height
+            if marker == 0x01 or 0xD0 <= marker <= 0xD9:
+                continue
+            segment_length = int.from_bytes(data[offset:offset + 2], "big")
+            if segment_length < 2:
+                break
+            offset += segment_length
+    raise ValueError(f"{path} is not a supported PNG or JPEG")
 
 
-def check_page(path: Path) -> list[str]:
+def check_page(path: Path, build_dir: Path) -> list[str]:
     parser = HeadMeta()
     parser.feed(path.read_text(encoding="utf-8"))
     errors = [
         f"{path}: missing {key}"
         for key in sorted(REQUIRED_META - parser.meta.keys())
     ]
+    is_featured_article = path.relative_to(build_dir).as_posix() == ARTICLE_PAGE
+    image_url = ARTICLE_CARD_URL if is_featured_article else CARD_URL
+    image_type = "image/jpeg" if is_featured_article else "image/png"
     expected = {
-        "og:image": CARD_URL,
-        "og:image:secure_url": CARD_URL,
-        "og:image:type": "image/png",
+        "og:image": image_url,
+        "og:image:secure_url": image_url,
+        "og:image:type": image_type,
         "og:image:width": "1200",
         "og:image:height": "630",
         "twitter:card": "summary_large_image",
-        "twitter:image": CARD_URL,
+        "twitter:image": image_url,
+        "twitter:image:width": "1200",
+        "twitter:image:height": "630",
     }
     for key, value in expected.items():
         if parser.meta.get(key) != value:
@@ -97,28 +133,35 @@ def main() -> int:
 
     root = Path(__file__).resolve().parent.parent
     build_dir = (root / args.build_dir).resolve()
-    cards = [
-        root / "assets" / "social-card.png",
-        root / "public" / "social-card.png",
-        build_dir / "social-card.png",
+    card_sets = [
+        [
+            root / "assets" / "social-card.png",
+            root / "public" / "social-card.png",
+            build_dir / "social-card.png",
+        ],
+        [
+            root / "public" / ARTICLE_CARD_PATH,
+            build_dir / ARTICLE_CARD_PATH,
+        ],
     ]
     errors: list[str] = []
-    for card in cards:
-        if not card.is_file():
-            errors.append(f"missing social card: {card}")
-        elif png_dimensions(card) != (1200, 630):
-            errors.append(f"{card}: expected 1200x630 PNG")
-    if all(card.is_file() for card in cards):
-        expected = cards[0].read_bytes()
-        for card in cards[1:]:
-            if card.read_bytes() != expected:
-                errors.append(f"social card differs: {card}")
+    for cards in card_sets:
+        for card in cards:
+            if not card.is_file():
+                errors.append(f"missing social card: {card}")
+            elif image_dimensions(card) != (1200, 630):
+                errors.append(f"{card}: expected 1200x630 image")
+        if all(card.is_file() for card in cards):
+            expected_bytes = cards[0].read_bytes()
+            for card in cards[1:]:
+                if card.read_bytes() != expected_bytes:
+                    errors.append(f"social card differs: {card}")
 
     pages = sorted(build_dir.rglob("*.html"))
     if not pages:
         errors.append(f"no generated HTML pages below {build_dir}")
     for page in pages:
-        errors.extend(check_page(page))
+        errors.extend(check_page(page, build_dir))
 
     if errors:
         for error in errors:
