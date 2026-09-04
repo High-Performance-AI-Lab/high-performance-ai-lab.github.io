@@ -13,7 +13,7 @@ homepageExcerpt:
 ---
 
 <blockquote class="article-epigraph">
-  <p>No one realized that the book and the labyrinth were one and the same.</p>
+  <p><em>“No one realized that the book and the labyrinth were one and the same.”</em></p>
   <footer>— <cite>Jorge Luis Borges</cite></footer>
 </blockquote>
 
@@ -230,6 +230,10 @@ Models will come and go. What should compound is the organization’s understand
     font: 700 9px/1.4 var(--mono);
     letter-spacing: 0.12em;
     text-transform: uppercase;
+  }
+
+  .article-epigraph em {
+    font-style: italic;
   }
 
   .article-epigraph cite {
