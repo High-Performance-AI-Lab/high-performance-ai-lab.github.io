@@ -77,6 +77,7 @@ const team = defineCollection({
     role: z.string(),
     bio: z.string(),
     initials: z.string().min(2).max(3),
+    portrait: z.string(),
     location: z.string().optional(),
     order: z.number(),
     accent: z.enum(["oxide", "cobalt", "citron", "violet", "moss", "amber"]),

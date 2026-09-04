@@ -302,11 +302,10 @@ const roadmap = [
       </div>
 
       <div class="team-ledger">
-        {team.map((member, index) => (
+        {team.map((member) => (
           <article class:list={["team-record", `accent-${member.accent}`]}>
             <div class="team-record__portrait" aria-hidden="true">
-              <div class="dither dither--ink" style={`--plate:url('/img/${index === 0 ? "place-zurich" : "place-patagonia"}-ink.png')`}></div>
-              <div class="dither dither--tint" style={`--plate:url('/img/${index === 0 ? "place-zurich" : "place-patagonia"}-ox.png')`}></div>
+              <img src={member.portrait} alt="" width="600" height="600" loading="lazy" decoding="async" />
             </div>
             <div class="team-record__identity">
               <p class="eyebrow">Co-founder · {member.role}</p>
