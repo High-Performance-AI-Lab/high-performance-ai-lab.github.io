@@ -19,6 +19,8 @@ But an eval is not merely a test at the end of that process. It defines what the
 
 An eval is a theory of success made operational.
 
+In Jorge Luis Borges’s one-paragraph story [“On Exactitude in Science”](https://www.public.asu.edu/~bdaniel6/cll/pdfs/Del_rigor_en_la_ciencia.pdf), an empire constructs a map as large as the empire itself, matching it point for point. It is perfectly faithful and entirely useless. Every useful map is a compromise, defined as much by what it leaves out as by what it contains.
+
 <figure class="article-illustration article-illustration--hero">
   <img src="/img/articles/evals-as-theory-building/map-becomes-territory.webp" width="1536" height="1024" alt="A person draws a red labyrinth whose lines leave the page and become walls around them." decoding="async" fetchpriority="high" />
   <figcaption>The eval begins as a map. Once it directs the work, it becomes part of the territory.</figcaption>
@@ -35,9 +37,9 @@ The important question is therefore not simply whether a system passed. It is wh
 
 ## Every eval is a map
 
-Every evaluation begins by leaving things out. Customer satisfaction becomes a rating. Risk becomes a category. A resolved problem becomes a closed ticket. The reduction is useful precisely because it is smaller than the activity it describes.
+An eval makes the same bargain. Customer satisfaction becomes a rating. Risk becomes a category. A resolved problem becomes a closed ticket. Each reduction makes the activity legible by making it smaller.
 
-But the choice of what to leave out matters.
+But what becomes visible—and what disappears—matters.
 
 Imagine a customer-support operation that measures resolution by whether a ticket has been closed. At first, the number is merely an imperfect description of the work. Then it becomes a target. Teams are rewarded for it. An AI assistant is tuned against it. Soon the organization becomes very good at closing tickets, including tickets attached to problems that remain unsolved.
 
@@ -127,6 +129,10 @@ This produces three meaningfully different outcomes. Evidence can admit a bounde
 That separation is the evidence boundary. The process trying to improve a system does not get to decide, on its own, that it has succeeded.
 
 ## The eval enters the loop
+
+Research rarely follows the line shown in its final chart. It has the shape of a [labyrinth](https://increment.com/documentation/notes-on-the-synthesis-of-labyrinths/): each answer opens another passage. A promising route reaches a wall. We return to an earlier junction carrying what the dead end taught us, then try again.
+
+The straight path appears only afterward, when the work is written down.
 
 An eval changes character when its result becomes feedback. It is no longer only observing a system. It is selecting what the next system will become.
 
