@@ -12,6 +12,11 @@ homepageExcerpt:
   - "An eval does more than report performance. It defines what the process can recognize as improvement: the situations that count, the facts that will be observed, and the rule that turns those facts into a verdict."
 ---
 
+<blockquote class="article-epigraph">
+  <p>No one realized that the book and the labyrinth were one and the same.</p>
+  <footer>— <cite>Jorge Luis Borges</cite></footer>
+</blockquote>
+
 Every organization has a sentence that can change the direction of its work: *The numbers look good.*
 
 Behind that sentence there is usually an evaluation—an eval—whether anybody calls it one or not. A pilot has been compared with the process it might replace. A supplier has been tested against another. A sample of customer interactions has been turned into a rating. Some part of reality has been selected, observed, and given a verdict.
@@ -202,6 +207,35 @@ Models will come and go. What should compound is the organization’s understand
 <p class="article-coda"><strong>That is the theory.</strong> The receipts are how it survives the next model.</p>
 
 <style>
+  .article-epigraph {
+    margin: 0 0 clamp(54px, 9vw, 84px);
+    padding: 0 0 clamp(28px, 5vw, 40px);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .article-epigraph p {
+    max-width: 20ch;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+    font-weight: 520;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+  }
+
+  .article-epigraph footer {
+    margin-top: 20px;
+    color: var(--accent);
+    font: 700 9px/1.4 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .article-epigraph cite {
+    font-style: normal;
+  }
+
   .claim-ceiling {
     margin: clamp(42px, 7vw, 64px) 0;
     padding: clamp(24px, 4vw, 34px);
