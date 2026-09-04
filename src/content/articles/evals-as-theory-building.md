@@ -155,13 +155,19 @@ The loops inform each other without collapsing into one. A discovered failure ca
 
 Before an eval can judge an activity, it must decide what the activity contains. What is a case? What counts as the same outcome? Which relationships matter? Which differences are errors, and which are legitimate exceptions?
 
-These are questions of ontology before they are questions of scoring. The lab’s work with ontologies makes those definitions visible and inspectable. It gives teams a shared object they can disagree about, amend, and test against the work itself.
+Together, those choices form the eval’s ontology: not a vocabulary of technical nouns, but the distinctions the eval is capable of seeing. The lab designs ontologies and tools that expose those distinctions.
+
+Once they are visible, disagreement has somewhere precise to land: on the definition, relationship, or boundary that produced the score. The disputed assumption can be tested against the work and revised without quietly giving an old result a new meaning.
 
 No eval can reproduce the whole activity. If the map matched the territory in every detail, it would be another territory. The aim is not perfect representation. It is an approximation that can be pressured, corrected, and made more faithful over time.
 
+Peter Naur used *theory* in a practical sense in [“Programming as Theory Building”](https://gist.github.com/onlurking/fc5c81d18cfce9ff81bc968a7f342fb1). It is the understanding that lets someone explain how a system corresponds to the work, why its boundaries were drawn where they were, and what should change when a new case does not fit. The theory is not the documentation. It is what makes intelligent change possible.
+
+Theory building happens when each new case deepens that understanding instead of vanishing into a score. A counterexample exposes a missing distinction. A disagreement forces a definition into view. A dead end records why the next path must differ.
+
 This is why the receipts matter. They cannot contain the complete understanding held by the people who do the work. A receipt cannot reproduce the dinner it records. It can tell us what was ordered, when the transaction happened, and where to begin if the charge is disputed.
 
-Verification gives an organization the same starting point. A failed case becomes more than an anecdote. A disagreement becomes a definition that can be examined. A claim becomes something with a boundary, a history, and a route back to the evidence.
+Verification preserves a starting point from which that theory can be questioned and rebuilt. A failed case becomes more than an anecdote. A disagreement becomes a definition that can be examined. A claim acquires a boundary, a history, and a route back to the evidence.
 
 This is theory building with receipts.
 
@@ -188,7 +194,9 @@ A score still has a useful role. We need abstractions because reality cannot ent
 
 It needs company: the definitions that shaped the eval, the counterexamples that pressured it, the evidence that survived, the rule that governed its use, the person who made the decision, and the conditions that will cause the conclusion to be examined again.
 
-The model may change. The eval should become harder to fool. The theory should deepen. The receipts should remain.
+Models will come and go. What should compound is the organization’s understanding of the work: what success means, how to distinguish improvement from camouflage, and which evidence is strong enough to change the system.
+
+<p class="article-coda"><strong>That is the theory.</strong> The receipts are how it survives the next model.</p>
 
 <style>
   .claim-ceiling {
@@ -308,6 +316,23 @@ The model may change. The eval should become harder to fool. The theory should d
   }
 
   .evidence-roles strong {
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .article-coda {
+    margin: clamp(48px, 8vw, 76px) 0 0 !important;
+    padding-top: clamp(26px, 4vw, 38px);
+    border-top: 4px solid var(--accent);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.55rem, 3.5vw, 2.5rem);
+    font-weight: 520;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .article-coda strong {
     color: var(--accent);
     font-weight: 650;
   }
