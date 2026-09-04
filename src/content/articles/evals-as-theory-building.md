@@ -118,26 +118,13 @@ If these questions are answered only after the results are visible, the rule can
 This produces three meaningfully different outcomes. Evidence can admit a bounded next step. It can refuse a proposed change. Or it can be invalid because the record is missing, inconsistent, or produced under the wrong conditions. A broken eval is not a failed model, and a tie is not an improvement. Keeping those states separate prevents the pressure to produce an answer from manufacturing one.
 
 <aside class="evidence-roles" aria-label="The respective roles of ProofPack, Assay, and the responsible operator">
-  <section>
-    <p class="evidence-roles__name">ProofPack</p>
-    <h3>Verifies and preserves the eval</h3>
-    <p>Can the instrument detect controlled truth and controlled error, and is this the exact record of what happened?</p>
-  </section>
-  <section>
-    <p class="evidence-roles__name">Assay</p>
-    <h3>Governs the result’s authority</h3>
-    <p>Under the rule fixed beforehand, is this evidence sufficient for its stated purpose—and when must it change nothing?</p>
-  </section>
-  <section class="evidence-roles__operator">
-    <p class="evidence-roles__name">Responsible operator</p>
-    <h3>Owns truth and action</h3>
-    <p>Given the bounded result and knowledge of the work, should the change be released, held, or rejected?</p>
-  </section>
+  <p class="evidence-roles__label">Three separate responsibilities</p>
+  <p><strong>ProofPack</strong> makes the result checkable.</p>
+  <p><strong>Assay</strong> holds it to the rule fixed before the result was known.</p>
+  <p><strong>A person</strong> remains responsible for what happens next.</p>
 </aside>
 
-The separation is deliberate. ProofPack records facts but does not promote a model. Assay decides whether evidence clears a declared threshold but does not decide what is true in the lives of customers or workers. Neither replaces the person responsible for the work.
-
-Together they establish an evidence boundary: The process trying to improve a system does not get to decide, on its own, that it has succeeded.
+That separation is the evidence boundary. The process trying to improve a system does not get to decide, on its own, that it has succeeded.
 
 ## The eval enters the loop
 
@@ -209,7 +196,7 @@ The model may change. The eval should become harder to fool. The theory should d
 
   .claim-ceiling__label,
   .map-warning__label,
-  .evidence-roles__name {
+  .evidence-roles__label {
     margin: 0;
     color: var(--accent);
     font: 700 9px/1 var(--mono);
@@ -286,40 +273,37 @@ The model may change. The eval should become harder to fool. The theory should d
   }
 
   .evidence-roles {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 1px;
     margin: clamp(42px, 7vw, 64px) 0;
     overflow: hidden;
     border: 1px solid var(--line-strong);
-    border-radius: var(--radius);
-    background: var(--line-strong);
-  }
-
-  .evidence-roles section {
-    padding: clamp(24px, 4vw, 34px);
+    border-top: 4px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
     background: var(--surface);
   }
 
-  .evidence-roles__operator {
-    grid-column: 1 / -1;
+  .evidence-roles__label {
+    padding: 22px clamp(24px, 4vw, 34px);
+    border-bottom: 1px solid var(--line);
   }
 
-  .evidence-roles h3 {
-    margin: 28px 0 0;
+  .evidence-roles > p:not(.evidence-roles__label) {
+    margin: 0;
+    padding: clamp(18px, 3vw, 24px) clamp(24px, 4vw, 34px);
+    border-bottom: 1px solid var(--line);
     color: var(--ink);
     font-family: var(--display);
-    font-size: 1.25rem;
-    font-weight: 620;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    font-size: clamp(1.15rem, 2.1vw, 1.45rem);
+    letter-spacing: -0.015em;
+    line-height: 1.35;
   }
 
-  .evidence-roles section > p:last-child {
-    margin: 12px 0 0;
-    color: var(--muted);
-    font-size: 0.92rem;
-    line-height: 1.65;
+  .evidence-roles > p:last-child {
+    border-bottom: 0;
+  }
+
+  .evidence-roles strong {
+    color: var(--accent);
+    font-weight: 650;
   }
 
   .article-illustration {
@@ -353,14 +337,6 @@ The model may change. The eval should become harder to fool. The theory should d
   }
 
   @media (max-width: 640px) {
-    .evidence-roles {
-      grid-template-columns: 1fr;
-    }
-
-    .evidence-roles__operator {
-      grid-column: auto;
-    }
-
     .article-illustration,
     .article-illustration--hero,
     .article-illustration--narrow {
