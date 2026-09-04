@@ -27,7 +27,7 @@ Every organization has a sentence that can change the direction of its work: *Th
 
 Behind that sentence there is usually an evaluation—an eval—whether anybody calls it one or not. A pilot has been compared with the process it might replace. A supplier has been tested against another. A sample of customer interactions has been turned into a rating. Some part of reality has been selected, observed, and given a verdict.
 
-In Jorge Luis Borges’s one-paragraph story [“On Exactitude in Science”](https://www.public.asu.edu/~bdaniel6/cll/pdfs/Del_rigor_en_la_ciencia.pdf), an empire constructs a map as large as the empire itself, matching it point for point. It is perfectly faithful and entirely useless. Every useful map is a compromise, defined as much by what it leaves out as by what it contains.
+In Jorge Luis Borges’s one-paragraph story [“On Exactitude in Science”](https://doi.org/10.7554/eLife.27041.004), an empire constructs a map as large as the empire itself, matching it point for point. It is perfectly faithful and entirely useless. Every useful map is a compromise, defined as much by what it leaves out as by what it contains.
 
 <figure class="article-illustration article-illustration--hero">
   <img src="/img/articles/evals-as-theory-building/map-becomes-territory.webp" width="1536" height="1024" alt="A person draws a red labyrinth whose lines leave the page and become walls around them." decoding="async" fetchpriority="high" />
