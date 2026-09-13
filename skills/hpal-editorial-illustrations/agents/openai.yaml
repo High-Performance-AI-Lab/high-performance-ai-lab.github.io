@@ -1,0 +1,5 @@
+interface:
+  display_name: "HPAL Editorial Illustrations"
+  short_description: "Create illustrations in the HPAL article style"
+  brand_color: "#C9471B"
+  default_prompt: "Use $hpal-editorial-illustrations to create and place an illustration for this HPAL article."

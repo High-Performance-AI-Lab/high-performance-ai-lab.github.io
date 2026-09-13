@@ -16,7 +16,7 @@ const team = (await getCollection("team"))
   .map((entry) => entry.data)
   .sort((a, b) => a.order - b.order);
 
-const latestWriting = (await getCollection("articles"))
+const latestWriting = (await getCollection("articles", ({ data }) => !data.unlisted))
   .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0];
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL

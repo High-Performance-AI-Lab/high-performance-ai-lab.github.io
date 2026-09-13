@@ -3,6 +3,7 @@ import { getCollection, render, type CollectionEntry } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import LabMark from "../../components/LabMark.astro";
 import { SITE_SHORT_NAME } from "../../consts.ts";
+import "../../styles/editorial-article.css";
 
 export async function getStaticPaths() {
   const articles = await getCollection("articles", ({ data }) => !data.url);
@@ -32,6 +33,7 @@ const assetBase = import.meta.env.BASE_URL.endsWith("/")
   title={article.data.title}
   description={article.data.description}
   ogType="article"
+  noindex={article.data.unlisted}
   socialImage={article.data.socialImage}
 >
   <div class="page-grain" aria-hidden="true"></div>

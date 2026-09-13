@@ -1,0 +1,424 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Receipts for What Survives the Next Model</title>
+<meta name="description" content="Pinned scripts, saved outputs, assumptions and rerun commands behind the finite refund model and judge-calibration check in What Survives the Next Model.">
+<link rel="canonical" href="https://highperformanceailab.com/receipts/what-survives-the-next-model/RECEIPTS.html">
+<meta property="og:title" content="Receipts for What Survives the Next Model — High Performance AI Lab">
+<meta property="og:description" content="Pinned scripts, saved outputs, assumptions and rerun commands behind the finite refund model and judge-calibration check in What Survives the Next Model.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://highperformanceailab.com/receipts/what-survives-the-next-model/RECEIPTS.html">
+<meta property="og:site_name" content="High Performance AI Lab">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://highperformanceailab.com/img/articles/what-survives-the-next-model/silent-provider-worlds-social.jpg">
+<meta property="og:image:secure_url" content="https://highperformanceailab.com/img/articles/what-survives-the-next-model/silent-provider-worlds-social.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="A researcher studies three silent provider boxes whose cutaways reveal a refund already settled, never started, or still in flight.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Receipts for What Survives the Next Model — High Performance AI Lab">
+<meta name="twitter:description" content="Pinned scripts, saved outputs, assumptions and rerun commands behind the finite refund model and judge-calibration check in What Survives the Next Model.">
+<meta name="twitter:url" content="https://highperformanceailab.com/receipts/what-survives-the-next-model/RECEIPTS.html">
+<meta name="twitter:image" content="https://highperformanceailab.com/img/articles/what-survives-the-next-model/silent-provider-worlds-social.jpg">
+<meta name="twitter:image:width" content="1200">
+<meta name="twitter:image:height" content="630">
+<meta name="twitter:image:alt" content="A researcher studies three silent provider boxes whose cutaways reveal a refund already settled, never started, or still in flight.">
+<link rel="stylesheet" href="assets/article-base.css">
+<style>
+  .article-epigraph {
+    margin: 0 0 clamp(54px, 9vw, 84px);
+    padding: 0 0 clamp(28px, 5vw, 40px);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .article-epigraph p {
+    max-width: 20ch;
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.7rem, 4.2vw, 2.9rem);
+    font-weight: 520;
+    letter-spacing: -0.035em;
+    line-height: 1.12;
+  }
+
+  .article-epigraph footer {
+    margin-top: 20px;
+    color: var(--accent);
+    font: 700 9px/1.4 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .article-epigraph em {
+    font-style: italic;
+  }
+
+  .article-epigraph cite {
+    font-style: normal;
+  }
+
+  .claim-ceiling {
+    margin: clamp(42px, 7vw, 64px) 0;
+    padding: clamp(24px, 4vw, 34px);
+    border: 1px solid var(--line-strong);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--surface-2);
+  }
+
+  .claim-ceiling__label,
+  .map-warning__label,
+  .evidence-roles__label {
+    margin: 0;
+    color: var(--accent);
+    font: 700 9px/1 var(--mono);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .claim-ceiling > p:last-child {
+    margin: 18px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.08rem;
+    line-height: 1.55;
+  }
+
+  .map-warning {
+    margin: clamp(42px, 7vw, 64px) 0;
+    padding: clamp(24px, 4vw, 34px);
+    border: 1px solid var(--line-strong);
+    border-top: 4px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: linear-gradient(135deg, var(--accent-soft), transparent 58%), var(--surface);
+  }
+
+  .map-warning__title {
+    margin: 16px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.45rem, 3.4vw, 2.25rem);
+    font-weight: 620;
+    letter-spacing: -0.025em;
+    line-height: 1.08;
+  }
+
+  .map-warning__quote {
+    margin: clamp(24px, 4vw, 34px) 0 0;
+    padding: clamp(22px, 4vw, 32px) 0;
+    border-top: 1px solid var(--line-strong);
+    border-bottom: 1px solid var(--line-strong);
+  }
+
+  .map-warning__quote p {
+    margin: 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(2.25rem, 5.5vw, 4.2rem);
+    font-weight: 620;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .map-warning__quote footer {
+    margin-top: 18px;
+    color: var(--faint);
+    font: 600 9px/1.55 var(--mono);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .map-warning__quote a {
+    color: inherit;
+    text-decoration-color: var(--line-strong);
+    text-underline-offset: 3px;
+  }
+
+  .map-warning > p:last-child {
+    margin: 22px 0 0;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.08rem, 1.7vw, 1.25rem);
+    font-weight: 520;
+    letter-spacing: -0.01em;
+    line-height: 1.52;
+  }
+
+  .evidence-roles {
+    margin: clamp(42px, 7vw, 64px) 0;
+    overflow: hidden;
+    border: 1px solid var(--line-strong);
+    border-top: 4px solid var(--accent);
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    background: var(--surface);
+  }
+
+  .evidence-roles__label {
+    padding: 22px clamp(24px, 4vw, 34px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .evidence-roles > p:not(.evidence-roles__label) {
+    margin: 0;
+    padding: clamp(18px, 3vw, 24px) clamp(24px, 4vw, 34px);
+    border-bottom: 1px solid var(--line);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.15rem, 2.1vw, 1.45rem);
+    letter-spacing: -0.015em;
+    line-height: 1.35;
+  }
+
+  .evidence-roles > p:last-child {
+    border-bottom: 0;
+  }
+
+  .evidence-roles strong {
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .article-coda {
+    margin: clamp(48px, 8vw, 76px) 0 0 !important;
+    padding-top: clamp(26px, 4vw, 38px);
+    border-top: 4px solid var(--accent);
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: clamp(1.55rem, 3.5vw, 2.5rem);
+    font-weight: 520;
+    letter-spacing: -0.025em;
+    line-height: 1.2;
+  }
+
+  .article-coda strong {
+    color: var(--accent);
+    font-weight: 650;
+  }
+
+  .article-illustration {
+    width: min(1000px, calc(100vw - 32px));
+    margin: clamp(44px, 7vw, 76px) 50%;
+    transform: translateX(-50%);
+  }
+
+  .article-illustration--hero {
+    width: min(1120px, calc(100vw - 32px));
+  }
+
+  .article-illustration--narrow {
+    width: min(900px, calc(100vw - 32px));
+  }
+
+  .article-illustration img {
+    display: block;
+    width: 100%;
+    height: auto;
+    background: #faf9f7;
+  }
+
+  .article-illustration figcaption {
+    max-width: 740px;
+    margin: 12px auto 0;
+    color: var(--faint);
+    font: 600 10px/1.55 var(--mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 640px) {
+    .article-illustration,
+    .article-illustration--hero,
+    .article-illustration--narrow {
+      width: calc(100vw - 24px);
+      margin-top: 40px;
+      margin-bottom: 48px;
+    }
+
+    .article-illustration figcaption {
+      padding: 0 4px;
+      font-size: 9px;
+    }
+  }
+
+.article-series{margin:0 0 36px!important;color:var(--faint);font:600 12px/1.65 var(--mono)}
+.article-receipts{margin-top:24px;color:var(--faint);font-size:14px;line-height:1.65}
+.prose hr{border:0;border-top:1px solid var(--rule,rgba(0,0,0,.12));margin:40px 0 0}
+.prose table{border-collapse:collapse;table-layout:fixed;width:100%;font-size:14px;margin:20px 0}.prose th,.prose td{text-align:left;vertical-align:top;overflow-wrap:anywhere;padding:8px 10px;border-bottom:1px solid rgba(0,0,0,.1)}.prose th{font-weight:600}
+.prose pre{overflow-x:auto;font:13px/1.6 var(--mono);background:rgba(0,0,0,.04);padding:12px 14px;border-radius:4px}
+.prose :not(pre)>code{overflow-wrap:anywhere;word-break:break-word}
+.article-page__meta{font-size:12px}.article-page__byline{font-size:12px;line-height:1.5}.article-header>a{font-size:12px}.article-page__footer{font-size:12px;line-height:1.65}
+@media(max-width:640px){.article-header{gap:16px}.article-header>a:not(.lab-mark){font-size:10px;line-height:1.5;text-align:right}.article-page__meta{gap:10px;font-size:10px}.article-page__footer{flex-wrap:wrap}}
+
+html,body{background:#faf9f7;color-scheme:light}</style>
+<a class="skip-link" href="#main">Skip to content</a><div class="page-grain" aria-hidden="true"></div><header class="article-header"><a class="lab-mark" href="https://highperformanceailab.com/" aria-label="High Performance AI Lab, back to home"><span class="lab-mark__glyph" aria-hidden="true"><!-- the lab mark: memory pages, the measured series, the oxide decode
+         head — see public/favicon.svg for the annotated geometry --><svg viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg"><g fill="var(--line)"><rect x="0" y="0" width="9" height="9" rx="2"></rect><rect x="0" y="11" width="9" height="9" rx="2"></rect><rect x="0" y="22" width="9" height="9" rx="2"></rect><rect x="11" y="0" width="9" height="9" rx="2"></rect><rect x="22" y="0" width="9" height="9" rx="2"></rect><rect x="22" y="11" width="9" height="9" rx="2"></rect></g><rect x="0" y="33" width="9" height="9" rx="2" fill="var(--teal)"></rect><rect x="11" y="33" width="9" height="9" rx="2" fill="#137383"></rect><rect x="11" y="22" width="9" height="9" rx="2" fill="#167098"></rect><rect x="11" y="11" width="9" height="9" rx="2" fill="#1a6cac"></rect><rect x="22" y="33" width="9" height="9" rx="2" fill="#167098"></rect><rect x="22" y="22" width="9" height="9" rx="2" fill="#1a6cac"></rect><rect x="33" y="33" width="9" height="9" rx="2" fill="#1a6cac"></rect><rect x="33" y="22" width="9" height="9" rx="2" fill="#1e69c1"></rect><rect x="33" y="11" width="9" height="9" rx="2" fill="#2166d6"></rect><rect x="33" y="0" width="9" height="9" rx="2" fill="var(--accent)"></rect></svg></span><span class="lab-mark__name">High Performance<br>AI Lab</span></a><a href="https://highperformanceailab.com/">Back to the lab index <span aria-hidden="true">↖</span></a></header><main id="main" class="article-page"><header class="article-page__mast"><div class="article-page__meta"><span>Supplement</span><span>11 September 2026</span></div><p class="eyebrow">HPAL / RECEIPTS::WHAT-SURVIVES-THE-NEXT-MODEL</p><h1>Receipts for What Survives the Next Model</h1><p class="article-page__dek">Pinned scripts, saved outputs, assumptions and rerun commands behind every number in the essay.</p><div class="article-page__byline"><span>Written by</span><strong>High Performance AI Lab</strong></div></header><article class="prose"><p>The two examples below come with saved inputs, outputs and checks that use only the Python standard library and make no network or model call. The evidence files are bundled with this page under <code>evidence/</code>. Run the commands from the downloaded bundle&#39;s root, alongside <code>index.html</code>, preserving that directory layout.</p>
+<p>The original refund files and CBC saved-margin recount match the <a href="https://github.com/sersoage/research/tree/888862c9f4524af1dfdbaf665f036fbe09ca59de">research repository at commit <code>888862c9</code></a>, on branch <code>review/evaluation_manifesto_v1</code>. The compressed source panel and portable panel checker described below were added in this revision; they are not part of that earlier research pin. The panel retains its own author-repository pin and content hashes.</p>
+<h2>1. The finite refund model</h2>
+<p><strong>What it is.</strong> An authored, exact finite model: four worlds crossing committed/uncommitted refund state with idempotent/non-idempotent provider behavior, a fifth world with a late-settling original request, three policies (stop, retry, look-then-act), and a census of every delivery sequence of length one to four over two intent identifiers and two authorization states, run against five worker variants and three separately expressed obligations.</p>
+<p><strong>What the essay takes from it, and where to find each number in <code>result.json</code>.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Essay statement</th>
+<th>Location in the saved output</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cached ledger read leaves four worlds</td>
+<td><code>explorer_scenarios.cached.compatible</code> (4 entries)</td>
+</tr>
+<tr>
+<td>Fresh read leaves two worlds; at zero, retry and look-then-act pass; at one, stop and look-then-act pass</td>
+<td><code>explorer_scenarios.fresh0.policy_results</code>, <code>explorer_scenarios.fresh1.policy_results</code></td>
+</tr>
+<tr>
+<td>Look-then-act is the only policy eligible across all four original worlds</td>
+<td><code>explorer_scenarios.timeout.policy_results</code> (<code>inspect_then_act</code>: 4 passing, 0 failing)</td>
+</tr>
+<tr>
+<td>Fifth world: fresh reading zero, retry, original settles, two effects</td>
+<td><code>outside_model_witness.executions.inspect_then_act.trace</code> (committed 0 → 0 → 1 → 2)</td>
+</tr>
+<tr>
+<td>340 sequences × 5 workers = 1,700 rows; safety-only checker falsely accepts 440</td>
+<td><code>property_census.case_count</code> = 340; <code>property_census.safety_only_false_accepts</code> = 440; by variant: <code>dedupe_amount</code> 130, <code>refuse_all</code> 310</td>
+</tr>
+</tbody></table>
+<p><strong>The canonical claim in the essay and its assumptions.</strong> For an authorized intent, an exact authoritative reading shows zero effects; if no earlier or concurrent request for that intent can commit after the read, and one retry succeeds once, exactly one refund occurs within the stated horizon. Exact observations, authorized intent, one effect per successful retry and the outcome horizon are rules of the authored transition semantics. The fifth world violates the no-later-commit assumption on purpose.</p>
+<p><strong>What it does not establish.</strong> Equivalence to any real payment provider; automatic detection that the world family is inadequate (the original family still declares retry eligible after a fresh zero, <code>outside_model_witness.retry_result_within_incomplete_family</code>; adding the fifth world yields mixed outcomes; the separate <code>explorer_scenarios.empty</code> adequacy-failure scenario is supplied directly); a field error rate (the 440 rows are an authored census, not incidents); independent specification (obligations and workers share authorship).</p>
+<p><strong>Files.</strong> <a href="evidence/finite-assay/run.py">run.py</a> · <a href="evidence/finite-assay/result.json">result.json</a> · <a href="evidence/finite-assay/REPORT.md">REPORT.md</a></p>
+<p>The historical <code>REPORT.md</code> is preserved verbatim. Its secondary links to baseline records, scientific foundations and earlier verification scripts require the original research checkout at the commit above; those ancillary files are not included in this small bundle. The script and output needed for the following rerun are included.</p>
+<p><strong>Rerun.</strong></p>
+<pre><code>python3 evidence/finite-assay/run.py --output /tmp/finite.json
+diff /tmp/finite.json evidence/finite-assay/result.json
+</code></pre>
+<p>The saved output reproduces byte-identically. An independent recount of the 130/310 split from input predicates is in the repository at <code>nap/meeting-prep-2026-09-05/qa/check_finite_explorer.mjs</code> and in <a href="evidence/review/article2-algebraic-check.json">article2-algebraic-check.json</a>.</p>
+<h2>2. The judge-calibration tie recount</h2>
+<p><strong>What it is.</strong> A recount of the saved 700-row human-anchor sample published with <a href="https://arxiv.org/html/2608.22432v2">CBC v2</a> at author repository revision <a href="https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/tree/37d500566b0b7a7701a1ca199fafc467f2612587"><code>37d50056</code></a>. The verified computation is this recount of the published margins, not a rerun of the authors&#39; model-score collection.</p>
+<p><strong>Pinned author files.</strong> <a href="https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/blob/37d500566b0b7a7701a1ca199fafc467f2612587/scripts/run_external_mrewardbench_analysis.py">Analysis script</a> (double-centering at lines 130–134; strict <code>&gt; 0.0</code> threshold at lines 442–443) · <a href="https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/blob/37d500566b0b7a7701a1ca199fafc467f2612587/data/external_validation/mrewardbench_panel/analysis_1500_item/human_anchor_sample.csv">Saved human-anchor sample</a> · <a href="https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/blob/37d500566b0b7a7701a1ca199fafc467f2612587/data/external_validation/mrewardbench_panel/analysis_1500_item/human_anchor_validation.json">Reported summary</a>. Our copies matched those files byte-for-byte when downloaded at that revision.</p>
+<p><strong>What the essay takes from it.</strong></p>
+<table>
+<thead>
+<tr>
+<th>Essay statement</th>
+<th>Exact result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Reported gain 68.7% → 76.6% on 700 items</td>
+<td>raw strict-positive 481/700 = 68.714%; corrected strict-positive 536/700 = 76.571%</td>
+</tr>
+<tr>
+<td>55 verdicts changed; all had raw margin exactly zero</td>
+<td>55 flips; <code>all_changed_verdicts_had_raw_margin_zero: true</code></td>
+</tr>
+<tr>
+<td>Corrected margins on those 55 are below 10⁻¹⁶</td>
+<td>between 1.11×10⁻¹⁷ and 8.88×10⁻¹⁷</td>
+</tr>
+<tr>
+<td>Treating them as ties gives 481/700 for both</td>
+<td>identical at every tolerance tested: 10⁻¹⁶, 10⁻¹⁵, 10⁻¹⁴, 10⁻¹³, 10⁻¹², 10⁻¹¹, 10⁻¹⁰</td>
+</tr>
+</tbody></table>
+<p><strong>Why the residue is arithmetic, not signal.</strong> The correction is double-centered across backbones, so for each item its mean over a complete evaluator panel is exactly zero, and subtracting it cannot change that item&#39;s panel-mean margin in exact arithmetic. In finite precision, cancellation can leave a tiny nonzero residue, which the strict threshold then counts as a win.</p>
+<p><strong>Claim boundary.</strong> This concerns the reported human-anchor improvement in the published artifact. It does not dispose of the paper&#39;s rank-consistency results. The source-panel check below confirms that all 55 changed verdicts came from complete, nonmissing five-evaluator panels with integer margins summing to exactly zero. The three rows with larger margin differences each have one missing evaluator margin and do not change a verdict. The cause of the missing provider scores and the original model-score collection remain unverified.</p>
+<p><strong>Files.</strong> <a href="evidence/review/cbc-anchor-check.py">cbc-anchor-check.py</a> · <a href="evidence/review/cbc-anchor-sample.csv">cbc-anchor-sample.csv</a> · <a href="evidence/review/cbc-anchor-check.json">cbc-anchor-check.json</a> · <a href="evidence/review/cbc-root-crosscheck.json">cbc-root-crosscheck.json</a> · <a href="evidence/review/article2-latest-judge-audit.md">Audit note</a></p>
+<p><strong>Rerun.</strong></p>
+<pre><code>python3 evidence/review/cbc-anchor-check.py
+</code></pre>
+<p>The recount script reads the CSV beside it, checks the saved-margin counts and tested tolerances, and rewrites <code>cbc-anchor-check.json</code>.</p>
+<h3>Check the underlying evaluator panels</h3>
+<p>The <a href="https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/blob/37d500566b0b7a7701a1ca199fafc467f2612587/data/external_validation/mrewardbench_panel/analysis_1500_item/pilot_complete_panel.csv">author&#39;s source panel</a> contains 52,500 evaluator rows. We package its original 6,561,072 bytes as a 329,980-byte gzip file. The portable checker decompresses it in memory and verifies the original Git blob <code>047fc2ce03acd4115675caf76d9ed529811de3af</code> and SHA-256 before examining any rows. It also verifies the SHA-256 of the same 700-row anchor sample used above.</p>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th>Verified result</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>All 55 changed verdicts</td>
+<td>Five distinct evaluators, no missing scores or margins; each source margin equals chosen score minus rejected score</td>
+</tr>
+<tr>
+<td>Arithmetic before correction</td>
+<td>All source margins are integers and each of the 55 panel sums is exactly zero</td>
+</tr>
+<tr>
+<td>Three larger saved margin differences</td>
+<td>Five evaluator rows each, but only four nonmissing margins; none changes a verdict</td>
+</tr>
+</tbody></table>
+<p><strong>Files.</strong> <a href="evidence/review/cbc-panel-bundle-check.py">Panel checker</a> · <a href="evidence/review/cbc-pinned-complete-panel.csv.gz">Compressed source panel</a> · <a href="evidence/review/cbc-panel-bundle-check.json">Saved panel-check result</a>. The checker reuses <a href="evidence/review/cbc-anchor-sample.csv">the anchor sample above</a>.</p>
+<pre><code>python3 evidence/review/cbc-panel-bundle-check.py --output /tmp/cbc-panel-check.json
+diff /tmp/cbc-panel-check.json evidence/review/cbc-panel-bundle-check.json
+</code></pre>
+<p><strong>If you are reading the hosted copy of this page,</strong> the compressed panel is not served there, and the command above fails with a missing-file error. Use the author&#39;s raw CSV instead. Save these four files in one directory: <a href="evidence/review/cbc-panel-bundle-check.py">cbc-panel-bundle-check.py</a>, <a href="evidence/review/cbc-panel-bundle-check.json">cbc-panel-bundle-check.json</a>, <a href="evidence/review/cbc-anchor-sample.csv">cbc-anchor-sample.csv</a>, and <a href="https://raw.githubusercontent.com/KurbanIntelligenceLab/multilingual-judge-calibration/37d500566b0b7a7701a1ca199fafc467f2612587/data/external_validation/mrewardbench_panel/analysis_1500_item/pilot_complete_panel.csv">the pinned raw source CSV</a> saved as <code>pilot_complete_panel.csv</code>. Then run:</p>
+<pre><code>python3 cbc-panel-bundle-check.py --panel pilot_complete_panel.csv --sample cbc-anchor-sample.csv --output cbc-panel-rerun.json
+diff cbc-panel-rerun.json cbc-panel-bundle-check.json
+</code></pre>
+<p>The checker verifies the CSV&#39;s Git blob and SHA-256 before analysis, so a wrong or altered download fails loudly. This flat layout was tested and reproduces the saved result byte-for-byte.</p>
+<p>This is a locally authored verification of pinned saved data, not author code or a rerun of provider requests. The checker SHA-256 is <code>26e3034ab26fa3430842f99caa7f03e2cdc809ed96c623d9d983c37774da05b7</code>. The result records the original panel and anchor hashes, all 55 item-level checks, and the three missing-margin rows. Hashes establish which artifacts were checked; they do not establish why a provider score was missing.</p>
+<h2>3. External sources cited in the essay</h2>
+<table>
+<thead>
+<tr>
+<th>Source</th>
+<th>Used for</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a href="https://arxiv.org/abs/2412.17618">Dynamic safety cases for frontier AI</a></td>
+<td>Prior art: claims and evidence revised as systems change</td>
+<td>Credited, not reproduced</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2410.05952">Active Evaluation Acquisition</a></td>
+<td>Prior art: choosing informative evaluation items</td>
+<td>Credited, not reproduced</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2608.30165">Science sandboxes</a></td>
+<td>Score optimization can diverge from hidden-rule recovery</td>
+<td>Transfer of recovered rules is our hypothesis, not its result</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/2608.19802v1">Stopping and routing judge panels</a></td>
+<td>A formalized stopping decision for a fixed instrument set</td>
+<td>Extension to generated experiments is ours</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2609.04198">Clean Engineering, Unstable Measurement</a></td>
+<td>Repeatability failures in tested black-box observers</td>
+<td>Author-reported preregistration; concerns its setups</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/html/2608.22432v2">CBC v2</a></td>
+<td>Reproducible pipeline with a tie-handling flaw</td>
+<td>See §2</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2606.26294v2">Red Queen Gödel Machine v2</a></td>
+<td>Epoch-frozen criterion; dependent records lose standing</td>
+<td>Epoch-local guarantees</td>
+</tr>
+<tr>
+<td><a href="https://papers.nips.cc/paper_files/paper/2015/file/bad5f33780c42f2588878a9d07405083-Paper.pdf">Dwork et al. 2015</a></td>
+<td>Uncontrolled adaptive holdout reuse can invalidate guarantees; protocols exist to control it</td>
+<td>No implementation claimed</td>
+</tr>
+<tr>
+<td><a href="https://arxiv.org/abs/2608.31100">S3Gym</a></td>
+<td>Self-judgment and later improvement were not reliably associated</td>
+<td>Association, not intervention</td>
+</tr>
+<tr>
+<td><a href="https://pages.cs.wisc.edu/~remzi/Naur.pdf">Naur, Programming as Theory Building</a></td>
+<td>The theory lives in people; no document carries it</td>
+<td>Faster reconstruction from the record is our hypothesis, not his</td>
+</tr>
+</tbody></table>
+</article><footer class="article-page__footer"><p>Filed under Evals / Evidence / Receipts</p><a href="https://highperformanceailab.com/">More dispatches <span aria-hidden="true">→</span></a></footer></main>

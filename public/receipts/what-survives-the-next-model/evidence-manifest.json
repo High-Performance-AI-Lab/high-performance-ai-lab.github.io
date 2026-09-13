@@ -1,0 +1,65 @@
+{
+  "schema_version": "hpal-evidence-manifest/v1",
+  "files": [
+    {
+      "path": "evidence/finite-assay/run.py",
+      "sha256": "2fefcffef5e7d9674d95cd66cb110e78bbc21080e9967d76ffbe37d32d1e6afd",
+      "size_bytes": 18179
+    },
+    {
+      "path": "evidence/finite-assay/result.json",
+      "sha256": "500b70a009bf0bf5bd392eadd440b4b6195761ad1e19ddcc62b9ca939687ec2c",
+      "size_bytes": 44714
+    },
+    {
+      "path": "evidence/finite-assay/REPORT.md",
+      "sha256": "a872f152bc938736e7d6eac6a3c3c423be3b6c82e7c97b973227fbf12d7028a3",
+      "size_bytes": 10827
+    },
+    {
+      "path": "evidence/review/cbc-anchor-check.py",
+      "sha256": "bdbd870d41824263a95beaf8f81e371fff833df299cc1edf0a3fde79c3332d3f",
+      "size_bytes": 1863
+    },
+    {
+      "path": "evidence/review/cbc-anchor-sample.csv",
+      "sha256": "163c3359bfc69c88aa45cdce930c284544f2b4b385ccbf96edf7cd846058634c",
+      "size_bytes": 51171
+    },
+    {
+      "path": "evidence/review/cbc-anchor-check.json",
+      "sha256": "4a74aa063074d970baf4edbc4482832e4d4db6e64c4d0b871812f341c53212c2",
+      "size_bytes": 1097
+    },
+    {
+      "path": "evidence/review/cbc-root-crosscheck.json",
+      "sha256": "8c273f3183e39a33f48ceb4e1ec8b8487b2f4e59f1f0dfb09d324756e9709195",
+      "size_bytes": 566
+    },
+    {
+      "path": "evidence/review/article2-latest-judge-audit.md",
+      "sha256": "f200d7d422c7e69c5e5822cfd75df81e9fa171953fa632344fa4e4422d85800d",
+      "size_bytes": 7718
+    },
+    {
+      "path": "evidence/review/article2-algebraic-check.json",
+      "sha256": "755d69ba6e5a6e104ea0c4c0fac0ffcf0757f1ed78b68e4ed22d2a21f1b07af5",
+      "size_bytes": 5162
+    },
+    {
+      "path": "evidence/review/cbc-panel-bundle-check.py",
+      "sha256": "26e3034ab26fa3430842f99caa7f03e2cdc809ed96c623d9d983c37774da05b7",
+      "size_bytes": 6424
+    },
+    {
+      "path": "evidence/review/cbc-pinned-complete-panel.csv.gz",
+      "sha256": "93b7231ce39da41ae6ea5d61cedf6ebf7718ac423432a5c3f1a803176c57217d",
+      "size_bytes": 329980
+    },
+    {
+      "path": "evidence/review/cbc-panel-bundle-check.json",
+      "sha256": "4e1e4ac61c957ccdeb1dbc0483ef138d3bd8d88a70ebc39c67fa69a9b0c20727",
+      "size_bytes": 18984
+    }
+  ]
+}

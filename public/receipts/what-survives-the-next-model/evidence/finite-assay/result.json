@@ -1,0 +1,1694 @@
+{
+  "status": "exact authored finite checks passed",
+  "claim_boundary": "Mechanics demonstration, not AI evaluation efficacy, real refund validation, production safety or novel-theory proof.",
+  "worlds": [
+    {
+      "committed": 0,
+      "idempotent": false,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 0,
+      "idempotent": true,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 1,
+      "idempotent": false,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 1,
+      "idempotent": true,
+      "pending_original_commit": false
+    }
+  ],
+  "extended_worlds": [
+    {
+      "committed": 0,
+      "idempotent": false,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 0,
+      "idempotent": true,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 1,
+      "idempotent": false,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 1,
+      "idempotent": true,
+      "pending_original_commit": false
+    },
+    {
+      "committed": 0,
+      "idempotent": false,
+      "pending_original_commit": true
+    }
+  ],
+  "identification": {
+    "initial_compatible_worlds": 4,
+    "after_cached_read": 4,
+    "after_fresh_read": {
+      "0": 2,
+      "1": 2
+    },
+    "safe_complete_before_read": [
+      "inspect_then_act"
+    ],
+    "after_read_decision": {
+      "0": [
+        "retry",
+        "inspect_then_act"
+      ],
+      "1": [
+        "stop",
+        "inspect_then_act"
+      ]
+    },
+    "after_provider_contract": {
+      "false": {
+        "worlds": 2,
+        "policy_results": {
+          "stop": {
+            "status": "no_valid_decision",
+            "reason": "undetermined",
+            "passing_worlds": 1,
+            "failing_worlds": 1,
+            "qualification": "conditional_on_authored_assumptions"
+          },
+          "retry": {
+            "status": "no_valid_decision",
+            "reason": "undetermined",
+            "passing_worlds": 1,
+            "failing_worlds": 1,
+            "qualification": "conditional_on_authored_assumptions"
+          },
+          "inspect_then_act": {
+            "status": "eligible",
+            "reason": "all_compatible_worlds_satisfy",
+            "passing_worlds": 2,
+            "failing_worlds": 0,
+            "qualification": "conditional_on_authored_assumptions"
+          }
+        }
+      },
+      "true": {
+        "worlds": 2,
+        "policy_results": {
+          "stop": {
+            "status": "no_valid_decision",
+            "reason": "undetermined",
+            "passing_worlds": 1,
+            "failing_worlds": 1,
+            "qualification": "conditional_on_authored_assumptions"
+          },
+          "retry": {
+            "status": "eligible",
+            "reason": "all_compatible_worlds_satisfy",
+            "passing_worlds": 2,
+            "failing_worlds": 0,
+            "qualification": "conditional_on_authored_assumptions"
+          },
+          "inspect_then_act": {
+            "status": "eligible",
+            "reason": "all_compatible_worlds_satisfy",
+            "passing_worlds": 2,
+            "failing_worlds": 0,
+            "qualification": "conditional_on_authored_assumptions"
+          }
+        }
+      }
+    },
+    "empty_set_result": {
+      "status": "no_valid_decision",
+      "reason": "adequacy_failure",
+      "passing_worlds": 0,
+      "failing_worlds": 0,
+      "qualification": "conditional_on_authored_assumptions"
+    },
+    "queried_probes": [
+      "cached_ledger",
+      "fresh_ledger",
+      "provider_contract",
+      "timeout"
+    ],
+    "proof_status": "Exact enumeration of this authored finite model, conditional on its semantics.",
+    "limitation": "The original four worlds exclude pending or concurrent commits; the policy is hand-authored, not learned. Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+  },
+  "invalid_abstraction": {
+    "same_timeout": true,
+    "preserves_fresh_observation": false,
+    "preserves_retry_effect": false,
+    "limitation": "One explicit counterexample to this quotient; not a general abstraction construction or validation method."
+  },
+  "outside_model_witness": {
+    "omitted_mechanism": "Pending original commit occurs after authoritative ledger read and retry.",
+    "represented_state": {
+      "committed": 0,
+      "idempotent": false,
+      "pending_original_commit": true
+    },
+    "fresh_observation": 0,
+    "compatible_worlds_in_incomplete_family": 2,
+    "retry_result_within_incomplete_family": {
+      "status": "eligible",
+      "reason": "all_compatible_worlds_satisfy",
+      "passing_worlds": 2,
+      "failing_worlds": 0,
+      "qualification": "conditional_on_authored_assumptions"
+    },
+    "compatible_worlds_in_extended_family": 3,
+    "policy_results_within_extended_family": {
+      "stop": {
+        "status": "no_valid_decision",
+        "reason": "undetermined",
+        "passing_worlds": 1,
+        "failing_worlds": 2,
+        "qualification": "conditional_on_authored_assumptions"
+      },
+      "retry": {
+        "status": "no_valid_decision",
+        "reason": "undetermined",
+        "passing_worlds": 2,
+        "failing_worlds": 1,
+        "qualification": "conditional_on_authored_assumptions"
+      },
+      "inspect_then_act": {
+        "status": "no_valid_decision",
+        "reason": "undetermined",
+        "passing_worlds": 2,
+        "failing_worlds": 1,
+        "qualification": "conditional_on_authored_assumptions"
+      }
+    },
+    "executions": {
+      "stop": {
+        "policy": "stop",
+        "initial_state": {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": true
+        },
+        "trace": [
+          {
+            "event": "start",
+            "state": {
+              "committed": 0,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "stop",
+            "state": {
+              "committed": 0,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "settle_pending",
+            "state": {
+              "committed": 1,
+              "idempotent": false,
+              "pending_original_commit": false
+            }
+          }
+        ],
+        "final_state": {
+          "committed": 1,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        "effects": 1
+      },
+      "retry": {
+        "policy": "retry",
+        "initial_state": {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": true
+        },
+        "trace": [
+          {
+            "event": "start",
+            "state": {
+              "committed": 0,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "retry",
+            "state": {
+              "committed": 1,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "settle_pending",
+            "state": {
+              "committed": 2,
+              "idempotent": false,
+              "pending_original_commit": false
+            }
+          }
+        ],
+        "final_state": {
+          "committed": 2,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        "effects": 2
+      },
+      "inspect_then_act": {
+        "policy": "inspect_then_act",
+        "initial_state": {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": true
+        },
+        "trace": [
+          {
+            "event": "start",
+            "state": {
+              "committed": 0,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "fresh_ledger",
+            "observation": 0,
+            "state": {
+              "committed": 0,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "retry",
+            "state": {
+              "committed": 1,
+              "idempotent": false,
+              "pending_original_commit": true
+            }
+          },
+          {
+            "event": "settle_pending",
+            "state": {
+              "committed": 2,
+              "idempotent": false,
+              "pending_original_commit": false
+            }
+          }
+        ],
+        "final_state": {
+          "committed": 2,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        "effects": 2
+      }
+    },
+    "actual_effects_in_extended_witness": 2,
+    "proof_status": "Computed by the same observe, transition, execute and effects functions as the original family.",
+    "limitation": "One authored delayed non-idempotent mechanism and one settle-after-action schedule; no real-provider validation or exhaustive concurrency exploration.",
+    "conclusion": "A nonempty compatible set does not establish model adequacy. Fresh observation alone is insufficient when commits can race."
+  },
+  "property_census": {
+    "case_count": 340,
+    "max_delivery_horizon": 4,
+    "subject_variants": 5,
+    "outcomes": {
+      "correct": {
+        "authority": 0,
+        "at_most_once_per_intent": 0,
+        "useful_completion": 0
+      },
+      "no_idempotency": {
+        "authority": 0,
+        "at_most_once_per_intent": 150,
+        "useful_completion": 150
+      },
+      "ignore_authority": {
+        "authority": 240,
+        "at_most_once_per_intent": 0,
+        "useful_completion": 0
+      },
+      "dedupe_amount": {
+        "authority": 0,
+        "at_most_once_per_intent": 0,
+        "useful_completion": 130
+      },
+      "refuse_all": {
+        "authority": 0,
+        "at_most_once_per_intent": 0,
+        "useful_completion": 310
+      }
+    },
+    "safety_only_false_accepts": 440,
+    "safety_only_false_accepts_by_variant": {
+      "correct": 0,
+      "no_idempotency": 0,
+      "ignore_authority": 0,
+      "dedupe_amount": 130,
+      "refuse_all": 310
+    },
+    "limitation": "Authored 1,700-row census, not a field error rate; failure categories overlap; subject and oracle share authorship."
+  },
+  "shrink": {
+    "original": [
+      [
+        "A",
+        true
+      ],
+      [
+        "B",
+        true
+      ],
+      [
+        "A",
+        true
+      ],
+      [
+        "B",
+        true
+      ]
+    ],
+    "reduced": [
+      [
+        "B",
+        true
+      ],
+      [
+        "B",
+        true
+      ]
+    ],
+    "guarantee": "Deletion-one-minimal for duplicate-effect property in this finite trace; not causal attribution.",
+    "original_obligations": {
+      "authority": true,
+      "at_most_once_per_intent": false,
+      "useful_completion": false
+    },
+    "reduced_obligations": {
+      "authority": true,
+      "at_most_once_per_intent": false,
+      "useful_completion": false
+    },
+    "limitation": "Only target-violation retention is checked when accepting a deletion. Reachability and determinacy are trivial here; non-target obligations are not enforced."
+  },
+  "counterfactual_nonidentification": {
+    "coupling_1": [
+      [
+        0,
+        0
+      ],
+      [
+        1,
+        1
+      ]
+    ],
+    "coupling_2": [
+      [
+        0,
+        1
+      ],
+      [
+        1,
+        0
+      ]
+    ],
+    "both_interventional_marginals": [
+      0.5,
+      0.5
+    ],
+    "both_average_effects": 0.0,
+    "switch_probability_under_coupling_1": 0.0,
+    "switch_probability_under_coupling_2": 1.0,
+    "source": "Adaptation in potential-outcome notation of Pearl, Causality, 2nd ed., section 1.4.4; structural construction is in SCIENTIFIC-FOUNDATIONS.md section 6.",
+    "proof_status": "Direct arithmetic for two specified equally weighted two-unit couplings; a constructive non-identification example, not a novel theorem.",
+    "limitation": "These are potential-outcome tables, not fitted structural causal models, identified real-unit counterfactuals or an intervention-based attribution implementation."
+  },
+  "explorer_scenarios": {
+    "timeout": {
+      "mode": "timeout",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 2,
+          "failing_worlds": 2,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 3,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 4,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "cached": {
+      "mode": "cached",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "cached_ledger",
+          0
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 2,
+          "failing_worlds": 2,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 3,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 4,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "fresh0": {
+      "mode": "fresh0",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "fresh_ledger",
+          0
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "refused",
+          "reason": "all_compatible_worlds_violate",
+          "passing_worlds": 0,
+          "failing_worlds": 2,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "retry",
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "fresh1": {
+      "mode": "fresh1",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "fresh_ledger",
+          1
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 1,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 1,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "stop",
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "contract0": {
+      "mode": "contract0",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "provider_contract",
+          false
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": false,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 1,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 1,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "contract1": {
+      "mode": "contract1",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "provider_contract",
+          true
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 1,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 1,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "retry",
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "empty": {
+      "mode": "empty",
+      "evidence": [
+        [
+          "fresh_ledger",
+          2
+        ]
+      ],
+      "compatible": [],
+      "policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "adequacy_failure",
+          "passing_worlds": 0,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "adequacy_failure",
+          "passing_worlds": 0,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "no_valid_decision",
+          "reason": "adequacy_failure",
+          "passing_worlds": 0,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [],
+      "omitted_mechanism": false,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification."
+    },
+    "late": {
+      "mode": "late",
+      "evidence": [
+        [
+          "timeout",
+          "timeout"
+        ],
+        [
+          "fresh_ledger",
+          0
+        ]
+      ],
+      "compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        }
+      ],
+      "policy_results": {
+        "stop": {
+          "status": "refused",
+          "reason": "all_compatible_worlds_violate",
+          "passing_worlds": 0,
+          "failing_worlds": 2,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "eligible",
+          "reason": "all_compatible_worlds_satisfy",
+          "passing_worlds": 2,
+          "failing_worlds": 0,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "decisions": [
+        "retry",
+        "inspect_then_act"
+      ],
+      "omitted_mechanism": true,
+      "limitation": "Conditional on authored transitions, authorized intent, exact authoritative observations, and the represented outcome horizon; no empirical instrument qualification.",
+      "extended_compatible": [
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": true,
+          "pending_original_commit": false
+        },
+        {
+          "committed": 0,
+          "idempotent": false,
+          "pending_original_commit": true
+        }
+      ],
+      "extended_policy_results": {
+        "stop": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 1,
+          "failing_worlds": 2,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "retry": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 2,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        },
+        "inspect_then_act": {
+          "status": "no_valid_decision",
+          "reason": "undetermined",
+          "passing_worlds": 2,
+          "failing_worlds": 1,
+          "qualification": "conditional_on_authored_assumptions"
+        }
+      },
+      "delayed_executions": {
+        "stop": {
+          "policy": "stop",
+          "initial_state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          },
+          "trace": [
+            {
+              "event": "start",
+              "state": {
+                "committed": 0,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "stop",
+              "state": {
+                "committed": 0,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "settle_pending",
+              "state": {
+                "committed": 1,
+                "idempotent": false,
+                "pending_original_commit": false
+              }
+            }
+          ],
+          "final_state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          },
+          "effects": 1
+        },
+        "retry": {
+          "policy": "retry",
+          "initial_state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          },
+          "trace": [
+            {
+              "event": "start",
+              "state": {
+                "committed": 0,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "retry",
+              "state": {
+                "committed": 1,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "settle_pending",
+              "state": {
+                "committed": 2,
+                "idempotent": false,
+                "pending_original_commit": false
+              }
+            }
+          ],
+          "final_state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          },
+          "effects": 2
+        },
+        "inspect_then_act": {
+          "policy": "inspect_then_act",
+          "initial_state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          },
+          "trace": [
+            {
+              "event": "start",
+              "state": {
+                "committed": 0,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "fresh_ledger",
+              "observation": 0,
+              "state": {
+                "committed": 0,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "retry",
+              "state": {
+                "committed": 1,
+                "idempotent": false,
+                "pending_original_commit": true
+              }
+            },
+            {
+              "event": "settle_pending",
+              "state": {
+                "committed": 2,
+                "idempotent": false,
+                "pending_original_commit": false
+              }
+            }
+          ],
+          "final_state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          },
+          "effects": 2
+        }
+      }
+    }
+  },
+  "policy_executions": [
+    {
+      "policy": "stop",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 0
+    },
+    {
+      "policy": "retry",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "inspect_then_act",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "fresh_ledger",
+          "observation": 0,
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "stop",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 0
+    },
+    {
+      "policy": "retry",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "inspect_then_act",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "fresh_ledger",
+          "observation": 0,
+          "state": {
+            "committed": 0,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "stop",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "retry",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 2,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 2
+    },
+    {
+      "policy": "inspect_then_act",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "fresh_ledger",
+          "observation": 1,
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "stop",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "retry",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "inspect_then_act",
+      "initial_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "fresh_ledger",
+          "observation": 1,
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": true,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "stop",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "stop",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 1
+    },
+    {
+      "policy": "retry",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 2,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 2
+    },
+    {
+      "policy": "inspect_then_act",
+      "initial_state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "trace": [
+        {
+          "event": "start",
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "fresh_ledger",
+          "observation": 0,
+          "state": {
+            "committed": 0,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "retry",
+          "state": {
+            "committed": 1,
+            "idempotent": false,
+            "pending_original_commit": true
+          }
+        },
+        {
+          "event": "settle_pending",
+          "state": {
+            "committed": 2,
+            "idempotent": false,
+            "pending_original_commit": false
+          }
+        }
+      ],
+      "final_state": {
+        "committed": 2,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "effects": 2
+    }
+  ],
+  "limitations": [
+    "Worlds, properties, variants and oracle are manually authored by one implementation team.",
+    "Decision status is separate from instrument qualification: exact authored assumptions supply the finite check's conditional boundary, not empirical adequacy evidence.",
+    "No independent custody, generated natural-language policy, model calls or prospective learning.",
+    "Enumeration covers the four-world family, one additional delayed state under its declared schedule, and delivery traces through length four.",
+    "Static membership tests assume exact observations; no noise or probabilistic coverage guarantee."
+  ]
+}
