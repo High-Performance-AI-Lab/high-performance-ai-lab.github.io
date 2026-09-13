@@ -1,0 +1,233 @@
+{
+  "status": "passed",
+  "reviewer_role": "root; separate read-only pass from the finite-example implementer in the same Codex collaboration",
+  "scope": "Source inspection, isolated byte-identical rerun, algebraic reference over eight states and three policies, decision-state controls, fresh-zero pending trace, input-predicate false-accept recount.",
+  "limitation": "Shared task specification and team; neither external replication nor empirical semantic validation. No model calls or real provider execution.",
+  "source_hashes": {
+    "run.py": "2fefcffef5e7d9674d95cd66cb110e78bbc21080e9967d76ffbe37d32d1e6afd",
+    "result.json": "500b70a009bf0bf5bd392eadd440b4b6195761ad1e19ddcc62b9ca939687ec2c"
+  },
+  "algebraic_cases": [
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "stop",
+      "effects": 0
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "retry",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "stop",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "retry",
+      "effects": 2
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "inspect_then_act",
+      "effects": 2
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "stop",
+      "effects": 0
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "retry",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "stop",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "retry",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 0,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "stop",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "retry",
+      "effects": 2
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": false
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "stop",
+      "effects": 2
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "retry",
+      "effects": 3
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": false,
+        "pending_original_commit": true
+      },
+      "policy": "inspect_then_act",
+      "effects": 2
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "stop",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "retry",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": false
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "stop",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "retry",
+      "effects": 1
+    },
+    {
+      "state": {
+        "committed": 1,
+        "idempotent": true,
+        "pending_original_commit": true
+      },
+      "policy": "inspect_then_act",
+      "effects": 1
+    }
+  ],
+  "false_accept_counts": {
+    "dedupe_amount": 130,
+    "refuse_all": 310
+  },
+  "source_and_result_unchanged": true
+}

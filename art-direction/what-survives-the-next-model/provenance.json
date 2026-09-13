@@ -1,0 +1,134 @@
+{
+  "schema_version": "hpal-illustration-provenance/v1",
+  "article": "what-survives-the-next-model",
+  "created_at": "2026-09-13",
+  "tool": "built-in image generation",
+  "mode": "generation with local style references; targeted edit where recorded",
+  "claim_boundary": "All images are conceptual editorial artwork, not research evidence.",
+  "style_references": [
+    {
+      "path": "public/img/articles/evals-as-theory-building/map-becomes-territory.webp",
+      "sha256": "267501a43d3601ee8fd946a8c201d1fce30d2247c65413ee1ccf7ae1e07d58d0"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/smoke-without-fire.webp",
+      "sha256": "e61fe69869c8e2d2ffc6bbed3a22255b26fc7d817b05188ae6490eaf1e1246eb"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/evaluator-under-evaluation.webp",
+      "sha256": "9f1af6fc1ad6f04c08c90f615969c6fea45371878a6485bad7c6243fa5dfe78d"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/assay-fixed-gate.webp",
+      "sha256": "defbcb75927fb49744e00f2796e968792b2b00ba21a72701dd1e91c380adb64c"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/eval-loop-retained-failures.webp",
+      "sha256": "95a09b36daba40624322319e6d9e836c58fcdbf314fcb62964802601f4048a5a"
+    }
+  ],
+  "assets": [
+    {
+      "name": "silent-provider-worlds",
+      "role": "opening hero and social image",
+      "generation_prompt": "Use case: illustration-story\nAsset type: opening hero illustration for a High Performance AI Lab essay\nPrimary request: A thoughtful adult researcher stands before three identical, silent, waist-high provider boxes. Their plain front panels are visually the same and show no response. Each box has a simple cutaway underside that reveals a different hidden state of the same refund: in the first, one small red coin has already arrived in an ivory receiving cup; in the second, the red coin remains at its untouched starting point; in the third, the red coin is still traveling through a concealed channel toward the cup. The three boxes remain physically separate. The researcher can see the cutaways and studies the contradiction. The reader should immediately understand that one identical silence can hide completed, absent, or pending action.\nInput images: Images 1–3 are style references only; create a new composition and do not copy their scenes.\nStyle/medium: Match the references closely: spare mixed-media editorial collage on warm near-white paper, loose charcoal-black contour drawing, flat cut-paper shapes, dry imperfect screenprint texture, subtle paper grain, natural adult figure, broad untouched paper. Use line economy and almost no tonal modelling; do not turn this into a detailed engraving.\nColor palette: warm off-white, charcoal, stone grey, and one restrained oxide red-orange accent.\nComposition/framing: landscape 3:2, intended for 1536 by 1024 pixels. One coherent wide scene, three boxes clearly separated, states readable at article width, generous negative space, no border.\nClaim boundary: conceptual metaphor only, not research evidence.\nConstraints: Red appears only on the three refund coins and their short hidden paths. No words, letters, numbers, equations, labels, arrows, logos, UI, watermark, robot, glossy 3D, photorealism, dense cross-hatching, sepia wash, gradient, or decorative clutter.",
+      "edit_prompt": "Use case: precise-object-edit\nAsset type: opening hero illustration for a High Performance AI Lab essay\nInput images: Image 1 is the edit target.\nPrimary request: Change only the researcher's oxide-red shirt to charcoal grey with the same dry ink texture as the trousers. Keep the three refund coins and their short paths oxide red-orange.\nInvariants: Preserve absolutely everything else: the person's identity, pose, hands, proportions and placement; all three boxes and their geometry; each coin's exact position; the channels, cups, shadows, paper texture, colors, composition, linework, negative space, aspect ratio, and resolution. Do not add, remove, move, crop, relight, redraw, or restyle anything.\nConstraints: no new red areas, text, labels, logos, or watermark.",
+      "references": ["map-becomes-territory.webp", "smoke-without-fire.webp", "eval-loop-retained-failures.webp"],
+      "source": {
+        "path": "art-direction/what-survives-the-next-model/sources/silent-provider-worlds.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2001649,
+        "sha256": "4be22f7cfe1f344eb458ee3373274bd7ef90e0754c4982fa583d546e45c9209b"
+      },
+      "public": {
+        "path": "public/img/articles/what-survives-the-next-model/silent-provider-worlds.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 105294,
+        "sha256": "141b065ce98933642e23cd8e24a2ee5a988f1931e8dc3670624434db2b160b32"
+      },
+      "social": {
+        "path": "public/img/articles/what-survives-the-next-model/silent-provider-worlds-social.jpg",
+        "width": 1200,
+        "height": 630,
+        "media_type": "image/jpeg",
+        "bytes": 180417,
+        "sha256": "6bc76f272404d5a522c3ea3bca8c0d0dae0d803de4b2532ad84e49454b1feebd"
+      },
+      "qa": "Accepted after changing the researcher's shirt from red to charcoal so the refund states carry the semantic accent. The three cutaways remain visibly distinct at article and social widths."
+    },
+    {
+      "name": "premise-bridges",
+      "role": "retained, re-established, and open premises",
+      "generation_prompt": "Use case: illustration-story\nAsset type: inline conceptual editorial illustration for a High Performance AI Lab essay\nPrimary request: On one broad workbench, three separate narrow bridges cross three equal gaps from left to right. A thin oxide-red support thread travels across each bridge. On the first bridge, the pale stone span is intact and the red thread crosses without interruption. On the second, an adult researcher kneels and secures one clearly new stone at a repaired joint, allowing the red thread to cross again. On the third, a stone is missing; the red thread stops visibly at the near edge and empty space remains before the far side. The bridges are parallel and clearly distinct. The reader should see support that remains intact, support that has been re-established, and support that is still open.\nInput images: Images 1–3 are style references only; create a new composition and do not copy their scenes.\nStyle/medium: Match the references closely: spare mixed-media editorial collage on warm near-white paper, loose charcoal-black contour drawing, flat cut-paper shapes, dry imperfect screenprint texture, subtle paper grain, natural adult figure, broad untouched paper. Use line economy and almost no tonal modelling; do not turn this into a detailed engraving.\nColor palette: warm off-white, charcoal, stone grey, and one restrained oxide red-orange accent.\nComposition/framing: landscape 3:2, intended for 1536 by 1024 pixels. Slight elevated view, three bridges readable at article width, one simple human action at the repaired middle span, generous negative space, no border.\nClaim boundary: conceptual metaphor only, not research evidence.\nConstraints: Red marks only the support threads and the repaired joint. The third red thread must end at the open gap; do not secretly bridge it. No words, letters, numbers, equations, labels, arrows, logos, UI, watermark, robot, glossy 3D, photorealism, dense cross-hatching, sepia wash, gradient, or decorative clutter.",
+      "edit_prompt": "Use case: precise-object-edit\nAsset type: inline conceptual editorial illustration for a High Performance AI Lab essay\nInput images: Image 1 is the edit target.\nPrimary request: Change only the kneeling researcher's oxide-red shirt to charcoal grey with the same dry ink texture as the trousers. Keep all three support threads oxide red-orange.\nInvariants: Preserve absolutely everything else: identity, pose, hands, proportions and placement; the three bridges, stones, gaps and exact thread routes; shadows, paper texture, all other colors, composition, linework, negative space, aspect ratio and resolution. The third bridge must remain physically open and its thread must remain interrupted. Do not add, remove, move, crop, relight, redraw or restyle anything.\nConstraints: no new red areas, text, labels, logos, or watermark.",
+      "references": ["map-becomes-territory.webp", "assay-fixed-gate.webp", "eval-loop-retained-failures.webp"],
+      "source": {
+        "path": "art-direction/what-survives-the-next-model/sources/premise-bridges.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2296029,
+        "sha256": "5e3e732fc5ba70eb8f82b219f422e773704ba2a61cbda605bad6263cbdbf33a7"
+      },
+      "public": {
+        "path": "public/img/articles/what-survives-the-next-model/premise-bridges.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 172640,
+        "sha256": "ee861a47bc6b558655a416721b6cc71fb2b7f76c57074c45e3be0ad7ad220d1e"
+      },
+      "qa": "Accepted after removing a competing red garment. The first support remains continuous, the middle is visibly under repair, and the final span and line remain open."
+    },
+    {
+      "name": "intervention-stages",
+      "role": "worker, world, and instrument intervention",
+      "generation_prompt": "Use case: illustration-story\nAsset type: inline conceptual editorial illustration for a High Performance AI Lab essay\nPrimary request: A long sparse workbench contains three clearly separate removable stages in a row. On the left stage, an adult worker places one small oxide-red object onto a thin red path. The middle stage is a miniature cutaway world of pale walls and one obstruction through which the same red path travels. The right stage holds a charcoal measuring instrument with an oversized circular dial where the path ends. A second adult investigator is lifting that instrument out of its clean rectangular socket while holding an independently built replacement instrument ready beside it. The worker and the miniature world remain untouched on their own stages. Make the modular seams and the one-at-a-time swap unmistakable. The reader should see worker, world, and instrument as separate candidates in a failed case, and see intervention as changing one while holding the others fixed.\nInput images: Images 1–3 are style references only; create a new composition and do not copy their scenes.\nStyle/medium: Match the references closely: spare mixed-media editorial collage on warm near-white paper, loose charcoal-black contour drawing, flat cut-paper shapes, dry imperfect screenprint texture, subtle paper grain, natural adult figures, broad untouched paper. Use line economy and almost no tonal modelling; do not turn this into a detailed engraving.\nColor palette: warm off-white, charcoal, stone grey, and one restrained oxide red-orange accent.\nComposition/framing: landscape 3:2, intended for 1536 by 1024 pixels. Wide side view, all three stages visible and separated, the instrument swap as the focal action, generous negative space, no border.\nClaim boundary: conceptual metaphor only; an intervention supplies evidence but does not prove unique fault.\nConstraints: Red marks only the object and its path through the stages. Both people's clothing is charcoal, grey, or off-white. No words, letters, numbers, equations, labels, arrows, logos, UI, watermark, robot, glossy 3D, photorealism, dense cross-hatching, sepia wash, gradient, or decorative clutter.",
+      "references": ["evaluator-under-evaluation.webp", "smoke-without-fire.webp", "assay-fixed-gate.webp"],
+      "source": {
+        "path": "art-direction/what-survives-the-next-model/sources/intervention-stages.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2295146,
+        "sha256": "cbba2a08b0fb21398d9cca3a3c19938bffccef0ba465ae4f3e410f6ad1ffbf9d"
+      },
+      "public": {
+        "path": "public/img/articles/what-survives-the-next-model/intervention-stages.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 146196,
+        "sha256": "53e45c7da22459b89b0893a18e465550a45164af18e524011943860ed3d76986"
+      },
+      "qa": "Accepted on the first generation. Three modular stages, the fixed red trajectory, and the isolated instrument replacement remain clear at article width."
+    },
+    {
+      "name": "successor-notebook",
+      "role": "successor handoff",
+      "generation_prompt": "Use case: illustration-story\nAsset type: closing conceptual editorial illustration for a High Performance AI Lab essay\nPrimary request: Two different adult researchers stand at opposite sides of one sparse workbench and pass a worn open notebook between them. The predecessor releases one edge; the successor supports the other edge and studies the pages rather than merely accepting them. On the left of the bench sits a small completed charcoal test apparatus. On the right sits a different, unfinished apparatus made from a few pale and charcoal pieces. One continuous oxide-red thread begins at the completed apparatus, passes visibly across and through the open notebook pages, and continues into the unfinished apparatus. A few short abandoned charcoal paths remain faintly visible on the pages, but the red thread is unbroken. The reader should see a successor rebuilding usable understanding from a record, not knowledge transferring magically.\nInput images: Images 1–3 are style references only; create a new composition and do not copy their scenes.\nStyle/medium: Match the references closely: spare mixed-media editorial collage on warm near-white paper, loose charcoal-black contour drawing, flat cut-paper shapes, dry imperfect screenprint texture, subtle paper grain, natural adult figures and hands, broad untouched paper. Use line economy and almost no tonal modelling; do not turn this into a detailed engraving or portrait.\nColor palette: warm off-white, charcoal, stone grey, and one restrained oxide red-orange accent.\nComposition/framing: landscape 3:2, intended for 1536 by 1024 pixels. The open notebook and questioning successor are the central focal action; both apparatuses and the whole red thread remain visible; generous negative space; no border.\nClaim boundary: conceptual metaphor only; a record is a starting point for reconstruction, not the theory itself.\nConstraints: Red marks only the continuous thread and one tiny tested joint in the completed apparatus. Both people's clothing is charcoal, grey, or off-white. The notebook contains only nonverbal paths and tiny marks—no words, letters, numbers, equations, labels, arrows, logos, UI, watermark, robot, glossy 3D, photorealism, dense cross-hatching, sepia wash, gradient, or decorative clutter.",
+      "references": ["map-becomes-territory.webp", "evaluator-under-evaluation.webp", "eval-loop-retained-failures.webp"],
+      "source": {
+        "path": "art-direction/what-survives-the-next-model/sources/successor-notebook.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2157878,
+        "sha256": "73ebdb6300449e80133bbdee7dedf2d6daa9c5d71b87f5a13badf0fdffea6ef2"
+      },
+      "public": {
+        "path": "public/img/articles/what-survives-the-next-model/successor-notebook.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 146862,
+        "sha256": "04197e282d57fc4acb9f3618705b05a26979e4858f877dcaf796651982c9020d"
+      },
+      "qa": "Accepted on the first generation. The successor visibly examines the notebook, the red thread is continuous, and the receiving apparatus remains unfinished."
+    }
+  ],
+  "production": {
+    "webp": "cwebp -q 88 -m 6 -mt",
+    "social": "center-crop source to 1536x806, then resize to 1200x630 JPEG at quality 88"
+  }
+}

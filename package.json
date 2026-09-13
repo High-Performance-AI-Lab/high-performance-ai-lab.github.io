@@ -7,8 +7,10 @@
     "dev": "astro dev",
     "build": "astro check && astro build",
     "check:social": "python3 scripts/check_social_meta.py dist",
+    "check:article-art": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/check_article_art.py",
     "preview": "astro preview",
-    "check": "astro check"
+    "check": "astro check",
+    "verify": "npm run build && npm run check:social && npm run check:article-art"
   },
   "dependencies": {
     "@fontsource-variable/ibm-plex-sans": "^5.3.0",

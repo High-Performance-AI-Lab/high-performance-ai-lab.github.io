@@ -1,0 +1,20 @@
+{
+  "schema_version": "hpal-image-manifest/v1",
+  "content_images": [],
+  "decorative_assets": [
+    {
+      "path": "assets/favicon.svg",
+      "sha256": "22388f2ed415251c76855461eedc2a8a2d8cf2a0e64e504ba55b5105810e561a",
+      "size_bytes": 1706,
+      "role": "decorative",
+      "alt_required": false
+    },
+    {
+      "path": "assets/grain-256.png",
+      "sha256": "6c664e8788a474d67a8cfe4d5b4e9d4f12ae500b53e3ecb1778d14abfa7e336f",
+      "size_bytes": 5006,
+      "role": "decorative",
+      "alt_required": false
+    }
+  ]
+}

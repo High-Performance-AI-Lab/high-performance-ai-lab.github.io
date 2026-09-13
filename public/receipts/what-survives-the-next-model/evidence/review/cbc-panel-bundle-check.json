@@ -1,0 +1,894 @@
+{
+  "author_repository_revision": "37d500566b0b7a7701a1ca199fafc467f2612587",
+  "pinned_panel_url": "https://github.com/KurbanIntelligenceLab/multilingual-judge-calibration/blob/37d500566b0b7a7701a1ca199fafc467f2612587/data/external_validation/mrewardbench_panel/analysis_1500_item/pilot_complete_panel.csv",
+  "decompressed_panel_size_bytes": 6561072,
+  "decompressed_panel_git_blob_sha1": "047fc2ce03acd4115675caf76d9ed529811de3af",
+  "decompressed_panel_sha256": "c2615f257fd1ccf7277c093f65fea483435689aa564fec57f313f58f6664bf5f",
+  "anchor_sample_sha256": "163c3359bfc69c88aa45cdce930c284544f2b4b385ccbf96edf7cd846058634c",
+  "panel_rows": 52500,
+  "anchor_rows": 700,
+  "expected_backbones": [
+    "deepseek/deepseek-v3.2",
+    "openrouter/anthropic/claude-sonnet-4.6",
+    "openrouter/google/gemini-3-flash-preview",
+    "openrouter/openai/gpt-4o-2024-08-06",
+    "openrouter/openai/gpt-5.4"
+  ],
+  "flipped_rows": 55,
+  "all_flips_have_complete_nonmissing_five_evaluator_panels": true,
+  "all_flipped_source_margins_are_integer_chosen_minus_rejected": true,
+  "all_flipped_source_margin_sums_are_exactly_zero": true,
+  "all_flipped_saved_raw_margins_are_zero_and_corrected_margins_below_1e_minus_16": true,
+  "large_margin_difference_rows": [
+    {
+      "item_id": "alpacaeval-easy::148",
+      "item_numeric_id": "148",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "saved_raw_margin": "1.0",
+      "saved_cbc_margin": "1.028536801359877",
+      "nonmissing_margin_count": 4,
+      "missing_backbones": [
+        "openrouter/anthropic/claude-sonnet-4.6"
+      ],
+      "exact_raw_mean_of_available": "1",
+      "correctness_changed": false
+    },
+    {
+      "item_id": "alpacaeval-hard::1357",
+      "item_numeric_id": "1357",
+      "subset": "alpacaeval-hard",
+      "language": "eng_Latn",
+      "saved_raw_margin": "2.0",
+      "saved_cbc_margin": "2.028536801359877",
+      "nonmissing_margin_count": 4,
+      "missing_backbones": [
+        "openrouter/anthropic/claude-sonnet-4.6"
+      ],
+      "exact_raw_mean_of_available": "2",
+      "correctness_changed": false
+    },
+    {
+      "item_id": "alpacaeval-hard::1008",
+      "item_numeric_id": "1008",
+      "subset": "alpacaeval-hard",
+      "language": "jpn_Jpan",
+      "saved_raw_margin": "0.75",
+      "saved_cbc_margin": "0.7382644815538486",
+      "nonmissing_margin_count": 4,
+      "missing_backbones": [
+        "openrouter/anthropic/claude-sonnet-4.6"
+      ],
+      "exact_raw_mean_of_available": "3/4",
+      "correctness_changed": false
+    }
+  ],
+  "flipped_item_details": [
+    {
+      "item_id": "alpacaeval-easy::510",
+      "item_numeric_id": "510",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::199",
+      "item_numeric_id": "199",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::633",
+      "item_numeric_id": "633",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::658",
+      "item_numeric_id": "658",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::673",
+      "item_numeric_id": "673",
+      "subset": "alpacaeval-easy",
+      "language": "eng_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::502",
+      "item_numeric_id": "502",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        1,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::494",
+      "item_numeric_id": "494",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        1,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::410",
+      "item_numeric_id": "410",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        2,
+        0,
+        0,
+        -2
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::658",
+      "item_numeric_id": "658",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::497",
+      "item_numeric_id": "497",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::664",
+      "item_numeric_id": "664",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::99",
+      "item_numeric_id": "99",
+      "subset": "alpacaeval-easy",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        1,
+        2,
+        -2,
+        0,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1321",
+      "item_numeric_id": "1321",
+      "subset": "alpacaeval-hard",
+      "language": "hin_Deva",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::141",
+      "item_numeric_id": "141",
+      "subset": "alpacaeval-easy",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::124",
+      "item_numeric_id": "124",
+      "subset": "alpacaeval-easy",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        0,
+        0,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::334",
+      "item_numeric_id": "334",
+      "subset": "alpacaeval-easy",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        3,
+        -1,
+        -1,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::10",
+      "item_numeric_id": "10",
+      "subset": "alpacaeval-easy",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::695",
+      "item_numeric_id": "695",
+      "subset": "alpacaeval-easy",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        1,
+        1,
+        -2,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1249",
+      "item_numeric_id": "1249",
+      "subset": "alpacaeval-hard",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1092",
+      "item_numeric_id": "1092",
+      "subset": "alpacaeval-hard",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::940",
+      "item_numeric_id": "940",
+      "subset": "alpacaeval-hard",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1052",
+      "item_numeric_id": "1052",
+      "subset": "alpacaeval-hard",
+      "language": "jpn_Jpan",
+      "panel_size": 5,
+      "integer_margins": [
+        -3,
+        1,
+        0,
+        1,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::748",
+      "item_numeric_id": "748",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        1,
+        2,
+        -1,
+        -1,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::410",
+      "item_numeric_id": "410",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::275",
+      "item_numeric_id": "275",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::339",
+      "item_numeric_id": "339",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::416",
+      "item_numeric_id": "416",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        0,
+        -1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::151",
+      "item_numeric_id": "151",
+      "subset": "alpacaeval-easy",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1217",
+      "item_numeric_id": "1217",
+      "subset": "alpacaeval-hard",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        -1,
+        -1,
+        0,
+        1,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1297",
+      "item_numeric_id": "1297",
+      "subset": "alpacaeval-hard",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1489",
+      "item_numeric_id": "1489",
+      "subset": "alpacaeval-hard",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        -1,
+        0,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1418",
+      "item_numeric_id": "1418",
+      "subset": "alpacaeval-hard",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1356",
+      "item_numeric_id": "1356",
+      "subset": "alpacaeval-hard",
+      "language": "spa_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        -1,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::456",
+      "item_numeric_id": "456",
+      "subset": "alpacaeval-easy",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        1,
+        1,
+        -1,
+        0,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::801",
+      "item_numeric_id": "801",
+      "subset": "alpacaeval-easy",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::598",
+      "item_numeric_id": "598",
+      "subset": "alpacaeval-easy",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::689",
+      "item_numeric_id": "689",
+      "subset": "alpacaeval-easy",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::346",
+      "item_numeric_id": "346",
+      "subset": "alpacaeval-easy",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::851",
+      "item_numeric_id": "851",
+      "subset": "alpacaeval-hard",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        -1,
+        1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1483",
+      "item_numeric_id": "1483",
+      "subset": "alpacaeval-hard",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        -1,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1399",
+      "item_numeric_id": "1399",
+      "subset": "alpacaeval-hard",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1128",
+      "item_numeric_id": "1128",
+      "subset": "alpacaeval-hard",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        -2,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1488",
+      "item_numeric_id": "1488",
+      "subset": "alpacaeval-hard",
+      "language": "tur_Latn",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::179",
+      "item_numeric_id": "179",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        0,
+        0,
+        1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::714",
+      "item_numeric_id": "714",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::796",
+      "item_numeric_id": "796",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        -1,
+        0,
+        1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::116",
+      "item_numeric_id": "116",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::589",
+      "item_numeric_id": "589",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-easy::114",
+      "item_numeric_id": "114",
+      "subset": "alpacaeval-easy",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1444",
+      "item_numeric_id": "1444",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1447",
+      "item_numeric_id": "1447",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1138",
+      "item_numeric_id": "1138",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1081",
+      "item_numeric_id": "1081",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1078",
+      "item_numeric_id": "1078",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        1,
+        -1,
+        0
+      ],
+      "exact_margin_sum": "0"
+    },
+    {
+      "item_id": "alpacaeval-hard::1412",
+      "item_numeric_id": "1412",
+      "subset": "alpacaeval-hard",
+      "language": "zho_Hans",
+      "panel_size": 5,
+      "integer_margins": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "exact_margin_sum": "0"
+    }
+  ],
+  "scope": "Pinned saved-data verification; no model-score collection or provider calls rerun. The cause of missing provider scores is not established."
+}

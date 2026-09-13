@@ -1,0 +1,49 @@
+{
+  "source_commit": "37d500566b0b7a7701a1ca199fafc467f2612587",
+  "rows": 700,
+  "raw_agreement": 0.6871428571428572,
+  "corrected_agreement_strict_gt_zero": 0.7657142857142857,
+  "changed_verdicts": 55,
+  "all_changed_verdicts_had_raw_margin_zero": true,
+  "changed_corrected_margins": {
+    "3.3306690738754695e-17": 10,
+    "6.661338147750939e-17": 5,
+    "4.4408920985006264e-17": 12,
+    "8.881784197001253e-17": 6,
+    "5.551115123125783e-17": 3,
+    "2.2204460492503132e-17": 12,
+    "1.1102230246251566e-17": 7
+  },
+  "corrected_agreement_tolerance_1e_12": 0.6871428571428572,
+  "positive_counts_by_tolerance": {
+    "1e-16": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-15": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-14": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-13": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-12": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-11": {
+      "raw": 481,
+      "corrected": 481
+    },
+    "1e-10": {
+      "raw": 481,
+      "corrected": 481
+    }
+  },
+  "large_margin_changes": 3
+}
