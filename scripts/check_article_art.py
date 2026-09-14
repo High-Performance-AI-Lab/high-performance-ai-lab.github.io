@@ -139,8 +139,8 @@ def verify_article(provenance: dict) -> None:
             raise RuntimeError(f"article {key} is not 630")
     if parser.meta.get("twitter:card") != "summary_large_image":
         raise RuntimeError("article does not request a large social card")
-    if parser.meta.get("robots") != "noindex, nofollow":
-        raise RuntimeError("unlisted article lacks noindex, nofollow metadata")
+    if "robots" in parser.meta:
+        raise RuntimeError("public article still carries robots exclusion metadata")
     declared = {resolve_repo_path(row["public"]["path"]).resolve() for row in provenance["assets"]}
     used: set[Path] = set()
     for figure in figures:
@@ -168,12 +168,20 @@ def verify_article(provenance: dict) -> None:
         if target is not None and not target.exists():
             raise RuntimeError(f"broken local article link: {link}")
 
+    homepage_html = HOME_PAGE.read_text(encoding="utf-8")
     homepage = ArticleParser()
-    homepage.feed(HOME_PAGE.read_text(encoding="utf-8"))
+    homepage.feed(homepage_html)
     homepage.close()
-    article_path = f"/articles/{SLUG}"
-    if any(urlsplit(link).path.rstrip("/") == article_path for link in homepage.links):
-        raise RuntimeError("unlisted article is linked from the public homepage")
+    homepage_paths = {urlsplit(link).path.rstrip("/") for link in homepage.links}
+    expected_writing = {
+        f"/articles/{SLUG}",
+        "/articles/evals-as-theory-building",
+        "/articles/why-measure-local-ai",
+    }
+    if not expected_writing.issubset(homepage_paths):
+        raise RuntimeError("homepage does not link the lead article and all older writing")
+    if 'class="writing-feature"' not in homepage_html or 'class="writing-archive"' not in homepage_html:
+        raise RuntimeError("homepage writing hierarchy is missing its lead or archive")
 
 
 def verify_receipts() -> None:

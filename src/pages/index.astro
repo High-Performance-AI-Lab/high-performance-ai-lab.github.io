@@ -16,8 +16,10 @@ const team = (await getCollection("team"))
   .map((entry) => entry.data)
   .sort((a, b) => a.order - b.order);
 
-const latestWriting = (await getCollection("articles", ({ data }) => !data.unlisted))
-  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf())[0];
+const publicWriting = (await getCollection("articles", ({ data }) => !data.unlisted))
+  .sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+const latestWriting = publicWriting[0];
+const otherWriting = publicWriting.slice(1);
 const assetBase = import.meta.env.BASE_URL.endsWith("/")
   ? import.meta.env.BASE_URL
   : `${import.meta.env.BASE_URL}/`;
@@ -156,6 +158,13 @@ const roadmap = [
         <article class="writing-feature" aria-labelledby="latest-writing-title">
           <div class="writing-feature__title">
             <h3 id="latest-writing-title">{latestWriting.data.title}</h3>
+            <p class="writing-feature__meta">
+              <span>{latestWriting.data.author}</span>
+              <time datetime={latestWriting.data.publishedAt.toISOString()}>
+                {latestWriting.data.publishedAt.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+              </time>
+              <span>{latestWriting.data.readingTime} read</span>
+            </p>
           </div>
           <div class="writing-feature__excerpt">
             {latestWritingExcerpt.map((paragraph) => <p>{paragraph}</p>)}
@@ -167,6 +176,35 @@ const roadmap = [
             >Read more <span aria-hidden="true">{latestWriting.data.url ? "↗" : "→"}</span></a>
           </div>
         </article>
+
+        {otherWriting.length > 0 && (
+          <div class="writing-archive" aria-labelledby="other-writing-title">
+            <div class="writing-archive__head">
+              <h3 id="other-writing-title">Other writing</h3>
+              <span>Earlier dispatches</span>
+            </div>
+            <ol>
+              {otherWriting.map((article) => (
+                <li>
+                  <a
+                    href={article.data.url ?? `${assetBase}articles/${article.id}/`}
+                    target={article.data.url ? "_blank" : undefined}
+                    rel={article.data.url ? "noreferrer" : undefined}
+                  >
+                    <span class="writing-archive__title">{article.data.title}</span>
+                    <span class="writing-archive__meta">
+                      <time datetime={article.data.publishedAt.toISOString()}>
+                        {article.data.publishedAt.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" })}
+                      </time>
+                      <span>{article.data.readingTime}</span>
+                      <b aria-hidden="true">{article.data.url ? "↗" : "→"}</b>
+                    </span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
       </section>
     )}
 
