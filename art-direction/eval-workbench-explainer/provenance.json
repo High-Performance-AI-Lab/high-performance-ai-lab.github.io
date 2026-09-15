@@ -1,0 +1,104 @@
+{
+  "schema_version": "hpal-illustration-provenance/v1",
+  "project": "eval-workbench-explainer",
+  "created_at": "2026-09-15",
+  "tool": "built-in image generation",
+  "mode": "generation with local HPAL style references",
+  "claim_boundary": "All three images are conceptual product and roadmap artwork, not execution, customer, or research evidence.",
+  "style_references": [
+    {
+      "path": "public/img/articles/evals-as-theory-building/map-becomes-territory.webp",
+      "sha256": "267501a43d3601ee8fd946a8c201d1fce30d2247c65413ee1ccf7ae1e07d58d0"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/evaluator-under-evaluation.webp",
+      "sha256": "9f1af6fc1ad6f04c08c90f615969c6fea45371878a6485bad7c6243fa5dfe78d"
+    },
+    {
+      "path": "public/img/articles/evals-as-theory-building/eval-loop-retained-failures.webp",
+      "sha256": "95a09b36daba40624322319e6d9e836c58fcdbf314fcb62964802601f4048a5a"
+    },
+    {
+      "path": "public/img/articles/what-survives-the-next-model/premise-bridges.webp",
+      "sha256": "ee861a47bc6b558655a416721b6cc71fb2b7f76c57074c45e3be0ad7ad220d1e"
+    }
+  ],
+  "assets": [
+    {
+      "name": "workbench-loop",
+      "role": "hero; current foundation becoming a complete product loop",
+      "visual_thesis": "The foundation becomes a product only when meaning, execution, evidence, correction, and retention close one honest loop.",
+      "claim_boundary": "Conceptual roadmap art; the deliberate gap represents customer confirmation that is not yet demonstrated.",
+      "generation_prompt": "Create one editorial illustration for a High Performance AI Lab local product explainer. Match the provided references closely in visual language: warm off-white paper ground, loose expressive charcoal line, sparse hand-drawn technical marks, flat cut-paper shapes, restrained oxide-red as the only semantic accent, natural adult human figures, generous negative space, imperfect tactile print texture. Landscape 3:2 composition, 1536x1024. Concept: a single thoughtful operator stands at a wide physical workbench connecting three incomplete evidence stations into one loop. On the left, a small stack of tagged paper artifacts and a trace ribbon represent the current recorded foundation. In the middle, a transparent measurement frame and several test gates represent checks and investigation. On the right, one retained case is placed into a visible archive tray while the oxide-red cord returns toward the beginning—but leave one deliberate gap in the loop to show that fresh customer confirmation is still ahead. The operator actively threads the red cord through the stations; their body language is careful, investigative, not triumphant. The stations should feel like physical tools, not software screens. No words, letters, numbers, logos, UI chrome, dashboards, robots, glowing AI symbols, gradients, glossy 3D, photorealism, corporate stock imagery, or generic futuristic technology. Keep the image visually quiet and readable at web hero scale. The illustration is conceptual roadmap art, not documentary evidence.",
+      "references": ["map-becomes-territory.webp", "evaluator-under-evaluation.webp", "eval-loop-retained-failures.webp"],
+      "source": {
+        "path": "art-direction/eval-workbench-explainer/generated/workbench-loop.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2263547,
+        "sha256": "24a06996da7e66bb6457080b63a123bdf698a3177fc16d1c715b9ccfc616ed1f"
+      },
+      "public": {
+        "path": "public/img/explainers/eval-workbench/workbench-loop.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 173046,
+        "sha256": "fea51fd2a34c67ac0c2bc861f7087cfc6a2ef959ae606612057a49434f0082cb"
+      },
+      "qa": "Accepted on first generation. The evidence stations read left-to-right, the operator remains investigative, and the loop's open gap is visible at article width."
+    },
+    {
+      "name": "fx-comparison",
+      "role": "short-term native fx comparison and independent observation",
+      "visual_thesis": "The fx MVP is a fair paired path through fresh execution and independent observation, including visible missing evidence.",
+      "claim_boundary": "Conceptual roadmap art; no comparison or provider execution result is claimed.",
+      "generation_prompt": "Create one distinct editorial illustration for a High Performance AI Lab local product explainer, matching the provided reference images: warm off-white paper, loose charcoal drawing, tactile flat cut-paper forms, restrained oxide-red as the sole semantic accent, natural adult figures, sparse technical marks, generous negative space, imperfect print texture. Landscape 3:2, exactly 1536x1024. Concept: two adult collaborators conduct a bounded experiment on a small model room or account-settings workspace. One person is the meaning owner holding a simple physical reference card; the other is the engineer operating a hand-built testing rig. A sequence of paired work samples travels through identical charcoal frames: one untreated path and one path with a small oxide-red guidance sheet. At the far end, the outputs reach separate observation trays for function, visual intent, diagnostics, and effort. One tray is visibly empty to represent unavailable evidence, and an unresolved red thread stops there rather than pretending to pass. The scene should suggest fair comparison, protected controls, fresh execution, and human review without literal labels. No words, letters, numbers, logos, UI chrome, dashboards, code text, robots, glowing AI motifs, glossy 3D, photorealism, gradients, or corporate stock imagery. This is conceptual roadmap art for the proposed fx MVP, not proof that the experiment has run.",
+      "references": ["map-becomes-territory.webp", "evaluator-under-evaluation.webp", "eval-loop-retained-failures.webp"],
+      "source": {
+        "path": "art-direction/eval-workbench-explainer/generated/fx-comparison.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2296106,
+        "sha256": "884060619ca643b13bf632a566e7fc9be996c559fee239342121df133b2d3b2f"
+      },
+      "public": {
+        "path": "public/img/explainers/eval-workbench/fx-comparison.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 189216,
+        "sha256": "90f4073db34a0a5ac6772207c5e15163ff7169935cb8bceff0c3b68adb6753c0"
+      },
+      "qa": "Accepted on first generation. Paired lanes, shared observation shapes, and the deliberately empty evidence tray remain legible without literal interface labels."
+    },
+    {
+      "name": "customer-edge-boundary",
+      "role": "long-term customer authority and private Edge service boundary",
+      "visual_thesis": "Customer execution and retained tests keep operating locally while a separate methods service exchanges only permitted context and typed proposals.",
+      "claim_boundary": "Future architecture concept; no deployed Edge service or customer integration is claimed.",
+      "generation_prompt": "Create one distinct editorial illustration for a High Performance AI Lab local product explainer. Match the reference grammar: warm off-white paper, loose expressive charcoal, sparse technical construction marks, tactile flat cut-paper geometry, oxide-red as the only semantic accent, natural adults, generous negative space, imperfect analog print texture. Landscape 3:2, exactly 1536x1024. Concept: a controlled boundary between a customer-owned evaluation workshop in the foreground and a distant methods studio across a narrow gap. Two adult collaborators stand on opposite sides. The customer side holds a small agent workspace, frozen test gates, sealed evidence envelopes, and an archive of retained cases. The distant studio can send back only a small oxide-red proposal card across a narrow bridge. A gate at the boundary lets reviewed proposals and explicitly selected evidence cross, while raw material, keys, and final approval tokens remain visibly on the customer side. Accepted tests form a local closed loop that keeps working even when the bridge is raised. The composition should communicate authority, portability, local default, and a private methods service without literal labels. No words, letters, numbers, logos, screens, dashboards, cloud icons, robots, glowing AI motifs, glossy 3D, photorealism, gradients, or corporate stock imagery. This is a future architecture concept, not evidence of a deployed integration.",
+      "references": ["map-becomes-territory.webp", "eval-loop-retained-failures.webp", "premise-bridges.webp"],
+      "source": {
+        "path": "art-direction/eval-workbench-explainer/generated/customer-edge-boundary.png",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 2537869,
+        "sha256": "803282f368b5bf0e8053e9723269d45c47e410220a7364ebc12c7d90a846fe2c"
+      },
+      "public": {
+        "path": "public/img/explainers/eval-workbench/customer-edge-boundary.webp",
+        "width": 1536,
+        "height": 1024,
+        "media_type": "image/webp",
+        "bytes": 247096,
+        "sha256": "9e189ac5c8cdedd493a0f2b9b85d8a4e9c2c9b6219f6feb2e5e987dcebe2d4a0"
+      },
+      "qa": "Accepted on first generation. The local loop, retained key, narrow bridge, and separate methods studio communicate authority and portability at article width."
+    }
+  ],
+  "production": {
+    "webp": "cwebp -quiet -q 88 -metadata none",
+    "target_dimensions": "1536x1024"
+  }
+}

@@ -16,6 +16,14 @@ Run `npm run build` to validate all project frontmatter and produce the static s
 Run `npm run check:social` after a build to verify that every page has complete
 Open Graph and X card metadata and that the 1200×630 preview is published.
 
+## Internal product documentation
+
+The repository includes review-only product field guides that use the site’s
+visual language without entering the public homepage or navigation. See the
+[Evaluation Workbench field guide](docs/eval-workbench-field-guide.md), served
+locally at `/docs/eval-workbench/`. It remains `noindex` until publication is an
+explicit product decision.
+
 ## Add a product
 
 Products are flagship offerings shown in the homepage **Platform** section (a FIG-numbered bento with metrics). Add one Markdown file to [`src/content/products`](src/content/products). At least one should set `featured: true`.
