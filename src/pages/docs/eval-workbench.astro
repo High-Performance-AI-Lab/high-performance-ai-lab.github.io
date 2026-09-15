@@ -1,0 +1,940 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import LabMark from "../../components/LabMark.astro";
+import "../../styles/eval-workbench.css";
+
+const journey = [
+  {
+    n: "01",
+    name: "Connect",
+    question: "Can we run the real thing safely?",
+    copy: "Bind the existing agent command, workspace, reset boundary, evidence sources, credentials, destinations, and limits. Preflight should refuse before dispatch when a required capability is absent.",
+    artifact: "Connection profile + capability result",
+  },
+  {
+    n: "02",
+    name: "Define",
+    question: "What does good work mean here?",
+    copy: "Turn owner-approved references and examples into criteria, scenarios, permitted alternatives, missing knowledge, and candidate checks. Meaning remains reviewable; generated rules do not approve themselves.",
+    artifact: "Meaning epoch + proposed evaluation pack",
+  },
+  {
+    n: "03",
+    name: "Test",
+    question: "Do the checks deserve authority?",
+    copy: "Challenge the evaluator with correct, failing, unsupported, and unresolved controls. Freeze identities and the complete attempt plan before any decision-bearing run.",
+    artifact: "Qualified pack + complete run plan",
+  },
+  {
+    n: "04",
+    name: "Investigate",
+    question: "What failed—and what would change it?",
+    copy: "Follow a verdict back to exact traces, artifacts, observed effects, gaps, and versions. Separate agent defects, evaluator defects, legitimate alternatives, and missing observations.",
+    artifact: "Finding + reviewed hypothesis/change",
+  },
+  {
+    n: "05",
+    name: "Keep",
+    question: "Will the lesson survive the next change?",
+    copy: "Confirm against frozen expectations, preserve regressions and unknowns, retain the case, export the pack, and rerun it in a clean environment without depending on private authoring internals.",
+    artifact: "Portable retained case + lineage",
+  },
+];
+
+const evidenceKinds = [
+  ["Recorded fixture", "Replays known bytes and evaluator behavior offline.", "Does not mean an agent ran now."],
+  ["Worker transcript", "Records what the worker sent, received, and observed.", "Is not provider-signed or an independently observed effect."],
+  ["Fresh execution", "Shows a newly dispatched candidate under a declared profile.", "Does not prove correctness beyond the evidence and qualified checks."],
+  ["Independent effect", "Shows the app, customer workflow, CI, or business outcome changed.", "Cannot be inferred from a tool-call claim or synthetic control."],
+];
+
+const integrations = [
+  {
+    name: "Native fx ACP",
+    when: "M1 reference agent",
+    role: "Runs the actual target reasoning/tool loop and preserves native session behavior.",
+    boundary: "Workbench owns experiment slots and capture—not fx’s internal execution model.",
+    state: "planned",
+  },
+  {
+    name: "shadcn + lint",
+    when: "M1 domain pack",
+    role: "Supplies a pinned settings app, design-system policy, diagnostics, fixtures, and rendering surface.",
+    boundary: "Lint is one observation channel; lint-clean is not functional or visually correct.",
+    state: "planned",
+  },
+  {
+    name: "ProofPack",
+    when: "foundation + native roadmap",
+    role: "Binds evidence/evaluator identities, qualifications, graphs, and admitted execution receipts.",
+    boundary: "Integrity is not truth. Native refusals, errors, and unknowns stay native.",
+    state: "partial",
+  },
+  {
+    name: "Assay",
+    when: "descriptive M1; fuller M4",
+    role: "Provides supported design, assignment, decision, replay, projection, and memory paths.",
+    boundary: "A refusal is useful capability evidence, not positive inference or improvement.",
+    state: "partial",
+  },
+  {
+    name: "Private Edge",
+    when: "M1 authoring boundary",
+    role: "Proposes rubrics, skill/config changes, experiments, and later diagnoses from approved context.",
+    boundary: "Returns typed proposals. It cannot approve meaning, authorize execution, or become a runtime dependency of accepted local packs.",
+    state: "planned",
+  },
+  {
+    name: "Vercel receipts",
+    when: "adapter + later conformance",
+    role: "Imports and verifies supported native receipt, diagnostic, and public decision artifacts.",
+    boundary: "The bridge reads declared operations; it does not prove an external harness enforced a budget.",
+    state: "partial",
+  },
+  {
+    name: "Claude Agent SDK",
+    when: "M2 candidate adapter",
+    role: "A possible independently supplied customer-agent shape after the native fx reference loop works.",
+    boundary: "Not required for M1 and not a reason to migrate the customer’s agent framework.",
+    state: "later",
+  },
+  {
+    name: "LangGraph",
+    when: "M2 candidate adapter",
+    role: "A later process adapter that can map an external agent into the same evidence and plan contracts.",
+    boundary: "Reuses the shared substrate; it must not create a second scheduler or verdict language.",
+    state: "later",
+  },
+];
+
+const decisions = [
+  ["Reference M1", "Native fx + one pinned shadcn settings app", "Decided", "Do not add a second framework."],
+  ["Experiment", "Common lint-assisted baseline; reviewed skill is the only treatment delta", "Decided", "Freeze actual prompt/model/runtime and policy."],
+  ["Session inventory", "U0 + 6 development + review + 6 confirmation + fresh R01 = 14", "Conditional", "Workflow demonstration, not statistical power; allowance required."],
+  ["Meaning owner", "Named reviewer independent of checker author", "Open", "Needed before V02/V05 closure."],
+  ["fx runtime", "Exact source/build, model connection, Node/browser/container profile", "Held", "Local v0.0.8 binary is not the required admitted build."],
+  ["Edge service", "Repository, endpoint, release owner, and egress policy", "Open", "Server ownership begins only after the boundary is named."],
+  ["Assay gate", "Actual native capability outcome/refusal in descriptive M1", "Decided", "Supported inference remains held if capability refuses."],
+  ["Customer proof", "Independent owner, clean CI, later real change, repeated use", "Later", "Internal demonstration cannot close M2/M3."],
+];
+
+const nextWork = [
+  ["V01", "Freeze the offline handoff", "Sergio + Alvaro review", "Exact repo trees, fixture lock, adapters, commands, gaps, and reproducible runtime requirements—without live dispatch."],
+  ["V02–V05", "Pack, runtime, checks, controls", "Sergio lead", "Build the settings fixture and qualified verifier inventory; name the independent meaning/control reviewer."],
+  ["V06–V07", "Edge proposal + reviewed skill", "Alvaro server / Sergio client", "Set the private API boundary, retain originals and views, review the portable skill, and prove local use without Edge."],
+  ["V08–V10", "Fresh fx capture + investigation", "Sergio lead", "Run only after admission and budget authorization; capture session/effects/effort and preserve the actual Assay outcome."],
+  ["V11–V12", "Confirm, retain, export", "Shared", "Freeze C, run R01 fresh, expose the five-view journey, install the pack in clean internal CI."],
+  ["V13", "Independent counterpart", "Alvaro lead", "Customer/Vercel review, clean CI, and a later real change. This is the first customer-shaped acceptance gate."],
+];
+
+const critiques = [
+  {
+    title: "The plan is already wider than the first learning question.",
+    issue: "Fourteen sessions, multiple native systems, a private service, UI, portability, and independent effects can turn M1 into an integration program before product value is felt.",
+    move: "Define one five-minute ‘honest verdict’ demo and keep every other M1 task visibly subordinate to it. If a task does not improve Connect → verdict → why → keep, defer it.",
+  },
+  {
+    title: "A neat experiment can still be an unhelpful product.",
+    issue: "Three pairs per phase can demonstrate mechanics while saying little about usefulness. The design also risks optimizing for the test packet rather than a maintainer’s real decision.",
+    move: "Measure setup time, owner-review time, false alarms, unresolved gaps, investigation time, and whether the retained case changes a later decision—not just checks passed.",
+  },
+  {
+    title: "The evidence vocabulary is a feature, but it can overwhelm onboarding.",
+    issue: "Identity, qualification, authority, evidence, and lifecycle are necessary internally. Exposing them all at once makes the tool feel like a compliance console.",
+    move: "Default to a decision card: outcome, why, confidence boundary, next action. Let experts expand exact identities, native receipts, and transition history in place.",
+  },
+  {
+    title: "Edge can become a dependency disguised as intelligence.",
+    issue: "If the authoring service is required to interpret every failure or rerun a pack, customer control and portability are weakened.",
+    move: "Treat Edge as a proposal compiler. Every accepted result is an inspectable artifact; every accepted pack runs locally after Edge is disconnected.",
+  },
+  {
+    title: "Native integration breadth can hide a weak customer story.",
+    issue: "ProofPack, Assay, receipts, replay, memory, and adapters are powerful foundations, but completing all of them before independent use delays the market test.",
+    move: "Close only the native path that the current claim needs. Preserve refusals. Move full conformance and second-consumer extraction to M4 as planned.",
+  },
+  {
+    title: "‘Local by default’ needs an actual egress experience.",
+    issue: "A policy statement is not enough when Edge or a hosted judge receives selected context.",
+    move: "Show the exact payload before sending: files, excerpts, purpose, destination, retention, budget, and grant. Store the approved envelope with the returned proposal.",
+  },
+];
+
+const sources = [
+  ["Runtime foundation", "PR #1 / corrected code identity", "222fadc"],
+  ["Product architecture", "merged PR #6 docs", "426ec91"],
+  ["fx execution plan", "PR #7 head under review", "e75be60"],
+  ["Portable spec suite", "lab-specs local head", "94abbe3"],
+  ["Explainer snapshot", "local synthesis", "2026-09-15"],
+];
+---
+
+<BaseLayout
+  title="Evaluation Workbench — Product field guide"
+  description="A local-only, full-spectrum explainer for the Evaluation Workbench: current foundation, fx MVP, long-term architecture, integrations, evidence, code paths, and product critique."
+  noindex={true}
+>
+  <div class="ew-page" data-focus="all" id="top">
+    <header class="ew-nav">
+      <LabMark href="/" />
+      <nav class="ew-nav__links" aria-label="Explainer sections">
+        <a href="#overview">10 ft</a>
+        <a href="#journey">Journey</a>
+        <a href="#architecture">360°</a>
+        <a href="#spec-format">Spec</a>
+        <a href="#walkthrough">Today</a>
+        <a href="#mvp">Next</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="#critique">Review</a>
+      </nav>
+      <span class="local-flag"><i></i> Local field guide</span>
+    </header>
+
+    <main id="main">
+      <section class="ew-hero" aria-labelledby="hero-title">
+        <div class="ew-hero__copy">
+          <p class="section-code">HPAL / Evaluation systems / 2026</p>
+          <h1 id="hero-title">Make “good” <em>executable.</em></h1>
+          <p class="ew-hero__lead">Evaluation Workbench is a customer-controlled path from an agent and a human definition of good to qualified checks, bounded runs, understandable evidence, and cases that survive the next change.</p>
+          <div class="hero-actions">
+            <a class="ew-btn ew-btn--primary" href="#overview">Orient in 90 seconds <span>↓</span></a>
+            <a class="ew-btn" href="#install">Run the current slice <span>↘</span></a>
+          </div>
+          <dl class="hero-facts">
+            <div><dt>Current</dt><dd>Offline recorded/imported foundation</dd></div>
+            <div><dt>Next</dt><dd>One complete native fx + shadcn loop</dd></div>
+            <div><dt>Later</dt><dd>Independent customer use + reusable methods</dd></div>
+          </dl>
+        </div>
+        <figure class="hero-figure">
+          <img src="/img/explainers/eval-workbench/workbench-loop.webp" width="1536" height="1024" alt="An operator threads a red evidence cord through artifacts, test gates, and an archive, with a deliberate gap left in the loop." />
+          <figcaption><b>Visual thesis.</b> The foundation becomes a product only when meaning, execution, evidence, correction, and retention close one honest loop. The remaining gap is intentional.</figcaption>
+        </figure>
+        <div class="status-strip" aria-label="Claim boundary">
+          <span><i class="dot dot--current"></i><b>Shipped</b> means implemented and locally verified.</span>
+          <span><i class="dot dot--next"></i><b>Proposed</b> means specified, not yet demonstrated.</span>
+          <span><i class="dot dot--later"></i><b>Later</b> means gated by independent evidence.</span>
+        </div>
+      </section>
+
+      <section class="ew-section ew-section--overview" id="overview">
+        <div class="section-intro">
+          <div>
+            <p class="section-code">01 / The 10-foot view</p>
+            <h2>One product.<br />Three horizons.</h2>
+          </div>
+          <div>
+            <p>The short version is not “an eval dashboard.” It is a system for deciding whether a change preserved work people rely on—and retaining enough meaning and evidence to make that decision again.</p>
+            <div class="focus-controls" role="group" aria-label="Focus a product horizon">
+              <button type="button" class="is-active" data-focus-button="all" aria-pressed="true">All</button>
+              <button type="button" data-focus-button="current" aria-pressed="false">Current</button>
+              <button type="button" data-focus-button="next" aria-pressed="false">Next</button>
+              <button type="button" data-focus-button="later" aria-pressed="false">Later</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="horizon-grid">
+          <article class="horizon-card horizon-card--current" data-horizon="current">
+            <div class="card-top"><span class="state state--current">Current foundation</span><span>PR #1 · merged</span></div>
+            <h3>An honest offline verdict over retained evidence.</h3>
+            <p class="big-copy">A fictional supplier review proves the plumbing: versioned project inputs, recorded/imported artifacts, eight frozen checks, 0/1/2 exit semantics, evidence identities, CLI/UI inspection, export/install, and offline rescoring.</p>
+            <ul class="check-list">
+              <li>Beta recorded replay: 8/8 checks pass; no agent runs.</li>
+              <li>Acme remains unresolved when approval evidence is insufficient.</li>
+              <li>Pass, fail, unsupported, unresolved, error, and native refusal stay distinct.</li>
+              <li>Portable packs include policy, referenced tasks/assets, controls, and tamper checks.</li>
+            </ul>
+            <div class="card-boundary"><b>Does not prove</b> a fresh provider run, independent app effects, customer meaning, admitted native artifacts, or adoption.</div>
+          </article>
+
+          <article class="horizon-card horizon-card--next" data-horizon="next">
+            <div class="card-top"><span class="state state--next">Short term</span><span>M1 · specified</span></div>
+            <h3>Close one full loop with native fx.</h3>
+            <p class="big-copy">Use one pinned shadcn settings task to compare the same lint-assisted fx workflow with and without a reviewed design-system skill. Capture fresh sessions and independent app effects, investigate, confirm, and retain.</p>
+            <ul class="check-list">
+              <li>Separate meaning-owner and simulated task-user conversations.</li>
+              <li>U0 + six D + six C + fresh R01: 14 bounded sessions, max three turns each.</li>
+              <li>Only the skill changes between baseline and treatment.</li>
+              <li>Function, visual intent, diagnostics, allowed changes, coverage, and effort all matter.</li>
+            </ul>
+            <div class="card-boundary"><b>Held today</b> exact admitted fx build/model/browser profile, named reviewers, Edge endpoint/egress, and provider allowance.</div>
+          </article>
+
+          <article class="horizon-card horizon-card--later" data-horizon="later">
+            <div class="card-top"><span class="state state--later">Long term</span><span>M2 → M4</span></div>
+            <h3>A maintained body of evaluation knowledge.</h3>
+            <p class="big-copy">Independent teams connect their own agents, correct meaning, reuse portable packs in clean CI, and carry retained findings into later real changes. Private Edge methods improve without taking authority or portability away.</p>
+            <ul class="check-list">
+              <li>M2: independently supplied agent, owner review, clean CI, later change.</li>
+              <li>M3: repeated use, useful findings, support effort, and payment decisions.</li>
+              <li>M4: broader native conformance, replay/memory, later adapters, second-consumer core extraction.</li>
+              <li>Customer execution, rules, raw evidence, cases, and findings remain exportable.</li>
+            </ul>
+            <div class="card-boundary"><b>Research direction</b> includes an independently implemented failure → hypothesis → frozen test → change → confirmation → retained-case pattern.</div>
+          </article>
+        </div>
+
+        <aside class="north-star">
+          <span class="north-star__label">The purchase question</span>
+          <p>Can we change this agent <em>without breaking work our customers rely on?</em></p>
+          <span class="north-star__note">The practical output is not a score. It is a reproducible finding, an honest comparison, and a versioned evaluation pack.</span>
+        </aside>
+      </section>
+
+      <section class="ew-section" id="journey">
+        <div class="section-intro section-intro--tight">
+          <div>
+            <p class="section-code">02 / Product spine</p>
+            <h2>Five views.<br />One authority model.</h2>
+          </div>
+          <p>The UI, CLI, CI, and optional assistants are different projections over the same state transitions. None gets a secret shortcut around review, qualification, grants, or evidence.</p>
+        </div>
+        <ol class="journey">
+          {journey.map((step) => (
+            <li>
+              <div class="journey__n">{step.n}</div>
+              <div class="journey__name"><h3>{step.name}</h3><span>{step.question}</span></div>
+              <p>{step.copy}</p>
+              <div class="journey__artifact">Retains <b>{step.artifact}</b></div>
+            </li>
+          ))}
+        </ol>
+        <div class="authority-grid">
+          <article><span>Human authority</span><h3>Meaning owner</h3><p>Approves business meaning, consequential alternatives, execution grants, and proposed changes.</p></article>
+          <article><span>Operational authority</span><h3>Workbench</h3><p>Enforces lifecycle, identities, budgets, completeness, review state, and recoverable attempts.</p></article>
+          <article><span>Native authority</span><h3>ProofPack / Assay</h3><p>Own their admitted results, qualifications, refusals, errors, and capability limits.</p></article>
+          <article><span>Proposal authority</span><h3>Edge / assistants</h3><p>May inspect permitted context and propose artifacts; cannot self-approve or silently reinterpret history.</p></article>
+        </div>
+      </section>
+
+      <section class="ew-section ew-section--dark" id="architecture">
+        <div class="section-intro section-intro--light">
+          <div>
+            <p class="section-code">03 / The 360-degree view</p>
+            <h2>The model is one component.<br />The boundaries are the product.</h2>
+          </div>
+          <p>Customer-side execution remains the source of operational fact. Shared contracts make those facts portable. Native systems keep their own authority. Edge contributes methods through a narrow, reviewable exchange.</p>
+        </div>
+
+        <div class="architecture-map" role="img" aria-label="Architecture map showing customer-owned workspace, Workbench shared services, native ProofPack and Assay systems, and a separate private Edge service connected by reviewed proposals and permitted context.">
+          <div class="arch-zone arch-zone--customer">
+            <div class="arch-zone__head"><span>Customer boundary</span><b>Local by default</b></div>
+            <div class="arch-row arch-row--inputs">
+              <div class="arch-node"><small>Existing system</small><strong>Agent + repository</strong><span>fx first; later external adapters</span></div>
+              <div class="arch-node"><small>Human context</small><strong>Owner + task user</strong><span>Meaning, examples, corrections</span></div>
+              <div class="arch-node"><small>Observed world</small><strong>Workspace + app</strong><span>Artifacts, traces, browser effects</span></div>
+            </div>
+            <div class="arch-arrow"><span>versioned inputs · fresh evidence · explicit grants</span></div>
+            <div class="arch-core">
+              <div class="arch-core__title"><small>One customer-side product</small><strong>Evaluation Workbench</strong><span>Connect · Define · Test · Investigate · Keep</span></div>
+              <div class="arch-services">
+                <span>Typed contracts</span><span>Durable scheduler</span><span>Qualification</span><span>Investigation</span><span>Comparison</span><span>Export + lineage</span>
+              </div>
+              <div class="arch-interfaces"><span>UI</span><span>CLI</span><span>CI</span><span>Worker API</span></div>
+            </div>
+            <div class="arch-arrow arch-arrow--down"><span>frozen plans · exact identities · native requests</span></div>
+            <div class="arch-row arch-row--native">
+              <div class="arch-node arch-node--native"><small>Native evidence</small><strong>ProofPack</strong><span>Binding, graph, qualification, admitted execution</span></div>
+              <div class="arch-node arch-node--native"><small>Native inference</small><strong>Assay</strong><span>Design, assignment, decision, replay, memory</span></div>
+              <div class="arch-node arch-node--native"><small>Domain adapters</small><strong>fx · shadcn · receipts</strong><span>Preserve source semantics and limits</span></div>
+              <div class="arch-node arch-node--archive"><small>Durable customer asset</small><strong>Portable packs + cases</strong><span>Run without private authoring methods</span></div>
+            </div>
+          </div>
+
+          <div class="edge-bridge" aria-hidden="true"><span>approved excerpts →</span><i></i><span>← typed proposals</span></div>
+
+          <div class="arch-zone arch-zone--edge">
+            <div class="arch-zone__head"><span>Separate service boundary</span><b>Private methods</b></div>
+            <div class="edge-node"><small>Authoring</small><strong>Rubric decomposition</strong><span>Criteria, alternatives, questions, evidence needs</span></div>
+            <div class="edge-node"><small>Engineering session</small><strong>Skill + experiment proposals</strong><span>Inspectable diffs and bounded operations</span></div>
+            <div class="edge-node"><small>Later</small><strong>Diagnosis + method learning</strong><span>Qualified against useful findings, false alarms, and total effort</span></div>
+            <div class="edge-refusal">No raw workspace by default.<br />No credentials. No approval token.<br />No hidden control truth.</div>
+          </div>
+        </div>
+
+        <div class="architecture-principles">
+          <p><b>Tool call ≠ effect.</b> A transcript saying “saved” is not a browser-observed saved state.</p>
+          <p><b>Hash ≠ truth.</b> Identity proves which bytes were used, not that their claim is correct.</p>
+          <p><b>Replay ≠ fresh run.</b> Rescoring evidence can test a checker change, not a new agent behavior.</p>
+          <p><b>Source pin ≠ runtime.</b> An installed binary must be independently bound to its admitted source and build.</p>
+        </div>
+      </section>
+
+      <section class="ew-section ew-section--spec" id="spec-format">
+        <div class="section-intro">
+          <div>
+            <p class="section-code">04 / The spec format</p>
+            <h2>Define the run inside.<br />Verify the claim outside.</h2>
+          </div>
+          <p>There are two related formats, and the distinction matters. Workbench’s internal packet says what should be evaluated. The separate <code>lab-specs</code> contracts say how a third party can inspect the resulting claim without importing our Python implementation.</p>
+        </div>
+
+        <div class="spec-layers">
+          <article class="spec-layer spec-layer--internal">
+            <div class="spec-layer__top"><span>Layer A</span><b>Workbench definition packet</b><em>Current internal contracts</em></div>
+            <h3>What are we planning to test?</h3>
+            <p>Authoring and execution use a closed, versioned packet. Every selected scenario, candidate or retained artifact, scorer, repetition, limit, observation, and required metric becomes a planned cell before execution.</p>
+            <div class="spec-chain" aria-label="Workbench definition packet flow">
+              <span>Outcome<br />meaning</span><i>→</i><span>Framework<br />pack</span><i>→</i><span>Lane</span><i>→</i><span>Scenario</span><i>→</i><span>Scorer<br />binding</span><i>→</i><span>Frozen<br />plan</span>
+            </div>
+            <ul>
+              <li><code>FrameworkPackV2</code> declares metrics, lanes, scenarios, scorers, adapters, and qualification references.</li>
+              <li><code>LaneV2</code> selects the execution or artifact route, candidates, repetitions, budgets, and required/advisory cells.</li>
+              <li><code>ScenarioV2</code> names input, protected-reference, and output requirements plus applicability and split.</li>
+              <li><code>ScorerBindingV2</code> pins a metric to its implementation, configuration, evidence needs, and qualification.</li>
+            </ul>
+          </article>
+
+          <article class="spec-layer spec-layer--portable">
+            <div class="spec-layer__top"><span>Layer B</span><b>Lab portable specifications</b><em>Implemented locally · distribution held</em></div>
+            <h3>What does the result actually prove?</h3>
+            <p>Language-neutral normative text, informative schemas, conformance corpora, and independent implementations define the bytes a verifier reads. Gaps are data, not missing fields or optimistic defaults.</p>
+            <div class="spec-chain spec-chain--portable" aria-label="Portable spec verification flow">
+              <span>Canonical<br />JSON</span><i>→</i><span>Eval<br />receipt</span><i>→</i><span>ProofPack<br />bundle</span><i>→</i><span>Assay<br />gate</span><i>→</i><span>Independent<br />verifier</span>
+            </div>
+            <ul>
+              <li><code>lab-canonical-json/v1</code> gives every digest one exact cross-language byte encoding.</li>
+              <li><code>eval-receipt/v1</code> records one evaluated cell: subject, context, attempts, selection, coverage, reuse, and unknowns.</li>
+              <li><code>proofpack-evidence/v1</code> seals the exact artifact inventory around that receipt.</li>
+              <li><code>lab-decision-gate/v1</code> maps registered thresholds and observed statistics to an Assay outcome.</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="spec-contracts">
+          <article><span>01</span><small>Encoding</small><h3>Canonical JSON</h3><p>Strict UTF-8 JSON, Unicode code-point key order, integer and real kinds kept distinct, finite numbers only, and no serializer-default ambiguity.</p><b><code>digest(v) = sha256(E(v))</code></b></article>
+          <article><span>02</span><small>Measurement</small><h3>Eval receipt</h3><p>One receipt per system/task cell. Every launch stays visible in order; selection and coverage must agree with the attempt ledger.</p><b>No aggregates hide attempts.</b></article>
+          <article><span>03</span><small>Integrity</small><h3>Evidence bundle</h3><p><code>proof.lock</code> binds subject, context, paths, sizes, bytes, drift predicates, and the chained evidence log to one root.</p><b>Integrity, never truth.</b></article>
+          <article><span>04</span><small>Decision</small><h3>Assay gate</h3><p>A pure function over registered thresholds and factual statistics returns <code>ADMIT</code>, <code>REFUSE</code>, or <code>INVALID_OR_UNVERIFIED</code>.</p><b>The input contains no verdict.</b></article>
+          <article><span>05</span><small>Interop</small><h3>Conformance</h3><p>Any language speaks the same subprocess protocol and runs the same corpora. Agreement is tested byte-for-byte and code-for-code.</p><b>Spec text + vectors decide.</b></article>
+        </div>
+
+        <div class="spec-anatomy">
+          <div class="spec-code">
+            <div class="spec-code__head"><span class="state state--current">Abridged anatomy</span><b>Illustrative shape—not a valid conformance fixture</b></div>
+            <pre><code>&#123;
+  <span class="key">"schema_version"</span>: <span class="string">"eval-receipt/v1"</span>,
+  <span class="key">"receipt_id"</span>: <span class="string">"fx/settings/D02/baseline/mapping-2"</span>,
+  <span class="key">"receipt_version"</span>: <span class="number">1</span>,
+  <span class="key">"produced_at"</span>: <span class="string">"2026-09-15T20:00:00Z"</span>,
+  <span class="key">"producer"</span>: &#123;
+    <span class="key">"id"</span>: <span class="string">"evalworkbench"</span>,
+    <span class="key">"version"</span>: <span class="string">"0.1.0"</span>,
+    <span class="key">"source_digest"</span>: <span class="string">"sha256:…"</span>
+  &#125;,
+  <span class="key">"subject"</span>: &#123;
+    <span class="key">"system"</span>: &#123;
+      <span class="key">"model_id"</span>: <span class="string">"configured-model-id"</span>,
+      <span class="key">"model_id_source"</span>: <span class="string">"configured"</span>,
+      <span class="key">"harness"</span>: &#123;<span class="key">"id"</span>: <span class="string">"fx-acp"</span>, <span class="key">"version"</span>: <span class="string">"admitted-build"</span>&#125;
+    &#125;,
+    <span class="key">"task"</span>: &#123;
+      <span class="key">"task_id"</span>: <span class="string">"settings-save-error-state"</span>,
+      <span class="key">"source"</span>: &#123;<span class="key">"kind"</span>: <span class="string">"git"</span>, <span class="key">"revision"</span>: <span class="string">"…"</span>&#125;,
+      <span class="key">"fixture_digest"</span>: <span class="string">"sha256:…"</span>,
+      <span class="key">"prompt_digest"</span>: <span class="string">"sha256:…"</span>,
+      <span class="key">"grader_digest"</span>: <span class="string">"sha256:…"</span>
+    &#125;
+  &#125;,
+  <span class="key">"context"</span>: &#123;
+    <span class="key">"configuration"</span>: &#123;<span class="key">"digest"</span>: <span class="string">"sha256:…"</span>, <span class="key">"parameters"</span>: &#123;<span class="key">"arm"</span>: <span class="string">"baseline"</span>&#125;&#125;,
+    <span class="key">"environment"</span>: &#123;<span class="key">"runtimes"</span>: [&#123;<span class="key">"name"</span>: <span class="string">"node"</span>, <span class="key">"version"</span>: <span class="string">"…"</span>&#125;]&#125;
+  &#125;,
+  <span class="key">"binding"</span>: &#123;<span class="key">"subject_digest"</span>: <span class="string">"sha256:…"</span>, <span class="key">"context_digest"</span>: <span class="string">"sha256:…"</span>&#125;,
+  <span class="key">"attempts"</span>: [&#123;
+    <span class="key">"index"</span>: <span class="number">1</span>, <span class="key">"status"</span>: <span class="string">"passed"</span>,
+    <span class="key">"disposition"</span>: <span class="string">"counted"</span>, <span class="key">"verdict_source"</span>: <span class="string">"mixed"</span>,
+    <span class="key">"checks"</span>: [<span class="comment">"…every check…"</span>], <span class="key">"artifacts"</span>: [<span class="comment">"…transcript, patch, build, browser effects…"</span>]
+  &#125;],
+  <span class="key">"selection"</span>: &#123;<span class="key">"rule"</span>: <span class="string">"single_run"</span>, <span class="key">"k"</span>: <span class="number">1</span>, <span class="key">"reported_verdict"</span>: <span class="string">"passed"</span>&#125;,
+  <span class="key">"coverage"</span>: &#123;<span class="key">"attempts_registered"</span>: <span class="number">1</span>, <span class="key">"attempts_launched"</span>: <span class="number">1</span>, <span class="key">"attempts_completed"</span>: <span class="number">1</span>, <span class="key">"attempts_recorded"</span>: <span class="number">1</span>, <span class="key">"not_available"</span>: <span class="boolean">false</span>&#125;,
+  <span class="key">"provenance"</span>: &#123;<span class="key">"measurement"</span>: <span class="string">"fresh"</span>, <span class="key">"sweep_id"</span>: <span class="string">"m1-confirmation"</span>&#125;,
+  <span class="key">"classification"</span>: &#123;<span class="key">"unknown"</span>: <span class="boolean">true</span>, <span class="key">"reason"</span>: <span class="string">"not_applicable"</span>&#125;,
+  <span class="key">"extensions"</span>: &#123;<span class="key">"org.hpal.workbench"</span>: &#123;<span class="key">"plan_id"</span>: <span class="string">"…"</span>&#125;&#125;
+&#125;</code></pre>
+          </div>
+
+          <div class="spec-rules">
+            <div class="spec-rule spec-rule--red"><span>Rule 01</span><h3>No <code>null</code>.</h3><p>An unknown fact is explicit and typed:</p><pre><code>&#123;<span class="key">"unknown"</span>: <span class="boolean">true</span>,
+ <span class="key">"reason"</span>: <span class="string">"not_recorded"</span>,
+ <span class="key">"detail"</span>: <span class="string">"provider did not attest model"</span>&#125;</code></pre></div>
+            <div class="spec-rule"><span>Rule 02</span><h3>Subject ≠ context.</h3><p>System + task identify what the number is about. Configuration + environment identify the conditions. Each reduces to its own canonical digest.</p></div>
+            <div class="spec-rule"><span>Rule 03</span><h3>Every attempt survives.</h3><p>Passed, failed, error, timeout, aborted, not-run, and unknown attempts remain ordered with counted, discarded, or superseded disposition.</p></div>
+            <div class="spec-rule"><span>Rule 04</span><h3>Extensions cannot change the verdict.</h3><p>Namespaced extensions are sealed as bytes but excluded from subject/context digests, selection, coverage, and the core receipt diff.</p></div>
+          </div>
+        </div>
+
+        <div class="spec-bundle">
+          <div class="spec-bundle__tree">
+            <span>Portable bundle</span>
+            <code>evaluation.proofpack/</code>
+            <code>├── <b>proof.lock</b> <i>inventory + root binding</i></code>
+            <code>├── <b>evidence.jsonl</b> <i>chained sealing log</i></code>
+            <code>├── <b>receipt.json</b> <i>one evaluated cell</i></code>
+            <code>├── attempts/1/<b>transcript.json</b></code>
+            <code>├── attempts/1/<b>patch.diff</b></code>
+            <code>├── attempts/1/<b>build.txt</b></code>
+            <code>└── attempts/1/<b>browser-effects.json</b></code>
+          </div>
+          <div class="spec-outcomes">
+            <span>Verifier outcomes</span>
+            <div><b>verified_full</b><p>Every locked artifact is present and matches; receipt, evidence chain, inventory, root, and subject/context bindings agree.</p></div>
+            <div><b>verified_detached</b><p><code>proof.lock</code> and <code>receipt.json</code> agree, but absent locked artifacts stay explicitly unconfirmed.</p></div>
+            <div><b>invalid</b><p>A typed code identifies the first failed rule. Invalid never degrades into detached or unresolved success.</p></div>
+          </div>
+          <div class="spec-limit">
+            <span>What verification still does not prove</span>
+            <p>That the evidence is true, complete, independently authored, produced under the claimed process, or that the evaluator measures the owner’s intended meaning. The spec makes those questions inspectable; it does not answer them by assertion.</p>
+          </div>
+        </div>
+
+        <aside class="spec-conformance">
+          <div><span>Normative</span><strong>Markdown specification text</strong><small>Wins where JSON Schema cannot express kind, ordering, or cross-member rules.</small></div>
+          <div><span>Informative</span><strong>JSON Schemas</strong><small>Useful for tooling, but not the final authority over canonical integers/reals and validation order.</small></div>
+          <div><span>Executable</span><strong>Conformance corpora</strong><small>Receipt corpus: 111 cases—58 validate, 15 verify, 30 diff, and 8 build.</small></div>
+          <div><span>Independent</span><strong>TypeScript + Python; Go subset</strong><small>Implementations speak one subprocess protocol; a static browser verifier handles evidence bundles.</small></div>
+        </aside>
+
+        <div class="spec-commands">
+          <div><span>Use the spec repository</span><h3>One command surface for every implementation.</h3><p>The corpus—not a prose claim—decides whether another language agrees.</p></div>
+          <pre><code><span class="comment"># From the local lab-specs repository</span>
+cd /Users/alvarostudio/Code/lab-specs
+make verify
+
+<span class="comment"># Drive independent implementations over the same corpus.</span>
+python3 harness/run_conformance.py \
+  --impl <span class="string">"node impl/ts/dist/cli.js"</span>
+python3 harness/run_conformance.py \
+  --impl <span class="string">".venv/bin/python impl/py/adapter.py"</span>
+python3 harness/run_conformance.py \
+  --impl <span class="string">"impl/go/evalreceipt-verify"</span> --spec canonical evidence
+
+<span class="comment"># Create a self-contained implementation packet.</span>
+python3 harness/make_packet.py \
+  --spec evidence --language go --out packets/</code></pre>
+        </div>
+
+        <div class="mapping-note"><span>Historical mapping revision 2</span><p>New agent-eval receipts preserve retained historical facts in the core and keep unverifiable current assumptions unknown. Current-source digests, reconstructed parameters, and build-time observations live under a namespaced extension; they may change the sealed document without pretending they were observed in the original run.</p></div>
+
+        <div class="spec-not-pack"><b>The important boundary:</b> a Workbench pack is an executable evaluation definition. A lab-spec receipt is a portable account of one measured cell. The pack can produce many receipts; a receipt cannot silently redefine the pack.</div>
+      </section>
+
+      <section class="ew-section" id="walkthrough">
+        <div class="section-intro">
+          <div>
+            <p class="section-code">05 / What works today</p>
+            <h2>The synthetic supplier review,<br />read honestly.</h2>
+          </div>
+          <p>The current example is deliberately fictional. It is valuable because it makes the mechanics inspectable without provider spend—not because it represents customer validation.</p>
+        </div>
+
+        <div class="walkthrough-layout">
+          <div class="terminal-card">
+            <div class="terminal-card__bar"><span></span><span></span><span></span><b>recorded / zero-provider</b></div>
+            <pre><code><span class="cmd">$</span> evalworkbench init demo-project --example
+<span class="cmd">$</span> cd demo-project
+
+<span class="comment"># Challenge the meaning before trusting the evaluator.</span>
+<span class="cmd">$</span> evalworkbench challenge-meaning \
+    --case beta-ready --reviewer control-owner
+
+correct_control           <span class="pass">PASS</span>
+wrong_authority           <span class="fail">FAIL</span>
+invented_citation         <span class="fail">FAIL</span>
+unsupported_claim         <span class="unknown">UNRESOLVED</span>
+missing_approval          <span class="unknown">UNRESOLVED</span>
+
+<span class="comment"># Replay retained Beta bytes. No agent is dispatched.</span>
+<span class="cmd">$</span> evalworkbench run \
+    --case beta-ready --mode recorded --json run.json
+
+lifecycle                 CLOSED
+verdict                   <span class="pass">PASS</span>
+checks                    8 / 8
+provider_calls            0</code></pre>
+          </div>
+
+          <div class="verdict-card">
+            <div class="verdict-card__head"><span class="state state--current">Imported evidence</span><span>Beta / recorded</span></div>
+            <div class="verdict-score"><strong>8</strong><span>/ 8 checks</span></div>
+            <h3>Pass—with a narrow claim.</h3>
+            <p>The retained output has citations; supplier scope, authority, version, and expiry hold; required criteria are complete; conflicts are accounted for; and the saved artifact is structurally valid.</p>
+            <div class="not-run"><b>No agent ran.</b> The replay proves deterministic evaluation behavior over known bytes.</div>
+          </div>
+        </div>
+
+        <div class="meaning-grid">
+          <article><span class="result result--pass">Pass</span><h3>Evidence satisfies the reviewed check.</h3><p>Example: Beta cites current, authoritative supplier-scoped records for every required criterion.</p></article>
+          <article><span class="result result--fail">Fail</span><h3>Evidence contradicts a qualified expectation.</h3><p>Example: an invented citation, wrong supplier, expired evidence, or open finding is observed.</p></article>
+          <article><span class="result result--unsupported">Unsupported</span><h3>The requested claim is outside the check’s supported scope.</h3><p>Example: one approval citation is asserted as proof for every distinct criterion.</p></article>
+          <article><span class="result result--unresolved">Unresolved</span><h3>A decision-bearing basis is missing.</h3><p>Example: Acme has a conditional approval with an open finding. It is neither silently passed nor forced into a semantic failure.</p></article>
+        </div>
+
+        <div class="manual-loop">
+          <div class="manual-loop__title"><span>Current correction path</span><h3>Manual, explicit, history-preserving.</h3></div>
+          <ol>
+            <li><b>Inspect</b><span>Open the witness or missing basis behind the result.</span></li>
+            <li><b>Classify</b><span>Agent/output defect, legitimate alternative, bad expectation, or missing observation?</span></li>
+            <li><b>Revise</b><span>Change the agent, meaning, checker, or capture path under a new identity.</span></li>
+            <li><b>Challenge</b><span>Run correct, failing, unsupported, and unresolved controls again.</span></li>
+            <li><b>Authorize</b><span>Freeze the case and explicitly approve a fresh execution.</span></li>
+            <li><b>Confirm + keep</b><span>Check the fix and regressions; retain old and new evidence.</span></li>
+          </ol>
+        </div>
+
+        <div class="evidence-table-wrap">
+          <table class="evidence-table">
+            <thead><tr><th>Evidence kind</th><th>It can support</th><th>It cannot support</th></tr></thead>
+            <tbody>
+              {evidenceKinds.map(([kind, supports, not]) => <tr><th>{kind}</th><td>{supports}</td><td>{not}</td></tr>)}
+            </tbody>
+          </table>
+        </div>
+        <aside class="verification-receipt">
+          <div><span>Local source gate</span><strong>290 passed · 3 skipped</strong><small>Ruff, packaged resources, MCP reproduction, TypeScript, UI build, and generated comparison passed.</small></div>
+          <div><span>Clean install</span><strong>Verified offline</strong><small>Fresh Python 3.12.13 environment, portable verification, provider calls 0; native qualification stayed separate.</small></div>
+          <div><span>Hosted CI</span><strong>Did not start</strong><small>GitHub billing/spending annotation; this is an external hold, not a passing CI result.</small></div>
+          <div><span>Excluded work</span><strong>None dispatched</strong><small>No provider, native installation, GPU, Docker, fx, Edge, benchmark, or customer execution.</small></div>
+        </aside>
+      </section>
+
+      <section class="ew-section ew-section--paper" id="mvp">
+        <div class="section-intro">
+          <div>
+            <p class="section-code">06 / The short-term vision</p>
+            <h2>One native fx task.<br />A complete evaluation loop.</h2>
+          </div>
+          <p>The proposed M1 reference is intentionally singular: a pinned Tailwind v4 account-settings app, native fx ACP, one common lint-assisted workflow, and a reviewed design-system skill as the only treatment delta.</p>
+        </div>
+
+        <figure class="feature-figure">
+          <img src="/img/explainers/eval-workbench/fx-comparison.webp" width="1536" height="1024" alt="Two collaborators run paired samples through identical test frames into observation trays, one of which remains visibly empty." loading="lazy" />
+          <figcaption><b>Claim boundary.</b> This is the planned comparison, not a pilot result. The empty tray is the desired behavior when an observation channel is unavailable.</figcaption>
+        </figure>
+
+        <div class="task-brief">
+          <div class="task-brief__head">
+            <span class="state state--next">Proposed M1 task family</span>
+            <h3>Improve an account-settings experience without weakening its design system.</h3>
+          </div>
+          <div class="task-brief__grid">
+            <div><small>Requested behavior</small><p>Add a display-name field with validation and save/error states; require accessible confirmation before reset.</p></div>
+            <div><small>Baseline</small><p>The same native fx build, model, prompt, repo, lint policy, repair budget, tools, and user-response policy.</p></div>
+            <div><small>Treatment</small><p>Only one reviewed, content-addressed design-system skill is added. Loaded guidance is captured—not assumed.</p></div>
+            <div><small>Independent outcomes</small><p>Build/browser assertions, rendered intent review, raw diagnostics, source diff, coverage, retries, model usage, elapsed and human time.</p></div>
+          </div>
+        </div>
+
+        <div class="protocol">
+          <div class="protocol__rail" aria-hidden="true"></div>
+          <article><span>U0</span><h3>Understand the baseline</h3><p>One fresh discovery session establishes actual prompt, tools, policy, skill roots, app behavior, capture limits, and the first unresolved questions.</p><b>1 session</b></article>
+          <article><span>D</span><h3>Develop both arms</h3><p>Three paired tasks: baseline and skill treatment. The task user answers under a frozen policy; every helper, retry, and missing cell stays in the denominator.</p><b>6 sessions</b></article>
+          <article><span>Review</span><h3>Correct the theory</h3><p>The owner reviews findings and meaning. A skill, checker, or criterion change gets its own identity and consequence; nothing rewrites D.</p><b>Human gate</b></article>
+          <article><span>C</span><h3>Protected confirmation</h3><p>Three new paired tasks exercise frozen expectations and withheld controls. Same infrastructure, separate inventory, no favorable-case selection.</p><b>6 sessions</b></article>
+          <article><span>R01</span><h3>Fresh reuse</h3><p>Run one retained case again through the accepted local pack to prove the lesson survives beyond its originating conversation.</p><b>1 session</b></article>
+        </div>
+
+        <div class="criteria-grid">
+          <article><span>01</span><h3>Task function</h3><p>Can the user edit, validate, save, recover from error, and confirm a destructive reset?</p></article>
+          <article><span>02</span><h3>Design intent</h3><p>Does the interface use permitted components/tokens while preserving declared visual and interaction intent?</p></article>
+          <article><span>03</span><h3>Lint behavior</h3><p>Did the effective rules detect intended faults without rejecting legitimate alternatives or becoming inert?</p></article>
+          <article><span>04</span><h3>Allowed changes</h3><p>Did the agent stay inside writable paths and avoid weakening policy, tests, protected references, or checks?</p></article>
+          <article><span>05</span><h3>Coverage</h3><p>Were all planned cells attempted, outputs collected, cleanup observed, and gaps left explicit?</p></article>
+          <article><span>06</span><h3>Effort</h3><p>How many attempts, turns, tokens, elapsed minutes, review minutes, setup interventions, and retries?</p></article>
+        </div>
+      </section>
+
+      <section class="ew-section" id="roadmap">
+        <div class="section-intro">
+          <div>
+            <p class="section-code">07 / Delivery map</p>
+            <h2>Build the narrow loop.<br />Then earn expansion.</h2>
+          </div>
+          <p>Work-package IDs are not progress theater. Each row names the retained outcome and the evidence needed to call it done.</p>
+        </div>
+
+        <div class="milestones">
+          <article class="milestone milestone--done"><span>M0</span><small>Foundation</small><h3>Local recorded truth</h3><p>Generic contracts, scheduler, evaluation, evidence identities, comparison, UI/CLI, portable project/report paths.</p><b>Implemented slice</b></article>
+          <article class="milestone milestone--active"><span>M1</span><small>Technical MVP</small><h3>Complete fx loop</h3><p>Fresh native trace and effects, reviewed meaning, challenged checks, diagnosis, confirmation, retained case, clean internal CI.</p><b>Next product gate</b></article>
+          <article><span>M2</span><small>Customer alpha</small><h3>Independent workflow</h3><p>Customer-supplied agent and owner, comparison, clean customer CI, later real change, accepted usefulness.</p><b>Not demonstrated</b></article>
+          <article><span>M3</span><small>Repeat value</small><h3>Useful more than once</h3><p>Independent onboarding, return use, support cost, false alarms, retained knowledge consumed, real payment decisions.</p><b>Business hypothesis</b></article>
+          <article><span>M4</span><small>Reusable roadmap</small><h3>Broader conformance</h3><p>Fuller native adapters, replay/memory, later methods, and core extraction only after a real second consumer.</p><b>Conditional expansion</b></article>
+        </div>
+
+        <div class="work-table-wrap">
+          <table class="work-table">
+            <thead><tr><th>Work</th><th>Outcome</th><th>Ownership</th><th>Acceptance in plain language</th></tr></thead>
+            <tbody>{nextWork.map(([id, outcome, owner, acceptance]) => <tr><th>{id}</th><td>{outcome}</td><td>{owner}</td><td>{acceptance}</td></tr>)}</tbody>
+          </table>
+        </div>
+
+        <aside class="review-state">
+          <div><span>Repository state</span><strong>PR #1 merged</strong><small>Corrected runtime foundation at <code>222fadc</code></small></div>
+          <div><span>Architecture state</span><strong>PR #6 merged</strong><small>Product direction is documented; features are not implied delivered.</small></div>
+          <div><span>fx plan state</span><strong>PR #7 open</strong><small>Substance accepted; exact-base and immutable-link refresh still requested.</small></div>
+          <div><span>Live state</span><strong>Not authorized</strong><small>No fx task, provider, Edge exchange, or customer experiment has run.</small></div>
+        </aside>
+      </section>
+
+      <section class="ew-section ew-section--dark" id="integrations">
+        <div class="section-intro section-intro--light">
+          <div><p class="section-code">08 / Integration atlas</p><h2>Reuse native authority.<br />Do not blur it.</h2></div>
+          <p>Every integration gets one job, one source identity, and one refusal boundary. The Workbench composes them; it does not translate unknown into success.</p>
+        </div>
+        <div class="integration-grid">
+          {integrations.map((item, i) => (
+            <article>
+              <div class="integration-grid__top"><span>{String(i + 1).padStart(2, "0")}</span><b class:list={[`int-state int-state--${item.state}`]}>{item.when}</b></div>
+              <h3>{item.name}</h3>
+              <p>{item.role}</p>
+              <div><b>Boundary</b>{item.boundary}</div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="ew-section" id="future">
+        <div class="section-intro">
+          <div><p class="section-code">09 / Long-term operating model</p><h2>Private methods.<br />Customer-owned truth.</h2></div>
+          <p>The durable advantage is not a secret score. It is a disciplined exchange: customer evidence stays governed; private methods generate inspectable proposals; accepted evaluation assets remain portable.</p>
+        </div>
+        <figure class="feature-figure feature-figure--future">
+          <img src="/img/explainers/eval-workbench/customer-edge-boundary.webp" width="1536" height="1024" alt="A customer-owned workshop keeps keys, evidence, tests, and archives locally while exchanging one reviewed proposal card with a separate methods studio across a narrow bridge." loading="lazy" />
+          <figcaption><b>Claim boundary.</b> This is intended architecture, not a deployed service. Raising the bridge must not stop an accepted pack from running locally.</figcaption>
+        </figure>
+
+        <div class="future-loop">
+          <div><span>1</span><h3>Permit</h3><p>The customer chooses exact excerpts, purpose, destination, retention, and budget.</p></div>
+          <div><span>2</span><h3>Propose</h3><p>Edge returns criteria, questions, skill/config diffs, or experiments through typed contracts.</p></div>
+          <div><span>3</span><h3>Review</h3><p>A human owner accepts, corrects, or rejects meaning and visible artifacts.</p></div>
+          <div><span>4</span><h3>Qualify</h3><p>Independent controls establish where checks and proposals are useful.</p></div>
+          <div><span>5</span><h3>Run locally</h3><p>Accepted packs use customer-side execution and native evidence boundaries without Edge.</p></div>
+          <div><span>6</span><h3>Learn carefully</h3><p>Later method revisions are judged on useful findings, false alarms, and total human/compute effort.</p></div>
+        </div>
+      </section>
+
+      <section class="ew-section ew-section--paper" id="install">
+        <div class="section-intro">
+          <div><p class="section-code">10 / Code + installation</p><h2>Start with the path<br />that is actually proved.</h2></div>
+          <p>These commands reproduce the current zero-spend slice. Proposed integration APIs below are intentionally labeled and should be treated as interface sketches, not shipped imports.</p>
+        </div>
+
+        <div class="code-tabs" data-code-tabs>
+          <div class="code-tabs__nav" role="tablist" aria-label="Code examples">
+            <button type="button" role="tab" aria-selected="true" aria-controls="code-setup" id="tab-setup">Install + replay</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="code-portable" id="tab-portable">Portable packs</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="code-edge" id="tab-edge">Proposed Edge API</button>
+            <button type="button" role="tab" aria-selected="false" aria-controls="code-fx" id="tab-fx">Proposed fx adapter</button>
+          </div>
+          <div class="code-tabs__panel" role="tabpanel" id="code-setup" aria-labelledby="tab-setup">
+            <div class="code-label"><span class="state state--current">Current</span><b>Offline development setup</b></div>
+            <pre><code><span class="comment"># Requirements: Python 3.12.13, Node ≥22.22.2, uv</span>
+git clone https://github.com/alvgeppetto/eval-workbench.git
+cd eval-workbench
+
+uv venv --python 3.12.13
+uv pip install --python .venv/bin/python -e <span class="string">'.[dev,agents]'</span>
+npm ci
+source .venv/bin/activate
+
+make verify
+make clean-install-smoke
+
+evalworkbench init demo-project --example
+cd demo-project
+evalworkbench challenge-meaning --case beta-ready --reviewer control-owner
+evalworkbench run --case beta-ready --mode recorded --json run.json
+evalworkbench open</code></pre>
+          </div>
+          <div class="code-tabs__panel" role="tabpanel" id="code-portable" aria-labelledby="tab-portable" hidden>
+            <div class="code-label"><span class="state state--current">Current</span><b>Export, verify, install, rescore</b></div>
+            <pre><code><span class="comment"># Project pack: configuration-referenced tasks/assets travel with it.</span>
+evalworkbench export --output supplier-review-pack.zip
+evalworkbench verify-export supplier-review-pack.zip
+evalworkbench install-pack supplier-review-pack.zip \
+  --destination installed-pack
+
+<span class="comment"># Evidence-bearing generic report.</span>
+evalworkbench export-artifact-report \
+  --state-root .evalworkbench \
+  --report REPORT_ID \
+  --output artifact-report.zip
+evalworkbench verify-report-export artifact-report.zip
+evalworkbench rescore-artifact-report artifact-report.zip \
+  --output derived-rescore-report.zip \
+  --json rescore.json</code></pre>
+          </div>
+          <div class="code-tabs__panel" role="tabpanel" id="code-edge" aria-labelledby="tab-edge" hidden>
+            <div class="code-label"><span class="state state--next">Illustrative / proposed</span><b>Typed proposal exchange—not a shipped API</b></div>
+            <pre><code><span class="comment"># Interface sketch for product discussion only.</span>
+request = EdgeAuthoringRequest(
+    purpose=<span class="string">"settings-form-evaluation"</span>,
+    approved_context=[policy_ref, component_manifest],
+    withheld_context=[protected_controls],
+    allowed_outputs=[<span class="string">"criteria"</span>, <span class="string">"skill_diff"</span>, <span class="string">"questions"</span>],
+    egress_grant=reviewed_envelope,
+    budget=Budget(max_requests=<span class="number">2</span>, max_tokens=<span class="number">12_000</span>),
+)
+
+proposal = edge.author(request)
+workbench.retain_original(proposal)
+workbench.open_review(proposal, owner=<span class="string">"design-system-owner"</span>)
+
+<span class="comment"># Acceptance creates a new visible identity; it never rewrites old runs.</span>
+accepted = workbench.accept_proposal(
+    proposal.id,
+    reviewer=<span class="string">"design-system-owner"</span>,
+    consequence=<span class="string">"new_skill_revision"</span>,
+)</code></pre>
+          </div>
+          <div class="code-tabs__panel" role="tabpanel" id="code-fx" aria-labelledby="tab-fx" hidden>
+            <div class="code-label"><span class="state state--next">Illustrative / proposed</span><b>Bounded native fx session—not a shipped API</b></div>
+            <pre><code><span class="comment"># The adapter binds exact effective inputs before dispatch.</span>
+slot = workbench.plan_session(
+    adapter=<span class="string">"fx-acp"</span>,
+    binary=FxIdentity(source=<span class="string">"dd0757…"</span>, build=<span class="string">"sha256:…"</span>),
+    workspace=fresh_reset(<span class="string">"settings-app-v1"</span>),
+    task=<span class="string">"D02-save-error-state"</span>,
+    model=authorized_model,
+    max_turns=<span class="number">3</span>,
+    allowed_paths=[<span class="string">"src/app/settings/**"</span>],
+    required_observations=[<span class="string">"fx_session"</span>, <span class="string">"git_diff"</span>, <span class="string">"browser_effects"</span>],
+)
+
+attempt = workbench.dispatch(slot, grant=explicit_provider_allowance)
+report = workbench.close_when_complete(attempt)
+
+<span class="comment"># Missing browser evidence yields unresolved/incomplete, never a pass.</span>
+assert report.plan_accounting.required == report.plan_accounting.observed</code></pre>
+          </div>
+        </div>
+
+        <div class="repo-map">
+          <div class="repo-map__head"><span>Repository map</span><b>Where the product lives today</b></div>
+          <div class="repo-tree" aria-label="Repository structure">
+            <code>eval-workbench/</code>
+            <span>├── <b>packages/contracts/</b><i>versioned data models and compatibility</i></span>
+            <span>├── <b>packages/authoring/</b><i>discovery and reviewed correction proposals</i></span>
+            <span>├── <b>packages/controller/</b><i>workflow, storage, CLI, and local static UI</i></span>
+            <span>├── <b>packages/evaluation/</b><i>checks, qualification, trace/native adapters</i></span>
+            <span>├── <b>packages/runner/</b><i>bounded process, Docker, and ProofPack execution</i></span>
+            <span>├── <b>packages/packs/</b><i>evaluation packs and portable export</i></span>
+            <span>├── <b>examples/document-review/</b><i>current fictional supplier example</i></span>
+            <span>├── <b>examples/json-transform/</b><i>generic artifact-evaluation path</i></span>
+            <span>├── <b>examples/native-trace/</b><i>trace import/replay fixtures</i></span>
+            <span>├── <b>plan/</b><i>product, architecture, transitions, ledgers</i></span>
+            <span>└── <b>docs/</b><i>capabilities, acceptance, portable CI</i></span>
+          </div>
+          <div class="repo-future"><span>Proposed M1 destination</span><code>examples/shadcn-evaluation/</code><p>One project containing policy, pack, reviewed skill, scenarios, controls, runtime bindings, and evaluator-only protected references.</p></div>
+        </div>
+      </section>
+
+      <section class="ew-section" id="critique">
+        <div class="section-intro">
+          <div><p class="section-code">11 / Critical product review</p><h2>What could still<br />make this fail?</h2></div>
+          <p>The architecture is unusually careful about epistemic failure. The product risk is now less “can we preserve evidence?” and more “can a real team reach a useful decision before the machinery exhausts them?”</p>
+        </div>
+        <div class="critique-grid">
+          {critiques.map((item, i) => (
+            <article>
+              <span>{String(i + 1).padStart(2, "0")}</span>
+              <h3>{item.title}</h3>
+              <p>{item.issue}</p>
+              <div><b>Product move</b>{item.move}</div>
+            </article>
+          ))}
+        </div>
+
+        <aside class="experience-principle">
+          <div><span>The default result surface</span><h3>Answer four questions before showing the machinery.</h3></div>
+          <ol>
+            <li><b>What happened?</b><span>Pass, fail, unresolved, unsupported, or error.</span></li>
+            <li><b>Why?</b><span>The smallest decisive evidence and the missing basis.</span></li>
+            <li><b>What can we safely claim?</b><span>Fresh/recorded, observed/reported, qualified/unqualified.</span></li>
+            <li><b>What should happen next?</b><span>Fix agent, fix check, ask owner, collect evidence, or retain.</span></li>
+          </ol>
+        </aside>
+      </section>
+
+      <section class="ew-section ew-section--paper" id="decisions">
+        <div class="section-intro">
+          <div><p class="section-code">12 / Decision board</p><h2>Decided, open,<br />and deliberately held.</h2></div>
+          <p>This is the operational “what must we agree next?” view. A hold is not a failure; it is a refusal to pretend an input, owner, artifact, or authorization exists.</p>
+        </div>
+        <div class="decision-board">
+          {decisions.map(([topic, decision, status, next]) => (
+            <article>
+              <span class:list={["decision-state", `decision-state--${status.toLowerCase()}`]}>{status}</span>
+              <small>{topic}</small>
+              <h3>{decision}</h3>
+              <p>{next}</p>
+            </article>
+          ))}
+        </div>
+
+        <div class="what-next">
+          <div class="what-next__title"><span>Recommended next move</span><h3>Finish the offline V01 handoff, then freeze the live decision envelope.</h3></div>
+          <ol>
+            <li><span>01</span><div><b>Correct PR #7’s exact base and immutable links.</b><p>No product expansion; clear the current review state.</p></div></li>
+            <li><span>02</span><div><b>Inventory the exact fixture and runtime contract.</b><p>Pin the settings tree, lockfile, task set, checks, fx source/build requirement, Node/browser/container profile, and adapter seams.</p></div></li>
+            <li><span>03</span><div><b>Name the humans.</b><p>Assign the meaning owner, control/qualification reviewer, resource approver, and Edge release/egress owner.</p></div></li>
+            <li><span>04</span><div><b>Build the five-minute honest-verdict path offline.</b><p>Connect → preflight → run retained fixture → explain one unresolved result → keep it.</p></div></li>
+            <li><span>05</span><div><b>Admit the live envelope separately.</b><p>Only then approve exact provider/model, 14-session ceiling, helper/retry accounting, credentials, and spend.</p></div></li>
+            <li><span>06</span><div><b>Run, review, and resist overclaiming.</b><p>Treat the internal fx loop as product-mechanics evidence; reserve customer usefulness for V13/M2.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="ew-section ew-section--sources" id="sources">
+        <div class="sources-head">
+          <p class="section-code">13 / Reading the map</p>
+          <h2>This page is a local synthesis,<br />not a new source of authority.</h2>
+          <p>When this explainer and the repository disagree, the versioned contracts, current delivery ledger, accepted review, and retained execution evidence win.</p>
+        </div>
+        <div class="source-grid">
+          {sources.map(([layer, name, id]) => <div><span>{layer}</span><b>{name}</b><code>{id}</code></div>)}
+        </div>
+        <div class="source-links">
+          <a href="https://github.com/alvgeppetto/eval-workbench/pull/1">PR #1 foundation ↗</a>
+          <a href="https://github.com/alvgeppetto/eval-workbench/pull/6">PR #6 architecture ↗</a>
+          <a href="https://github.com/alvgeppetto/eval-workbench/pull/7">PR #7 fx plan ↗</a>
+          <a href="https://github.com/alvgeppetto/eval-workbench">Repository ↗</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="ew-footer">
+      <LabMark href="#top" />
+      <p>Evaluation Workbench / internal product field guide<br />Noindex · local-only · no provider execution</p>
+      <a href="#top">Return to top ↑</a>
+    </footer>
+  </div>
+
+  <script is:inline>
+    const page = document.querySelector('.ew-page');
+    const focusButtons = document.querySelectorAll('[data-focus-button]');
+    focusButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const focus = button.dataset.focusButton;
+        page.dataset.focus = focus;
+        focusButtons.forEach((candidate) => {
+          const active = candidate === button;
+          candidate.classList.toggle('is-active', active);
+          candidate.setAttribute('aria-pressed', String(active));
+        });
+      });
+    });
+
+    document.querySelectorAll('[data-code-tabs]').forEach((tabs) => {
+      const buttons = [...tabs.querySelectorAll('[role="tab"]')];
+      const panels = [...tabs.querySelectorAll('[role="tabpanel"]')];
+      buttons.forEach((button) => {
+        button.addEventListener('click', () => {
+          buttons.forEach((candidate) => candidate.setAttribute('aria-selected', String(candidate === button)));
+          panels.forEach((panel) => { panel.hidden = panel.id !== button.getAttribute('aria-controls'); });
+        });
+      });
+    });
+  </script>
+</BaseLayout>
